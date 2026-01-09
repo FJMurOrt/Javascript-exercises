@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer10_2</title>
+</head>
+<body>
+    <form id ="mi_form">
+        <label for = "pelicula">Nombre de la pelicula: </label>
+        <input type="text" id = "nombre"><br>
+
+        <label for = "genero">Género de la pelicula: </label>
+        <input type="text" id = "genero"><br><br>
+
+        <input type="button" id = "agregar" value = "Agregar pelicula a lista">
+        <input type="button" id = "guardar" value = "Guardar lista de peliculas">
+        <input type="button" id = "ver" value = "Ver peliculas">
+    </form>
+    <div id = "contenido">
+    </div>
+    <script langauge = "javascript">
+
+        /*EL EJERCICIO QUE HE HECHO TRATA DE AGREGAR PELICULAS A UN ARRAY DE OBJETOS (JSON)CON PUSH Y CUYOS DATOS 
+        LOS INTRODUCIMOS EN UN CAMPO DE TEXTO, LUEGO ESE ARRAY LO CONVERTIMOS A STRING CON EL METODO DE JSON.STRINGFY PARA PODER GUARDARLO
+        EN EL SESSION STORAGE Y LUEGO, PARA VER QUE PELICULAS HAY EN EL DIV VOLVEMOS A CONVERTIR EL ARRAY A JSON MOSTRAMOS LOS VALUES CON
+        EL MÉTODO DE OBJECT.VALUE */
+
+
+
+
+        //ACCEDEMOS A LOS BOTONES
+        let agregar = document.getElementById("agregar");
+        let guardar = document.getElementById("guardar");
+        let ver = document.getElementById("ver");
+        let div = document.getElementById("contenido");
+
+        //CREAMOS UNA VARIABLE QUE SERÁ EL ARRAY DE PELICULAS, QUE ESTARÁ VACÍO EN UN PRINCIPIO, SOBRE EL QUE IREMOS REALIZANDO TODAS LAS OPERACIONES
+        let lista_peliculas = new Array();
+
+        //EVENTOS Y FUNCIONES
+        agregar.addEventListener("click", function(){
+
+            //DEIFNIMOS LA VARIABLES QUE VAMOS A NECESITAR
+            let nombre_pelicula = document.getElementById("nombre").value;
+
+            //VERIFICAMOS EL CAMPO DEL NOMBRE
+            if(nombre_pelicula == "" || !isNaN(nombre_pelicula)){
+                alert("El campo del nombre de la pelicula no puede ser un número o estar vacío.");
+                return;
+            }else{
+                nombre_pelicula = nombre_pelicula;
+            }
+
+            //VERIFICAMOS EL CAMPO DEL GÉNERO
+            let genero_pelicula = document.getElementById("genero").value;
+            if(genero_pelicula == "" || !isNaN(genero_pelicula)){
+                alert("El campo del nombre de la pelicula no puede ser un número o estar vacío.");
+                return;
+            }else{
+                genero_pelicula = genero_pelicula;
+            }
+
+            //VARIABLE DONDE GUARDAMOS COMO OBJETO CADA PELICULA
+            let pelicula = {nombre:nombre_pelicula, genero:genero_pelicula};
+
+            //HACEMOS PUSH DE LA PELICULA AL ARRAY
+            lista_peliculas.push(pelicula);
+
+            //MOSTRAMOS MENSAJE
+            div.innerHTML = "¡Pelicula agregada a la lista!";
+        });
+
+        //GUARDAR LA LISTA DE PELICULAS EN EL SESSION STORAGE
+        guardar.addEventListener("click", function(){
+            //CONVERTIMOS EL ARRAY DE OBJETOS, QUE ES EL JSON, A CADENA PARA PODER GUARDARLO
+            let lista_peliculas_en_cadena = JSON.stringify(lista_peliculas);
+
+            //UNA VEZ CONVRTIDO, LO GUARDAMOS EN EL SESSION STORAGE
+            sessionStorage.setItem("Lista de peliculas", lista_peliculas_en_cadena);
+
+            div.innerHTML = "Lista guardada en session storage correctamente.";
+        });
+
+        //VER LAS PELICULAS GUARDADAS EN EL SESSION STORAGE
+        ver.addEventListener("click", function(){
+            let peliculas = sessionStorage.getItem("Lista de peliculas");
+
+            //MOSTRAMOS LAS PELICULAS PERO ANTES LO VOLVEMOS A PASAR A ARRAY DE JSON PARA MANIPULAR COMO LO MOSTRAMOS
+            let peliculas_en_json = JSON.parse(peliculas);
+            
+            //AHORA LAS MOSTRAMOS
+            div.innerHTML += "Las peliculas son: "+"<br><br>";
+            for(let i = 0; i < peliculas_en_json.length; i++){
+                div.innerHTML += "La pelicula es: "+Object.values(peliculas_en_json[i])[0]+" y el género es: "+Object.values(peliculas_en_json[i])[1]+"<br>";
+            }
+        });
+    </script>
+</body>
+</html>

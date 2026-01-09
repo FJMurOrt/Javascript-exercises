@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer7_2</title>
+</head>
+<body>
+    <script language = "javascript">
+
+        //ARRAY PARA LOS NOMBRES
+        var nombres = new Array("MIGUEL","ELENA","JORGE","CRISTINA","IGNACIO","ALICIA");
+        var nombres_original = new Array("MIGUEL","ELENA","JORGE","CRISTINA","IGNACIO","ALICIA");
+        var apellidos = new Array("GIL","SÁNCHEZ","RODRÍGUEZ","ALONSO","VEGA","REY");
+        var apellidos_original = new Array("GIL","SÁNCHEZ","RODRÍGUEZ","ALONSO","VEGA","REY");
+        //MENÚ PARA ESCOGER QUE HACER
+
+        opcion = parseInt(prompt("Introduce un número del 1 al 8 para realizar una operación"));
+
+        
+        switch(opcion){
+            case 1:
+                function anadir_elemento(){
+                    palabra = prompt("Introduce un nombre que quieras incluir al array");
+                    nombres.push(palabra);
+                    return nombres;
+                    
+                }
+                anadir_elemento();
+                document.write("El array original es: "+nombres_original);
+                document.write("<br>");
+                document.write("El array con tu nuevo elemento es: "+nombres);
+                break;
+
+            case 2:
+                var concatenados = new Array();
+                function concat_array(){
+                    for(i = 0; i < nombres.length; i++){
+                        concatenados.push(nombres[i]+" "+apellidos[i]);
+                    }
+                    return concatenados;
+                }
+                concat_array();
+                document.write("Los arrays originales son:<br>");
+                document.write(nombres);
+                document.write("<br>");
+                document.write(apellidos);
+                document.write("<br>");
+                document.write("El resultado de la concatencación es: "+concatenados);
+                break;
+
+            case 3:
+                function invertir_arr(){
+                    invertido = nombres.reverse();
+                    return nombres;
+                }
+                invertir_arr();
+                document.write("El array original es: "+nombres_original+"<br>");
+                document.write("El array invertido es: "+invertido);
+                break;
+            case 4:
+                function anadir_principio(){
+                    palabra1 = "";
+                    palabra2 = "";
+                    palabra3 = "";
+                    palabra4 = "";
+                    alert("A continuación, se te pediran 4 palabras y las insertaremos al principio del array original de apelldios");
+                    palabra1 = prompt("Introduce la primera palabra:");
+                    palabra2 = prompt("Introduce la primera palabra:");
+                    palabra3 = prompt("Introduce la primera palabra:");
+                    palabra4 = prompt("Introduce la primera palabra:");
+
+                    apellidos.unshift(palabra1,palabra2,palabra3,palabra4);
+                    return apellidos;
+                }
+                anadir_principio();
+                document.write("El array de apellidos orignal era "+apellidos_original);
+                document.write("<br>");
+                document.write("El array con tus cuatro palabras elegidas al inicio es: "+apellidos);
+                break;
+            case 5:
+                function eliminar_primero(){
+                    nombres.shift();
+                    return nombres;
+                }
+                eliminar_primero();
+                document.write("El array original de nombres sin el primer elemento es: "+nombres_original);
+                document.write("<br>");
+                document.write("El array original de nombres con el primer elemento eliminado es: "+nombres);
+                break;
+            case 6:
+                function eliminar_ultimo(){
+                    nombres.pop();
+                    return nombres;
+                }
+                eliminar_ultimo();
+                document.write("El array original de nombres sin el primer elemento es: "+nombres_original);
+                document.write("<br>");
+                document.write("El array original de nombres con el primer elemento eliminado es: "+nombres);
+                break;
+            case 7:
+                function subconjunto(){
+                    sub = new Array();
+
+                    alert("A continuación, se te pedirá un rango (inicio y final) por donde quieres que te extraiga un subconjunto de origianl");
+                    inicio = parseInt(prompt("Introduce el numero de elemento por donde quieres que empieze el subconjunto"));
+                    final = parseInt(prompt("Introduce el número del elemento por donde quieres que acabe el subconjunto"));
+
+                    if(inicio > final){
+                        for(i = inicio; i >= final; i--){
+                            sub.push(nombres[i]);
+                        }
+                    }else{
+                        for(i = inicio; i <= final; i++){
+                            sub.push(nombres[i]);
+                        }
+                    }
+                    return sub;
+                }
+                subconjunto();
+                document.write(sub);
+                break;
+            case 8:
+                function ordenar(){
+                    nombres.sort();
+                    return nombres;
+
+                }
+                ordenar();
+                document.write("El array original de nombres sin ordenar es: "+nombres_original);
+                document.write("<br>");
+                document.write("El array original de nombres ordenado alfabeticamente es: "+nombres);
+        }
+
+
+        
+    </script>
+</body>
+</html>

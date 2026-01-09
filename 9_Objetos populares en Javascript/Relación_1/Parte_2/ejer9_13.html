@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer9_13</title>
+</head>
+<body>
+    <script language = "javascript">
+        //ARRAY DONDE VAMOS A MIRAR SI EXISTEN COINCIDENCIAS
+        const array = new Array("Freddie","Mx","Neo_JP", "Zarzamora", "Ramm","Fael");
+
+        //CREAMOS EL MÉTODO PERSONALIZADO CON PROTOTYPE
+
+        Array.prototype.verCoincidencias = function(){
+            let candena_a_buscar = prompt("Introduce una cadena que quieras saber si se encuentra en el array").toLowerCase();
+
+            document.write("El array donde vamos a buscar es: "+this);
+            document.write("<br><br>");
+
+            let coincidencias = 0;
+
+            for(let i = 0; i < this.length; i++){
+                if(this[i].toLowerCase() === candena_a_buscar){
+                    coincidencias++
+                }
+            }
+            document.write("Se encontraron "+coincidencias+" coincidencias"+" en el array.");
+        }
+
+        array.verCoincidencias();
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer12_4</title>
+</head>
+<style>
+    td{
+        width: 150px;
+        height: 150px;
+    }
+</style>
+<body>
+    <table border="1">
+        <tr>
+            <td style = "background-color: lightgrey;"></td>
+        </tr>
+        <tr>
+            <td style = "background-color: grey;"></td>
+        </tr>
+        <tr>
+            <td style = "background-color: darkgrey;"></td>
+        </tr>
+    </table>
+    <script language = "javascript">
+        //ACCEDEMOS A LAS CELDAS
+        let celda_1 = document.getElementsByTagName("td")[0];
+        let celda_2 = document.getElementsByTagName("td")[1];
+        let celda_3 = document.getElementsByTagName("td")[2];
+
+        //FUNCIONES Y EVENTOS
+        celda_1.addEventListener("click", function(){
+            let body = document.getElementsByTagName("body")[0];
+            body.style.backgroundColor = "lightgrey";
+        });
+
+        celda_2.addEventListener("click", function(){
+            let body = document.getElementsByTagName("body")[0];
+            body.style.backgroundColor = "grey";
+        });
+
+        celda_3.addEventListener("click", function(){
+            let body = document.getElementsByTagName("body")[0];
+            body.style.backgroundColor = "darkgrey";
+        });
+    </script>
+</body>
+</html>

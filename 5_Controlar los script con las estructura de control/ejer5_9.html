@@ -1,0 +1,55 @@
+/* EXPLICACIÓN DEL EJERCICIO 9, RELACIÓN 5.
+
+- Se lanza un throw dentro del try.
+
+- El flujo de ejecución se detiene inmediatamente en ese punto.
+
+- Todas las líneas restantes dentro del try se saltan.
+
+- El objeto Error se pasa al catch.
+
+- El catch lo recibe como cadena en la variable "exception" y mediante un alert se saca por pantalla.
+
+- Luego se ejecuta el finally, sin importar si hubo error o no, que en este caso es solo una cadena.
+
+*/
+
+/* EXPLANATION OF EXERCISE 9, SET 5.
+
+- A throw is triggered inside the try block.
+
+- The execution flow stops immediately at that point.
+
+- All remaining lines inside the try are skipped.
+
+- The Error object is passed to the catch block.
+
+- The catch receives it as a string in the variable "exception" and displays it using an alert.
+
+- Then the finally block executes, regardless of whether there was an error or not, which in this case is just a string.
+
+*/
+
+<HTML>
+<HEAD><TITLE> Ejercicio5_9 </TITLE>
+</HEAD>
+<BODY>
+<SCRIPT LANGUAGE="JavaScript">
+    var a;
+    a=prompt("Introduce un numero", 0);
+    try {
+        if(typeof a == "undefined" || isNaN(a)) {
+            throw new Error('La variable "a" no es un numero');
+    }
+    
+    var resultado = 5 / a;
+    alert("El resultado de dividir 5 entre" + a + "es" + resultado);
+    } catch(excepcion) {
+        alert(excepcion);
+    } finally {
+        alert("Se ejecuta");
+    }
+    
+</SCRIPT>
+</BODY>
+</HTML>

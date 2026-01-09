@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer8_3</title>
+    <style>
+        table, td, tr{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h3 style = "background-color: lightblue; color: darkblue; width: 300px; text-align: center; margin: auto;">Conversiones de Longitud</h3>
+    <br><br>
+    <form style="justify-content: center; display: flex;">
+        <table>
+            <tr>
+                <td colspan="9" style = "color: red; "><b>Equivalentes de longitud</b></td>
+            </tr>
+            <tr>
+                <td colspan="9" style="color: red;"><b>Primero., escriba la cantidad a convertir aquí </b><input type = "text" id = "cantidad"><br><b>Luego, haga su selección en los botones radiales:</b></td>
+            </tr>
+            <tr>
+                <td rowspan="2" style = "color: red"><b>De:</b></td>
+                <td style = "background-color: lightblue;">Centimetros</td>
+                <td style = "background-color: lightblue;">Pulgadas</td>
+                <td style = "background-color: lightblue;">Pies</td>
+                <td style = "background-color: lightblue;">Yardas</td>
+                <td style = "background-color: lightblue;">Metros</td>
+                <td style = "background-color: lightblue;">Cadenas</td>
+                <td style = "background-color: lightblue;">Kilometros</td>
+                <td style = "background-color: lightblue;">Millas</td>
+            </tr>
+            <tr>
+                <td style = "background-color: lightblue;"><input type = "radio" name = "de" id = "decentimetros"></td>
+                <td style = "background-color: lightblue;"><input type = "radio" name = "de" id = "depulgadas"></td>
+                <td style = "background-color: lightblue;"><input type = "radio" name = "de" id = "depies"></td>
+                <td style = "background-color: lightblue;"><input type = "radio" name = "de" id = "deyardas"></td>
+                <td style = "background-color: lightblue;"><input type = "radio" name = "de" id = "demetros"></td>
+                <td style = "background-color: lightblue;"><input type = "radio" name = "de" id = "decadenas"></td>
+                <td style = "background-color: lightblue;"><input type = "radio" name = "de" id = "dekilometros"></td>
+                <td style = "background-color: lightblue;"><input type = "radio" name = "de" id = "demillas"></td>
+            </tr>
+            <tr>
+                <td rowspan="2" style = "color: red"><b>A:</b></td>
+                <td style = "background-color: lightblue;">Centimetros</td>
+                <td style = "background-color: lightblue;">Pulgadas</td>
+                <td style = "background-color: lightblue;">Pies</td>
+                <td style = "background-color: lightblue;">Yardas</td>
+                <td style = "background-color: lightblue;">Metros</td>
+                <td style = "background-color: lightblue;">Cadenas</td>
+                <td style = "background-color: lightblue;">Kilometros</td>
+                <td style = "background-color: lightblue;">Millas</td>
+            </tr>
+            <tr>
+                <td style = "background-color: lightblue;"><input type = "radio" name = "a" id = "acentimetros"></td>
+                <td style = "background-color: lightblue;"><input type = "radio" name = "a" id = "apulgadas"></td>
+                <td style = "background-color: lightblue;"><input type = "radio" name = "a" id = "apies"></td>
+                <td style = "background-color: lightblue;"><input type = "radio" name = "a" id = "ayardas"></td>
+                <td style = "background-color: lightblue;"><input type = "radio" name = "a" id = "ametros"></td>
+                <td style = "background-color: lightblue;"><input type = "radio" name = "a" id = "acadenas"></td>
+                <td style = "background-color: lightblue;"><input type = "radio" name = "a" id = "akilometros"></td>
+                <td style = "background-color: lightblue;"><input type = "radio" name = "a" id = "amillas"></td>
+            </tr>
+            <tr>
+                <td colspan="9" style = "text-align: center;"><input type = "button" id = "convertir" value = "Haga click para convertir"><input type = "button" id = "reiniciar" value="Reiniciar"></td>
+            </tr>
+            <tr>
+                <td colspan="9" style="text-align: center;"><input type = "text" id = "resultado" style = "width: 300px;"></td>
+            </tr>
+        </table>
+    </form>
+    
+    <script language = "javascript">
+
+        //OBTENEMOS EL BOTON EN UNA VARIABLE
+        let boton = document.getElementById("convertir");
+
+        //APLICAMOS UN EVENTO AL BOTÓN PARA CUANDO HAGAMOS CLICK EN ÉL
+        boton.addEventListener("click", function(){
+            let cantidad = parseFloat(document.getElementById("cantidad").value);
+            if(isNaN(cantidad)){
+                alert("Necesitas introducir un número");
+                document.getElementById("cantidad").value = "";
+                return;
+            }
+        
+            //PASAMOS A METROS CUALQUIER UNIDAD
+
+            let de_unidad;
+            let en_metros;
+
+            if(document.getElementById("decentimetros").checked){
+                en_metros = cantidad / 100;
+                metros = en_metros;
+            }
+            if(document.getElementById("depulgadas").checked){
+                en_metros = cantidad * 0.0254;
+            }
+            if(document.getElementById("depies").checked){
+                en_metros = cantidad * 0.3048;
+            }
+            if(document.getElementById("deyardas").checked){
+                en_metros = cantidad * 0.9144;
+            }
+            if(document.getElementById("demetros").checked){
+                en_metros = cantidad;
+            }
+            if(document.getElementById("decadenas").checked){
+                en_metros = cantidad * 20.1168;
+            }
+            if(document.getElementById("dekilometros").checked){
+                en_metros = cantidad * 1000;
+            }
+            if(document.getElementById("demillas").checked){
+                en_metros = cantidad * 1609.344;
+            }
+
+            //CONVERTIMOS A LA UNIDAD SELECCIONADA DESDE METROS
+
+            let a_unidad;
+            let resultado;
+
+            if(document.getElementById("acentimetros").checked){
+                resultado = en_metros * 100;
+            }
+            if(document.getElementById("apulgadas").checked){
+                resultado = en_metros / 0.0254;
+            }
+            if(document.getElementById("apies").checked){
+                resultado = en_metros / 0.3048;
+            }
+            if(document.getElementById("ayardas").checked){
+                resultado = en_metros / 0.9144;
+            }
+            if(document.getElementById("ametros").checked){
+                resultado = en_metros;
+            }
+            if(document.getElementById("acadenas").checked){
+                resultado = en_metros / 20.1168;
+            }
+            if(document.getElementById("akilometros").checked){
+                resultado = en_metros / 1000;
+            }
+            if(document.getElementById("amillas").checked){
+                resultado = en_metros / 1609.344;
+            }
+
+            //MOSTRAMOS EL RESULTADO
+            
+            document.getElementById("resultado").value = resultado;
+            
+        });
+    </script>
+</body>
+</html>

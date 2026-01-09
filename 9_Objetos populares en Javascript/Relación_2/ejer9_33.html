@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer9_33</title>
+</head>
+<body>
+    <script language = "javascript">
+        //VARIABLE CON LA CADENA EN LA QUE VAMOS A BUSCAR
+        let variable_frase = "Now is the time, this is the time";
+
+        //MI EXPRESIÓN PARA BUSCAR EN LA CADENA COINCIDENCIAS
+        let mi_expresion = new RegExp("time","g");
+
+        //MIRAMOS SI HAY COINCIDENCIAS
+        if(mi_expresion.test(variable_frase)){
+            alert("Hay coincidencias");
+            let frase_modificada = variable_frase.replace(mi_expresion, "place");
+            document.write("La frase antes de modificar es: "+variable_frase+"<br><br>");
+            document.write("La frase después de modificar es: "+frase_modificada);
+        }else{
+            alert("No hay coincidencias");
+        }
+
+    </script>
+</body>
+</html>

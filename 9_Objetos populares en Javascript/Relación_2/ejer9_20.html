@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id = "mi_form">
+        <label for = "nomb">Nombre:</label>
+        <input type="text" id="nombre"><br><br>
+        <label for = "ed">Edad:</label>
+        <input type="text" id="edad">
+    </form>
+    <script language = "javascript">
+
+        //VARAIBLES DONDE GUARDO EL ELEMENTO DEL FORMULARIO
+        let nombre = document.getElementById("nombre");
+        let edad = document.getElementById("edad");
+
+
+        //PARA DEJAR LOS CAMPOS EN BLANCO CUANDO LOS SELECCIONEMOS
+        nombre.addEventListener("focus", function(){
+            nombre.value = "";
+        });
+
+        edad.addEventListener("focus", function(){
+            edad.value = "";
+        });
+
+
+        //PARA SACAR UNA ALERTA SI CAMBIAMOS DE CAMPO Y LOS DEJAMOS EN BLANCO
+        nombre.addEventListener("blur", function(){
+            if(nombre.value === ""){
+                alert("No puedes dejar el campo nombre en blanco.");
+            }
+        });
+
+        edad.addEventListener("blur", function(){
+            if(edad.value === ""){
+                alert("No puedes dejar el campo edad en blanco.");
+            }
+        });
+        
+    </script>
+</body>
+</html>

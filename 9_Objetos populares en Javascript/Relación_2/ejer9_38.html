@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer9_38</title>
+</head>
+<body>
+    <form>
+         <label for = "texto"><b>Por favor, redacte aqui su mensaje</b> Palabras escritas: </label>
+         <input type="text" id ="cantidad_palabras" value = "0" readonly><br>
+         <textarea id ="contenido" rows = "7" cols = "50"></textarea>
+    </form>
+    <script language = "javascript">
+
+        //VARIABLES PARA ACCEDER AL TEXTAREA Y AL CAMPO DE CANTIDAD DE PALABRAS
+        let campo_cantidad_palabras = document.getElementById("cantidad_palabras");
+        let textarea = document.getElementById("contenido");
+
+        textarea.addEventListener("input", function(){
+            
+            //CREO UNA EXPRESIÓN PARA LOS ESPACIOS QUE LUEGO SE LA PASO AL PARAMETRO DE SPLIT PARA QUE TENGA ESO EN CUENTA A LA HORA DE CREARME EL ARRAY
+            let expresion_espacios = new RegExp("[\\s]");
+            let array_del_contenido = textarea.value.split(expresion_espacios);
+
+            let cantidad_de_palabra;
+
+            if(textarea.value == ""){
+                cantidad_de_palabras = 0
+            }else{
+                cantidad_de_palabras = array_del_contenido.length-1;
+            }
+            
+            document.getElementById("cantidad_palabras").value = cantidad_de_palabras;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer10.1</title>
+</head>
+<body>
+    <form id="mi_form">
+        <label for="nombre">Nombre del producto:</label>
+        <input type="text" id="nombre"><br><br>
+        <label for="precio">Precio:</label>
+        <input type="text" id="precio"><br><br>
+        <input type="button" id="guardar" value="Guardar"><br><br>
+        <input type="button" id="limpiar" value="Limpiar Vista"><br><br>
+        <input type="button" id="borrar" value="Borrar todo"><br><br>
+    </form>
+    <br><br>
+    <div id = "contenedor_de_información">
+        No hay información almacenada.
+    </div>
+    <script language = "javascript">
+        //ACCEDEMOS A LOS BOTÓNES
+        let boton_guardar = document.getElementById("guardar");
+        let boton_limpiar = document.getElementById("limpiar");
+        let boton_borrar = document.getElementById("borrar");
+        let div = document.getElementById("contenedor_de_información");
+
+        //FUNCIÓN Y EVENTO PARA EL BOTÓN GUARDAR
+        boton_guardar.addEventListener("click",function(){
+            //ACCEDEMOS AL CAMPO DE NOMBRE QUE SERÁ LUEGO LA CLAVE
+            let clave = document.getElementById("nombre");
+                //VERIFICAMOS QUE EL CAMPO ESTE COMPLETADO
+                if(clave.value == ""){
+                    alert("El campo nombre no puede estar vacío");
+                }else if(!isNaN(clave.value)){
+                    alert("El nombre no puede ser un número");
+                }else{
+                    clave.value = clave.value;
+                }
+
+            //ACCEDEMOS AL CAMPO DEL PRECIO QUE SERÁ LUEGO EL VALOR
+            let valor = document.getElementById("precio");
+                //VERIFICAMOS QUE EL PRECIO SEA UN NÚMERO
+                if(valor.value == ""){
+                    alert("El campo del precio no puede estar vacío");
+                }else if(isNaN(valor.value)){
+                    alert("El campo del precio debe ser un número");
+                }else{
+                    valor.value = parseFloat(valor.value);
+                }
+
+            //AHORA, GUARDAMOS EL DATO EN LA SESSIONSTORAGE CON EL NOMBRE COMO CLAVE Y EL PRECIO COMO VALOR
+            let dato = sessionStorage.setItem(clave.value, valor.value);
+
+            //VAMOS A HACER UN FOR PARA RECORRER LA INFORMACIÓN DE CADA DATO GUARDADO EN EL SESSIONSTORAGE
+            let informacion = "";
+            for(let i = 0; i < sessionStorage.length; i++){
+                let clave_del_dato = sessionStorage.key(i);
+                let valor_del_dato =  sessionStorage.getItem(clave_del_dato);
+                informacion += clave_del_dato + " "+valor_del_dato+"<br><br>";
+
+            }
+            //ACCEDEMOS AL ELEMENTO DEL CONTENEDOR PARA MOSTRAR INFORMACIÓN SI HAY ALGO GUARDADO
+            div.innerHTML = informacion;
+            
+        });
+
+        //FUNCIÓN Y EVENTO PARA EL BOTÓN LIMPIAR
+        boton_limpiar.addEventListener("click", function(){
+            div.innerHTML = "";
+        });
+
+        //BORRARMOS EL CONTENIDO DE SESSIONSTORAGE
+        boton_borrar.addEventListener("click", function(){
+            for(let i = sessionStorage.length - 1; i >= 0; i--){
+                sessionStorage.removeItem(sessionStorage.key(i));
+            }
+            div.innerHTML = "Se borraron todos los datos del sessionStorage";
+        });
+    </script>
+</body>
+</html>

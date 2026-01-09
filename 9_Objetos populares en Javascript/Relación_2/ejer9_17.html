@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eker9_17</title>
+</head>
+<body>
+    <form id = "form">
+        <label for = "nombre">Nombre:</label>
+        <input type="text" id = "nombre"><br>
+        <label for = "apellidos">Apellidos:</label>
+        <input type="text" id = "apellidos"><br>
+        <label for = "edad">Edad:</label>
+        <input type="text" id = "edad"><br><br>
+        <input type="submit" id = "enviar" value = "Enviar"><br>
+    </form>
+    <script language="javascript">
+
+        //FUNCION PARA ENVIAR EL FORMULARIO SI ACEPTA ANTES.
+
+        function enviarSiAcepta(){
+            let formulario = document.getElementById("form");
+            formulario.addEventListener("submit", function(event){
+                event.preventDefault();
+
+            let acepta = confirm("¿Estás seguro de que quieres enviar el formulario?");
+
+            if(acepta){
+                formulario.submit();
+            }else{
+                return;
+            }
+            });
+        }
+        enviarSiAcepta();
+    </script>
+</body>
+</html>

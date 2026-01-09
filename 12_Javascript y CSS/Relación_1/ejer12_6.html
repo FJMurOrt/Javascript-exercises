@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer12_6</title>
+</head>
+<style>
+    .centrado{
+        text-align: center;
+    }
+    .cursiva{
+        font-style: italic;
+    }
+    .color{
+        color: yellow;
+    }
+    .color_de_fondo{
+        background-color: blue;
+    }
+</style>
+<body>
+    <script language = "javascript">
+        //CREAMOS UN H3 DONDE IRÁ EL TEXTO
+        let h3 = document.createElement("h3");
+        h3.textContent = "BIENVENIDO!";
+
+        //LO METEMOS EN EL BODY
+        let body = document.getElementsByTagName("body")[0];
+        body.appendChild(h3);
+
+        //LO CENTRAMOS AL MEDIO CON CLASSNAME
+        h3.className = "centrado cursiva color";
+
+        //LE PONEMOS AL BODY UN COLOR DE FONDO AZUL CON CLASS NAME
+        body.className = "color_de_fondo";
+    </script>
+</body>
+</html>

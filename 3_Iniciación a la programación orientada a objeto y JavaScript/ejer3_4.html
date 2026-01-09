@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer_3_1</title>
+    <style>
+        table, tr, td{
+            border: 1px, solid, black;
+            margin-bottom: 3px;
+        }
+    </style>
+</head>
+<body>
+    <script language="javascript">
+        let numero;
+
+        do {
+            numero = prompt("Inserta un número");
+        } while (numero == "");
+
+        numero = parseInt(numero);
+        
+        alert("El número insertado es: " + numero);
+        document.write(
+            "<table align= 'center'>" +
+                "<tr>" +
+                    "<th>" + "Tabla de multiplicar" + "</th>" +
+                "</tr>" +
+            "</table>")
+
+        document.write("<table align = 'center'>")
+            for(i = 0; i <= 10; i++){
+                document.write(
+                    "<tr>" +
+                        "<td>" + numero + "*" + i + "</td>" +
+                        "<td>" + numero * i + "</td>" +
+                    "<tr>"
+                )
+            }
+        document.write ("</table>");
+    </script>
+</body>
+</html>

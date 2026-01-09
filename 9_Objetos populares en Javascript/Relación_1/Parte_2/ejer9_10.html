@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer9_10</title>
+</head>
+<body>
+    <script language = "javascript">
+
+        //FUNCIÓN PARA SABER SI UNA CADENA ES PALÍNDROMO
+        function esPalindromo(){
+            //PALABRA A DETERMINAR SI ES PALÍNDROMO
+            let cadena = prompt("Introduce una palaba o frase").toLowerCase();
+
+            //CONVERTIMOS LA CADENA A UN ARRAY CON SPLIT Y LUEGO LO HACEMOS CADENA OTRA VEZ PARA QUITARLE LOS ESPACIOS Y UNIRLO TODO EN CASO DE QUE SE INTRODUZCA UNA CADENA
+            cadena = cadena.split(" ");
+            cadena = cadena.join("");
+
+            //AHORA VAMOS A CREAR UNA VARIABLE DONDE VAMOS A METER LA CADENA SIN ESPACIOS PERO INVERTIDA
+            let cadena_invertida = cadena.split("");
+            cadena_invertida = cadena_invertida.reverse();
+            cadena_invertida = cadena_invertida.join("");
+
+            //AHORA VAMOS A COMPARAR LA CADENA CONSIGO MISMO SIENDO INVERTIDA Y SI SON IGUALES, SON UN PALÍNDROMO
+
+            if(cadena === cadena_invertida){
+                alert("La cadena introducida es un palíndromo");
+            }else{
+                alert("La cadena introducida no es un palíndromo");
+            }
+        }
+        esPalindromo();
+    </script>
+</body>
+</html>

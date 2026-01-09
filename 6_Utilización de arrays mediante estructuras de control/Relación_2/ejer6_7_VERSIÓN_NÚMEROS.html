@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            margin: auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <script language="javascript">
+        //PEDIMOS QUE SE INTRODUZCA EL NÚMERO
+        numero = parseInt(prompt("Inserta un número"));
+        //MOSTRAMOS EN TABLA EL NÚMERO INTRODUCIDO
+        document.write("<table border='1'>");
+            document.write("<tr style='background-color: turquoise'>");
+                document.write("<td>");
+                    document.write("<b>EL NÚMERO INTRODUCIDO ES: "+numero+"</b>");
+                document.write("</td>");
+            document.write("</tr>");
+        //TENEMOS QUE IR DIVIENDO EL NÚMERO POR 10 PARA IR QUEDANDONOS CON SU RESTO QUE SERÁ SU NÚMERO INVERTIDO.
+        numero_invertido = new Array();
+        //LO PASAMOS A STRING PARA SABER CUANTOS NUMEROS COMPONEN LA CIFRA COMPLETA.
+        cifras = numero.toString();
+        contador = cifras.length;
+        //WHILE PARA IR INVIRTIENDO EL NÚMERO
+        while(contador !== 0){
+        resultado = Math.floor(numero / 10);
+        resto = numero % 10;
+        numero_invertido.push(resto);
+        numero = resultado;
+        contador--;
+        }
+        //CREAMOS LA SIGUIENTE TABLA
+            document.write("<tr>");
+                document.write("<td>");
+                    document.write("<table>");
+                        document.write("<b><i>EL NÚMERO AL REVÉS ES: "+numero_invertido.join("")+"</i></b>");
+                    document.write("</td>");
+                document.write("</tr>");
+            document.write("</table>");
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecma4</title>
+    <style>
+        table{
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    Introduce una cantidad que quieras desglosar:
+    <input type="text" id="cantidad"><br>
+    <input type="button" id="boton" value="Calcular">
+
+    <div id="resultado">
+    </div>
+    <script language = "javascript">
+        //CREAMOS EL ARRAY ASOCIATIVO CON MAP
+        let billetes = new Map(
+            [
+                ["Billete de 5000€", 5000],
+                ["Billete de 2000€", 2000],
+                ["Billete de 1000€", 1000],
+                ["Billete de 500€", 500],
+                ["Billete de 200€", 200],
+                ["Billete de 100€", 100],
+                ["Billete de 50€", 50],
+                ["Billete de 25€", 25],
+                ["Billete de 10€", 10],
+                ["Billete de 5€", 5],
+                ["Billete de 1€", 1]
+            ]
+        );
+
+        //ACCEDEMOS AL BOTÓN Y AL DIV PARA MÁS TARDE
+        let div = document.getElementById("resultado");
+        let boton_calcular = document.getElementById("boton");
+
+        boton_calcular.addEventListener("click", function(){
+            //ACCEDEMOS AL CAMPO DE LA CANTIDAD Y LA VEFICICAMOS
+            let cantidad = document.getElementById("cantidad").value;
+
+            if(cantidad == "" || isNaN(cantidad) || cantidad < 0){
+                alert("El campo cantidad no puede estar vacío y debe ser un número");
+                return;
+            }else{
+                cantidad = parseInt(document.getElementById("cantidad").value);
+            }
+
+            //HACEMOS EL DESGLOSE
+            let tabla_desglose;
+
+            tabla_desglose_encabezado = "<table border = '1'>";
+                tabla_desglose_encabezado += "<tr style='background-color: lightblue;'><td><b>DESGLOSE DE LA CANTIDAD: "+cantidad+"</b></td></tr>";
+            tabla_desglose_encabezado += "</table>";
+
+
+            let tabla_desglose_contenido = "";
+            tabla_desglose_contenido = "<table border='1'>";
+
+            for(let [clave, valor] of billetes){
+                let cantidad_billetes = Math.floor(cantidad / valor);
+                let resto = cantidad % valor;
+                cantidad = resto;
+
+                if(cantidad_billetes > 0){
+                    tabla_desglose_contenido += "<tr><td><b>Unidades de "+valor+": "+cantidad_billetes+"</b></td></tr>";
+                }else{
+                    tabla_desglose_contenido += "<tr><td>Unidades de "+valor+": "+cantidad_billetes+"</td></tr>";
+                }
+            }
+            tabla_desglose_contenido += "</table>";
+
+            div.innerHTML = tabla_desglose_encabezado + tabla_desglose_contenido;
+        });
+
+    </script>
+</body>
+</html>

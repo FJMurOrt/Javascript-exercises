@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer5_7</title>
+</head>
+<body>
+    <script language="javascript">
+        color_fondo = prompt("Escribe R, A, Y o V dependiendo del color que quieras para el fondo de tu tabla: \nR. para rosa \nA. para azul \nY. para amarillo \nV. para verde");
+
+        switch(color_fondo){
+            case "R":
+            case "r":
+                alert("Has elegido rosa.");
+                color_fondo = " style='background-color: pink";
+                break;
+            case "A":
+            case "a":
+                alert("Has elegido azul.");
+                color_fondo = " style='background-color: lightblue";
+                break;
+            case "Y":
+            case "y":
+                alert("Has elegido amarillo.");
+                color_fondo = " style='background-color: lightyellow";
+                break;
+            case "V":
+            case "v":
+                alert("Has elegido verde.");
+                color_fondo = " style='background-color: lightgreen";
+                break;
+            default:
+                alert("Proceso cancelado. La letra introducida no corresponde a ningún color.");
+                break;
+        }
+
+        
+        color_letra = prompt("Ahora, igualmente, escoge un color para las letras: \nR. para rojo \nA. para azul \nY. Para amarillo \nV. para verde")
+        
+        switch(color_letra){
+            case "R":
+            case "r":
+                alert("Has elegido rosa.");
+                color_letra = "; color: rojo'";
+                break;
+            case "A":
+            case "a":
+                alert("Has elegido azul.");
+                color_letra = "; color: blue'";
+                break;
+            case "Y":
+            case "y":
+                alert("Has elegido amarillo.");
+                color_letra = "; color: yellow'";
+                break;
+            case "V":
+            case "v":
+                alert("Has elegido verde.");
+                color_letra = "; color: green'";
+                break;
+            default:
+                alert("Proceso cancelado. La letra introducida no corresponde a ningún color.");
+                break;
+        }
+            document.write("<table"+" border='1px'"+color_fondo+color_letra+">");
+            document.write("<tr>");
+            document.write("<td>");
+            document.write("TEXTO CON COLOR");
+            document.write("</td>");
+            document.write("</tr>");
+            document.write("</table>");
+    </script>
+    
+</body>
+</html>

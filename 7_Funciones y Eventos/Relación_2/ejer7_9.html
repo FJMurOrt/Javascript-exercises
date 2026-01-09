@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer7_9</title>
+</head>
+<body>
+    <form id = "formu">
+        <input type = "numero" id = "numero" placeholder="introduce un número">
+        <input type = "button" id = "boton" value = "¡Calcular primos!">
+    </form>
+
+    <div id = "resultado">
+    </div>
+
+    <script language = "javascript">
+        //FUNCIÓN PARA SABER SI UN NÚMERO ES PRIMO
+        function es_primo(num){
+            if(num < 2){
+                    alert("El número es menor que 2 y por lo tanto no es primo");
+                    return false; //DETEMOS LA EJECUCIÓN SI EL NUMERO ES MENOR QUE 2.
+                }
+            for(let i = 2; i < num; i++){
+                if(num % i === 0){
+                    return false; //DETENEMOS LA EJCUCIÓN SI HAY UN NÚMERO ENTRE EL NUMERO CALCULADO Y 2 QUE DE 0 DE RESTO.
+                }
+            }
+            return true; //SI SALE DEL FOR SIN HACER EL FALSE QUIERE DECIR QUE EL NÚMERO ES PRIMO.
+        }
+
+        //FUNCION PARA EL EVENTO
+
+        const boton = document.getElementById("boton");
+
+        boton.addEventListener("click", function(){
+            const numero = parseInt(document.getElementById("numero").value);
+            if(isNaN(numero)){
+                alert("El número introducido no es un número");
+                return;
+            }
+            let numeros_primos = new Array();
+
+            for(let i = 2; i <= numero; i++){
+                if(es_primo(i)){
+                    numeros_primos.push(i);
+                }
+            }
+
+            let contador = 0;
+            document.write("<table border = '1px'>");
+            document.write("<tr><td colspan ='2'>NUMEROS PRIMOS</td></tr>");
+            for(let i = 0; i < numeros_primos.length; i++){
+                contador++;
+                if(contador === 1){
+                    document.write("<tr>");
+                }
+                document.write("<td>"+numeros_primos[i]+"</td>");
+                if(contador === 2){
+                    document.write("</tr>");
+                }
+                if(contador === 2){
+                    contador = 0;
+                }
+            }
+            document.write("</table>");
+        });
+    </script>
+</body>
+</html>

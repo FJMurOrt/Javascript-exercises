@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecma1</title>
+</head>
+<body>
+    <div id="resultado">
+    </div>
+    <script language = "javascript">
+        //CREAMOS LA CLASE ANIMAL
+        class Animal{
+            constructor(nombre, especie, patas, si_cola){ //CONSTRUCTOR PARA CREAR LOS OBJETOS DE LA CLASE ANIMAL.
+                this.nombre = nombre;
+                this.especie = especie;
+                this.patas = patas;
+                this.si_cola = si_cola; //ES UNA PROPIEDAD TIPO BOOLEANA, ASÍ LA PUEDO COMPROBAR EN EL MÉTODO MÁS TARDE.
+            }
+
+            //AHORA CREAMOS UN MÉTODO PARA PODER MOSTRAR LA INFORMACIÓN.
+            datos_del_animal(){
+                let tiene_cola; //COMPROBAMOS SI TIENE COLA O NO Y CREAMOS UNA VARIABLE CON EL TEXTO QUE LUEGO METEREMOS EN EL RETURN.
+                if(this.si_cola){
+                    tiene_cola = "tiene cola";
+                }else{
+                    tiene_cola = "no tiene cola";
+                }
+
+                return "El animal se llama "+this.nombre+", de especie es un "+this.especie+", tiene "+this.patas+" patas"+" y "+tiene_cola+".";
+            }
+        }
+
+        //AHORA VAMOS A CREAR UNA CLASE PERO QUE HEREDA TODOS LOS ATRIBUTOS DE ANIMAL MÁS UNO NUEVO PROPIO SUYO
+        class Caballo extends Animal{
+            constructor(nombre, especie, patas, si_cola, velocidad_al_galopar){
+                super(nombre, especie, patas, si_cola); //CON SUPER, HACEMOS QUE SE USE EL CONSTRUCTOR DE LA CLASE PADRE DE LA QUE HEREDA.
+                this.velocidad_al_galopar = velocidad_al_galopar;
+            }
+
+            //VAMOS A CREAR UN MÉTODO CONCRETO PARA ESTA CLASE
+            mostrar_velocidad_al_galopar(){
+                return this.nombre+" puede galopar a una velocidad máxima de "+this.velocidad_al_galopar;
+            }
+        }
+
+
+        //VAMOS A ACCEDER AL DIV PARA PODER MOSTRAR LOS DATOS AHÍ.
+        let div = document.getElementById("resultado");
+
+        //CREAMOS OBJETOS PARA PROBAR LAS CLASES. PRIMERO VAMOS A CREAR UNO DE LA CLASE ANIMAL GENÉRICO.
+
+        let animal_perro = new Animal("Sebastián", "Perro", 4, true);
+        div.innerHTML = "<h1>Información acerca de un animal cualquier creado con la clase Animal</h1>"+animal_perro.datos_del_animal()+"<br><br>";
+
+        //AHORA VAMOS A CREAR OTRO OBJETO PERO DE LA CLASE QUE HEREDA
+        let caballo_nummero_1 = new Caballo("Trapito", "Caballo", 4, true, "40km/h");
+        div.innerHTML += "<h1>Información acerca del caballo creado con la clase Caballo</h1>"+caballo_nummero_1.mostrar_velocidad_al_galopar()+".";
+    </script>
+</body>
+</html>

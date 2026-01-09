@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jq7</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    Ingrese nro: <input type="text" id="num"><br>
+    <input type="button" id="calcular" value="Calcular cuadrado">
+    <div id="resultado">
+    </div>
+    <script>
+        //FUNCIÓN Y EVENTOS PARA CUANDO SE CARGUE EL DOCUMENTO EN EL NAVEGADOR
+        $(document).ready(function(){
+            $("#calcular").click(function(){
+                //ACCEDEMOS AL NUMERO DEL FORMULARIO
+                let num = $("#num").val();
+
+                let numero;
+                //VERIFICAMOS EL CAMPO
+                if(num == "" | isNaN(num)){
+                    alert("El campo del número no puede estar vacío y debe ser un número");
+                    return;
+                }else{
+                    numero = parseInt(num);
+                }
+
+                //CREAMOS LA PETICIÓN CON GET AL SERVIDOR PARA QUE NOS DEVUELVA EL NÚMERO AL CUADRADO
+                $.get("cuadrado_php.php", {numero: numero}, function(respuesta, estado_respuesta){
+                    $("#resultado").html("El número al cuadrado es: "+ respuesta);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

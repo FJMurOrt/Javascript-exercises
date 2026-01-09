@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer12_9</title>
+    <style>
+        .fondo_gris{
+            background-color: lightgray;
+        }
+        .fondo_azul_claro{
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+<script language = "javascript">
+    //CONSTRUIMOS EL TITULO
+    let body = document.getElementsByTagName("body")[0];
+    let h1 = document.createElement("h1");
+    h1.textContent = "Casa Pepe";
+    body.appendChild(h1);
+    h1.style.backgroundColor = "lightgreen";
+
+    //VAMOS A CREAR UN DIV PARA LUEGO DENTRO DE ESTE METER DOS DIVS MÁS, UNO PARA LOS TIPOS DE PLATO A LA IZQUIERDA Y OTRO PARA LA INFORMACIÓN A LA DERECHA.
+    //PARA HACES QUE EL CONTENIDO DE ESTE DIV PADRE, ES DECIR, SUS DIVS SE PONGAN EN LINEA LE AÑADIMOS EL ESTILO DE DISPLAY FLEX.
+    let div_padre = document.createElement("div");
+    div_padre.style.display = "flex";
+    body.appendChild(div_padre);
+
+    //PRIMERO, CREAMOS EL DIV DE PLATOS JUNTO CON LOS PLATOS Y LO METEMOS AL DIV ANTERIOR CREADO. AL FINAL, LE PONDREMOS LOS ENLACES.
+    let div_platos = document.createElement("div");
+    div_platos.style.width = "400px";
+    div_platos.style.height = "200px";
+    div_platos.className = "fondo_azul_claro";
+
+    //HACEMOS LAS ETIQUETAS DE LOS ENLACES Y LUEGO DENTRO CADA PLATO. PRIMERO, EL DEL PRIMER PLATO
+    let enlace_primero = document.createElement("a");
+    enlace_primero.href = "#";
+    enlace_primero.textContent = "Primero";
+    div_platos.appendChild(enlace_primero);
+
+    //METEMOS UN BR
+    let br = document.createElement("br");
+    div_platos.appendChild(br);
+
+    //ENLANCE AL SEGUNDO PLATO
+    let enlace_segundo = document.createElement("a");
+    enlace_segundo.href = "#";
+    enlace_segundo.textContent = "Segundo";
+    div_platos.appendChild(enlace_segundo);
+
+    //METEMOS UN BR
+    let br2 = document.createElement("br");
+    div_platos.appendChild(br2);
+
+    //ENLANCE AL TERCER PLATO
+    let enlace_tercero = document.createElement("a");
+    enlace_tercero.href = "#";
+    enlace_tercero.textContent = "Postre";
+    div_platos.appendChild(enlace_tercero);
+
+    //METEMOS UN BR
+    let br3 = document.createElement("br");
+    div_platos.appendChild(br3);
+
+    //ENLANCE AL PRECIO
+    let enlace_precio = document.createElement("a");
+    enlace_precio.href = "#";
+    enlace_precio.textContent = "Precio";
+    div_platos.appendChild(enlace_precio);
+
+    //AGREGAMOS AL DIV PADRE, EL DIV DE LOS PLATOS
+    div_padre.appendChild(div_platos);
+
+    //AHORA, CREAMOS EL SEGUNDO DIV DONDE VAMOS A METER LA INFORMACIÓN. COMO VA A SER DINÁMICO CON ENLACES, VAMOS A METER CADA INFORMACIÓN DE CADA PLATO EN UNA VARIABLE
+    let div_informacion = document.createElement("div");
+    div_informacion.style.width = "400px";
+    div_informacion.style.height = "300px";
+    div_informacion.className = "fondo_gris";
+    div_informacion.style.marginLeft = "20px"
+    div_padre.appendChild(div_informacion);
+
+    //FUNCIONES Y EVENTROS DEPENDIENDO DE CUAL SELECCIONEMOS
+    enlace_primero.addEventListener("click", function(){
+        div_informacion.textContent = "";
+
+        let h3_primero = document.createElement("h3");
+        h3_primero.textContent = "Primero";
+        div_informacion.appendChild(h3_primero);
+
+        let br5 = document.createElement("br");
+        div_informacion.appendChild(br5);
+
+        let descripcion1 = document.createElement("p");
+        descripcion1.textContent = "Macarrones al dente";
+        div_informacion.appendChild(descripcion1);
+
+        let descripcion2 = document.createElement("p");
+        descripcion2.textContent = "Paella Valenciana";
+        div_informacion.appendChild(descripcion2);
+    });
+
+    enlace_segundo.addEventListener("click", function(){
+        div_informacion.textContent = "";
+
+        let h3_segundo = document.createElement("h3");
+        h3_segundo.textContent = "Segundo";
+        div_informacion.appendChild(h3_segundo);
+
+        let br6 = document.createElement("br");
+        div_informacion.appendChild(br6);
+
+        let descripcion3 = document.createElement("p");
+        descripcion3.textContent = "Pollo con patatas";
+        div_informacion.appendChild(descripcion3);
+
+        let descripcion4 = document.createElement("p");
+        descripcion4.textContent = "Ensalada";
+        div_informacion.appendChild(descripcion4);
+    });
+
+    enlace_tercero.addEventListener("click", function(){
+        div_informacion.textContent = "";
+
+        let h3_tercero = document.createElement("h3");
+        h3_tercero.textContent = "Postre";
+        div_informacion.appendChild(h3_tercero);
+
+        let br7 = document.createElement("br");
+        div_informacion.appendChild(br7);
+
+        let descripcion5 = document.createElement("p");
+        descripcion5.textContent = "Flan";
+        div_informacion.appendChild(descripcion5);
+
+        let descripcion6 = document.createElement("p");
+        descripcion6.textContent = "Fruta";
+        div_informacion.appendChild(descripcion6);
+
+        let descripcion7 = document.createElement("p");
+        descripcion7.textContent = "Café";
+        div_informacion.appendChild(descripcion7);
+    });
+
+    enlace_precio.addEventListener("click", function(){
+        div_informacion.textContent = "";
+
+        let h3_precio = document.createElement("h3");
+        h3_precio.textContent = "Precio";
+        div_informacion.appendChild(h3_precio);
+
+        let br8 = document.createElement("br");
+        div_informacion.appendChild(br8);
+
+        let descripcion8 = document.createElement("p");
+        descripcion8.textContent = "Y todo esto por la increible cantidad de 7 euros";
+        div_informacion.appendChild(descripcion8);
+    });
+</script>
+</body>
+</html>

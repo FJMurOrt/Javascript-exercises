@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer6_12</title>
+</head>
+<body>
+    <script language = "javascript">
+        //ARRAY DE OBJETOS
+        const productos = [
+            { nombre: "Camisa", precio: 25, disponible: true },
+            { nombre: "Pantalón", precio: 40, disponible: false },
+            { nombre: "Zapatos", precio: 60, disponible: true },
+            { nombre: "Gorra", precio: 15, disponible: true },
+            { nombre: "Chaqueta", precio: 80, disponible: false }
+        ];
+
+
+        //AHORA VAMOS A VER QUE PRODUCTOS ESTAN DISPONIBLE CON FITLER
+        let disponibles = productos.filter(produ => produ.disponible === true );
+
+        //H1 PARA EL TITULO
+        document.write("<h2>PRODUCTOS DISPONIBLES:</h2>");
+        //INICIALIZAMOS VARIABLE DONDE VAMOS A GUARDAR LA LISTA
+        let lista = "";
+        //ETIQUETA PARA INICAR LA LISTA DESORDENADA QUE SIEMPRE TIENE DISC
+        document.write("<ul>");
+        //BUCLE FOR OF PARA ACCEDER DIRECTAMENTE A LOS OBJETOS Y LUEGO A SU NOMBRE.
+        for(var prod of disponibles){
+            lista += "<li>"+prod.nombre+"</li>" 
+        }
+        //IMPRIMIMOS LA LISTA QUE YA TENIA SUS ETIQUETAS DENTRO
+        document.write(lista);
+        //CERRAMOS LA ETIQUETA DE LA LISTA
+        document.write("</ul>");
+
+
+
+
+        //CALCULAMOS AHORA EL PRECIO TOTAL DE LOS PRODUCTOS DISPONIBLES.
+        //PRIMERO INICIALIZAMOS LA VARIABLE A 0 DONDE VAMOS A GUARDAR EL PRECIO TOTAL
+        let precio_total = 0;
+        //RECORREMOS EL ARRAY QUE SOLO CONTIENE LOS PRODUCTOS DISPONIBLES Y VAMOS SUMANDO SUS PRECIOS A LA VEZ QUE LO GUARDAMOS EN LA VARIABLE.
+        for(var producto of disponibles){
+            precio_total += producto.precio;
+        }
+        //FINALMENTE, MOSTRAMOS EL PRECIO TOTAL.
+        document.write("Precio total: $"+precio_total);
+    </script>
+</body>
+</html>

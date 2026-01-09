@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer4_10</title>
+</head>
+<body>
+<h1>CALCULO DE FACTORIAL</h1>
+<form id = "calculo_factorial">
+  <label for="fname">Introduce una cantidad:</label>
+  <input type="text" id="cantidad" name="cantidad">
+  <button type="button" onClick="mi_funcion(calculo_factorial)">Calcular</button><br><br>
+  <label for="lname">Resultado:</label>
+  <input type="text" id="resultado" name="resultado">
+</form>
+
+<script language = "javascript">
+
+function mi_funcion(c){
+        numero = (parseInt(c.cantidad.value));
+
+        a_multiplicar = 1;
+
+        for(i = numero - 1; i > 0; i--){
+            a_multiplicar *= i;
+        }
+        total = a_multiplicar * numero;
+        c.resultado.value = total;
+}
+
+        
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script language="javascript">
+        alert("A continuación, se te pedira un rango y calcularemos cuantos años bisiestos hay entre ambos años.");
+        rango_1 = parseInt(prompt("Introduce el primer año del que partirá el rango."));
+        rango_2 = parseInt(prompt("Introduce el segundo año en el que acabará el rango"));
+
+        let suma = 0;
+
+        for(i = rango_1; i < rango_2; i++){
+            if((i % 4 === 0 && i % 100 !== 0) || (i % 400 === 0)){
+                suma++;
+            }
+        }
+
+        document.write("La cantidad de años bisiestos dentro del rango es: "+suma+" años bisiestos.");
+    </script>
+</body>
+</html>

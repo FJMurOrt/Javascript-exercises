@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script language = "javascript">
+        const estudiantes = [{nombre:"ana",edad:20,puntuaje:85},{nombre:"luis",edad:22,puntuaje:92},{nombre:"carlos",edad:19,puntuaje:78},
+            {nombre:"sofia",edad:21,puntuaje:95},{nombre:"miguel",edad:20,puntuaje:70}
+        ]
+
+        mayores_de_80 = estudiantes.filter(estudiante => estudiante.puntuaje >=80);
+        mayores_de_80.forEach(estudiante => {
+            document.write(estudiante.nombre);
+        });
+
+        mejores_puntuajes = estudiantes.sort((a,b) => b.puntuaje - a.puntuaje);
+
+        estudiantes.forEach(estudiante => {
+            document.write(estudiante.nombre+" "+estudiante.puntuaje+"<br>");
+        });
+
+        let suma_de_notas = 0;
+
+        estudiantes.forEach(estudiante => {
+            suma_de_notas += estudiante.puntuaje;
+        });
+
+        let media = 0;
+        media = suma_de_notas / estudiantes.length;
+
+        document.write("<br><br>");
+        document.write(media);
+
+        let nombres_de_los_estudiantes = estudiantes.map(estudiante => estudiante.nombre);
+
+        for(let i = 0; i < nombres_de_los_estudiantes.length; i++){
+            document.write(nombres_de_los_estudiantes[i]+"<br>");
+        }
+    </script>
+</body>
+</html>

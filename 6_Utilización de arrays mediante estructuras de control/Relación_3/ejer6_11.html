@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer6_11</title>
+    <style>
+        table{
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <script language = "javascript">
+        //PEDIMOS EL IMPORTE A DESGLOSAR
+        importe = parseInt(prompt("Inserta una cantidad"));
+        //CREAMOS EL ARRAY DE LOS TIPOS DE BILLES
+        billetes = new Array();
+        //LO RELLENAMOS
+        billetes["11"]  = 1;
+        billetes["10"]  = 5;
+        billetes["9"] = 10;
+        billetes["8"] = 25;
+        billetes["7"] = 50;
+        billetes["6"] = 100;
+        billetes["5"] = 200;
+        billetes["4"] = 500;
+        billetes["3"] = 1000;
+        billetes["2"] = 2000;
+        billetes["1"] = 5000;
+
+        console.log(billetes);
+        document.write("<table border='1'>");
+            document.write("<tr style = 'background-color: lightblue'>");
+                document.write("<td>");
+                    document.write("DESGLOSES DE LA CANTIDAD "+importe);
+                document.write("</td>");
+            document.write("</tr>");
+        document.write("</table>");
+
+        document.write("<table border='1'>");
+        //AHORA NECESITAMOS RECORRER EL ARRAY ASOCIATIVO QUE HEMOS CREADO E IR CALCULADO EL DESGLOSE CON LA CANTIDAD INTRODUCIDA.
+        let numero_billetes = "";
+        for(var billete in billetes){
+            numero_billetes += "<tr><td>"+"Unidades de "+billetes[billete]+": "+Math.floor(importe / billetes[billete])+"</td></tr>";
+            importe = importe % billetes[billete];
+        }
+        document.write(numero_billetes);
+        document.write("</table>");
+    </script>
+</body>
+</html>

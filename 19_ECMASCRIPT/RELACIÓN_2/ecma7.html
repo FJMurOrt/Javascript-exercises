@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecma7</title>
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>¡PULSA PARA SIMULAR EL LANZAMIENTO DE UN DADO ENTRE 0 Y 1!</h1>
+    <input type="button" id="boton_dado" value="¡Lanzar dado!">
+    <br><br>
+    <div id="resultado">
+    </div>
+    <script language = "javascript">
+        //ACCEDEMOS AL BOTÓN
+        let boton_dado = document.getElementById("boton_dado");
+
+        //EVENTO Y FUNCIÓN PARA EL BOTÓN
+        boton_dado.addEventListener("click", function(){
+            //CREAMOS LA PROMESA Y DEFINIMOS LO QUE PASARÍA EN CASA DE QUE VAYA TODO CORRECTO
+            let promesa_dado = new Promise(function(la_promesa_funciona_y_sale_cara, la_promesa_no_funciona_y_sale_cruz){
+                //CREAMOS TODO EL NÚMERO ALEATORIO QUE TIENE QUE SER ENTRE 0 Y 1(INCLUIDO EL 1)
+                let num_aleatorio = Math.floor(Math.random() * 2);
+
+                //AHORA, CREAMOS LAS DOS SALIDAS CONDICIONES QUE, DEPENDIENDO CUAL SALGA, ASIGNAREMOS A LA FUNCIÓN DE CARA O A LA FUNCIÓN DE CRUZ DE LA PROMESA.
+                if(num_aleatorio == 0){
+                    la_promesa_funciona_y_sale_cara("El resultado fue 0 asi que salió cara.");
+                }else{
+                    la_promesa_no_funciona_y_sale_cruz("El resultado fue 1 asi que salió cruz.");
+                }
+            });
+
+            //AHORA EJECUTAMOS LA PROMESA
+            promesa_dado.then(function(sale_cara){ //SI SALE BIEN PUSE EL MENSAJE DE QUE SALDRÍA CARA.
+                let div = document.getElementById("resultado");
+                div.innerHTML = sale_cara;
+            });
+
+            promesa_dado.catch(function(sale_cruz){
+                let div = document.getElementById("resultado"); //SI SALÍA MAL, LE PUSE EL MENSAJE DE QUE SALDRÍA CRUZ.
+                div.innerHTML = sale_cruz;
+            });
+        });
+    </script>    
+</body>
+</html>

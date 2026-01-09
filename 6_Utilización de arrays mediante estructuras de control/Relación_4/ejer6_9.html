@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer6_9</title>
+</head>
+<body>
+    <script language = "javascript">
+        //CREAMOS EL ARRAY ORIGINAL
+        array_palabras = new Array("One","One","Two", "Four", "Three", "One", "Four");
+        document.write("Los valores del array inicial son: "+array_palabras.join(", ")+"<br>");
+        //CREAMOS UN MÉTODO PERSONALIZADO PARA NUESTROS ARRAYS / OBJETOS CON PROTOTYPE
+        Array.prototype.eliminar = function(){
+        let cadena = prompt("Introduce una palabra");
+        //RECORREMOS EL ARRAY PARA VER SI COINCIDE LA CADENA INTRODUCIDA CON ALGUNAS DEL ARRAY
+        for(i = this.length - 1; i >= 0; i--){
+            if(this[i] === cadena){
+                this.splice(i,1);
+            }
+        }
+        }
+        array_palabras.eliminar();
+        document.write("Los valores del array un vez buscada la cadena One son: "+array_palabras.join(", "));
+    </script>
+</body>
+</html>

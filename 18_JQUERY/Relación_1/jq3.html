@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jq3</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <textarea id="texto" row="5" cols="40"></textarea>
+    <br><br>
+    <div id="cantidad_caracteres">
+        Actualmente hay 0 caracteres.
+    </div>
+    <script>
+        $("document").ready(function(){
+            $("#texto").on("keyup", function(){
+                let cantidad_caracteres = $(this).val().length;
+                $("#cantidad_caracteres").html("En el area de texto hay una cantidad de "+cantidad_caracteres+" caracteres");
+            });
+        });
+    </script>
+</body>
+</html>

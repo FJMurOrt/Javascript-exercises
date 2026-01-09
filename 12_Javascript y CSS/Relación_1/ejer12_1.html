@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer12_1</title>
+</head>
+<style>
+    .verde{
+        color: green;
+    }
+</style>
+<body>
+    <h1>Página de inicio de Bach</h1>
+    <strong>Johann Sebastian Bach fue un compositor prolífico. Entre sus obras, se incluyen:</strong>
+    <ul>
+        <li>Las Variaciones de Goldberg</li>
+        <li>Los Conciertos de Brandemburgo</li>
+        <li>El Oratorio de Navidad</li>
+    </ul>
+    <script language = "javascript">
+        //ACCEDEMOS AL PRIMER H1 DEL DOCUMENTO
+        let h1 = document.getElementsByTagName("h1")[0];
+        h1.className = "verde";
+
+        //ACCEDEMOS AL STRONG
+        let strong = document.getElementsByTagName("strong")[0];
+        strong.className = "verde";
+
+        //ACCEDEMOS A LA LISTA
+        let lista = document.getElementsByTagName("ul")[0];
+        lista.className = "verde";
+    </script>
+</body>
+</html>

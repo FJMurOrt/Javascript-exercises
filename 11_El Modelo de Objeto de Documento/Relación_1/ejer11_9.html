@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer11_9</title>
+</head>
+<body>
+    <table id = "mi_tabla" border = "1">
+        <tr>
+            <td>Fila 1. Celda 1.</td>
+            <td>Fila 1. Celda 2.</td>
+        </tr>
+        <tr>
+            <td>Fila 2. Celda 1.</td>
+            <td>Fila 2. Celda 2.</td>
+        </tr>
+        <tr>
+            <td>Fila 3. Celda 1.</td>
+            <td>Fila 3. Celda 2.</td>
+        </tr>
+    </table>
+    <input type="button" id = "boton" value = "Cambiar contenido Celda [1.1]">
+    <script language = "javascript">
+
+        //ACCEDEMOS AL BOTÓN
+        let boton = document.getElementById("boton");
+        boton.addEventListener("click", function(){
+
+        //ACCEDEMOS A LA TABLA
+        let mi_tabla = document.getElementById("mi_tabla");
+
+        //ACCEDEMOS A LA FILA 1 DE LA TABLA
+        let fila_primera = mi_tabla.rows[0];
+
+        //ACCEDEMOS A LA CELDA 1 DE LA FILA 1
+        let celda_primera =  fila_primera.cells[0];
+
+        //CAMBIAMOS SU CONTENIDO
+        celda_primera.innerHTML = "NUEVO CONTENIDO";  
+        });
+    </script>
+</body>
+</html>

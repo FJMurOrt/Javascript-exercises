@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer3_15</title>
+</head>
+<body>
+    <div id = resultado>
+    </div>
+
+    <script language = "javascript">
+        //ACCEDEMOS AL DIV PARA MÁS TARDE
+        let div = document.getElementById("resultado");
+
+        //CREAMOS EL OBJETO PARA EL SERVIDOR
+        function crearObjetoServidor(){
+            let objeto_servidor = false;
+
+            try{
+                objeto_servidor = new XMLHttpRequest();
+            }catch(primer_error){
+                try{
+                    objeto_servidor = ActiveXObject("Msxml2.XMLHTTP");
+                }catch(segundo_error){
+                    try{
+                        objeto_servidor = ActiveXObject("Microsoft.XMLHTTP");
+                    }catch(tercer_error){
+                        objeto_servidor = false;
+                    }
+                }
+            }
+            return objeto_servidor;
+        }
+
+        //CREAMOS LA PETICION
+        let peticion = crearObjetoServidor();
+
+        //DEFINIMOS EL MÉTODO GET Y LA URL
+        let url = "coches.json";
+        peticion.open("GET", url, true);
+
+        //DEFINIMOS EL FLUJO DE DATOS
+        peticion.setRequestHeader("Content-type", "application/json");
+
+        //VERIFICAMOS EL ESTADO DE LA CONEXIÓN
+        peticion.onreadystatechange = respuestaServidor;
+        
+        //VARIABLE PARA EL ARCHIVO JSON PASADO A JSON Y VARIABLE 
+        // DONDE VAMOS A GUARDAR LO QUE NOS PIDE EL EJERCICIO QUE MOSTREMOS EL JSON
+        let coches;
+        let contenido_json = "";
+
+        function respuestaServidor(){
+            if(peticion.readyState == 4 && peticion.status == 200){
+                coches = JSON.parse(peticion.responseText);
+            }
+            
+        //RECORREMOS EL JSON QUE ES UN OBJETO CON PROPIEDADES QUE A SU VEZ TIENEN OTRO OBJETO CON UN FOR..IN
+            for(let propiedad in coches){
+                let cada_coche = coches[propiedad];
+                contenido_json += cada_coche.codigo+"->"+cada_coche.velocidad_maxima+"Km/h"+"<br>";
+            }
+
+        //METEMOS EN EL DIV LA VARIBALE CON EL CONTENIDO QUE HEMOS RECORRDIO EN EL JSON
+            div.innerHTML = contenido_json;
+        }
+
+        //ENVIAMOS LA PETICIÓN
+        peticion.send();
+    </script>
+</body>
+</html>

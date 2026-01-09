@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer7_17</title>
+    <style>
+        h4{
+            text-align: center;
+        }
+        input[type = "text"]{
+            width: 100px;
+        }
+        #formu{
+            text-align: center;
+        }
+        #formu{
+            background-color: yellow;
+        }
+        div{
+            margin: auto;
+            width: 280px;
+        }
+        #btn1{
+            width: 130px;
+        }
+        #btn2{
+            width: 140px;
+        }
+    </style>
+</head>
+<body>
+    <h4>INTRODUCE EL ANCHO Y EL ALTO DE LA VENTANA:</h4>
+    <div>
+        <form id = "formu">
+        <label for = "ancho">ANCHO DE VENTANA</label>
+        <input type = "text" id ="ancho"><br><br>
+        <label for = "ancho">ANCHO DE VENTANA</label>
+        <input type = "text" id = "alto"><br><br>
+        <input type = "button" id = "btn1" value = "Crear Ventana" onclick="crearVentana()">
+        <input type = "button" id = "btn2" value = "Cerrar Ventana" onclick="cerrarVentana()">
+    </form>
+    </div>
+
+<script language = "javascript">
+    //FUNCIÓN PARA CREAR LA VENTANA
+    function crearVentana(){
+        let ancho = document.getElementById("ancho").value;
+        let alto = document.getElementById("alto").value;
+
+        nueva_ventana = window.open("","Nueva Ventana", "toobal=no, menubar=no, directories=no, width="+ancho+", height="+alto);
+
+        nueva_ventana.document.write("ESTA ES LA VENTANA QUE SE HA CREADO");
+    }
+    //FUNCIÓN PARA CERRAR LA VENTANA
+    function cerrarVentana(){
+        if(nueva_ventana && !nueva_ventana.close()){
+            nueva_ventana.close();
+            window.close();
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+Votante:Fran-Voto:1
+Votante:maria-Voto:2
+Votante:fran-Voto:1

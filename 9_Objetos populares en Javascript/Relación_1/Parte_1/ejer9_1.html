@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer9_1</title>
+</head>
+<body>
+    <script language = "javascript">
+        function horaActual(){
+            //CREO UNA OBJETO DE LA CLASE DATE PARA LUEGO PODER USAR SUS MÉTODOS.
+            let hora_completa = new Date();
+            
+            //DECLARACIÓN DE VARIABLES DONDE VOY A GUARDAR UN CONTENIDO POSTERIORMENTE
+            let horas;
+            let minutos;
+            let hora_actual;
+
+
+            horas = hora_completa.getHours(); //VARIABLE DONDE GUARDO LA HORA
+            minutos = hora_completa.getMinutes(); //VARIABLE DONDE GUARDO LOS MINUTOS
+            
+            document.write("Hora actual: "+horas+":"+minutos); //CONSTRUIMOS LO QUE QUEREMOS MOSTRAR
+        }
+
+        horaActual(); //EJECUTAMOS LA FUNCIÓN PARA IMPRIMIR EL RESULTADO
+    </script>
+</body>
+</html>

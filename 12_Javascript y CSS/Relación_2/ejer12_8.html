@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer12_8</title>
+    <style>
+        .fondo_tabla{
+            background-color: lightgoldenrodyellow;
+        }
+        .fondo_dias{
+            background-color: lightblue;
+        }
+        .fondo_sab_dom{
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+<body>
+    <script language = "javascript">
+        //OBTENEMOS LA FECHA ACTUAL
+        let fecha_actual = new Date();
+
+        //CREAMOS UN ARRAY CON LOS MESES DEL AÑO
+        let meses = new Array("Enero","Febero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+
+        //OBTENEMOS EL MES DE LA FECHA ACTUAL. NO LE SUMAMOS UNO AL MES PORQUE LO VAMOS A USAR MÁS TARDE PARA MOSTRAR EL NOMBRE DEL MES TENIENDO EN CUENTA EL ARRAY.
+        let mes = fecha_actual.getMonth();
+
+        //OBTENEMOS EL MES DEL AÑO ACTUAL
+        let anio = fecha_actual.getFullYear();
+
+        //NECESITAMOS SABER AHORA EN QUÉ DÍA DE LA SEMANA COMIENZA EL PRIMER DÍA DEL MES
+        let primer_dia_del_mes = new Date(anio, mes, 1);
+        let dia_de_la_semana_que_empieza = primer_dia_del_mes.getDay();
+
+        //AHORA, NECESITAMOS SABER CUÁNTOS DÍAS TIENE EL MES EN EL QUE NOS ENCONTRAMOS. PARA SABERLO, MIRAMOS QUE NÚMERO ES EL ÚLTIMO DÍA ACCEDIENDO AL DÍA ANTERIOR AL DEL PRIMERO DEL PRÓXIMO MES.
+        let ultimo_dia = new Date(anio, mes + 1, 0);
+        let cantidad_de_dias = ultimo_dia.getDate();
+
+        //TENIENDO ESTOS DATOS, YA PODEMOS CREAR LA TABLA PARA MOSTRAR EL CALENDARIO
+        //CREAMOS LA TABLA PRIMERO Y LA METEMOS AL BODY
+        let body = document.getElementsByTagName("body")[0];
+        let tabla = document.createElement("table");
+        tabla.style.border = "1px solid black";
+        tabla.className = "fondo_tabla";
+        body.appendChild(tabla);
+
+        //CREAMOS TR
+        let tr1 = document.createElement("tr");
+        tabla.appendChild(tr1);
+
+        //CREAMOS TD PARA TR
+        let td1 = document.createElement("td");
+        td1.colSpan = 7;
+        td1.textContent = "CALENDARIO DE JAVASCRIPT";
+        td1.style.border = "1px solid black";
+        td1.style.fontWeight = "bold"
+        tr1.appendChild(td1);
+
+         //CREAMOS TR2
+        let tr2 = document.createElement("tr");
+        tabla.appendChild(tr2);
+        
+
+        //CREAMOS TD2 PARA TR2
+        let td2 = document.createElement("td");
+        td2.colSpan = 7;
+        td2.textContent = meses[mes]+" "+anio;
+        td2.style.border = "1px solid black";
+        td2.style.textAlign = "center";
+        tr2.appendChild(td2);
+
+         //CREAMOS TR3
+        let tr3 = document.createElement("tr");
+        tabla.appendChild(tr3);
+
+        //CREAMOS TDS DE LOS DÍAS PARA TR3
+        let td3 = document.createElement("td");
+        td3.textContent = "Mon";
+        td3.style.border = "1px solid black";
+        td3.style.textAlign = "center";
+        td3.className = "fondo_dias";
+        tr3.appendChild(td3);
+
+        //CREAMOS TDS PARA TR3
+        let td4 = document.createElement("td");
+        td4.textContent = "Tues";
+        td4.style.border = "1px solid black";
+        td4.style.textAlign = "center";
+        td4.className = "fondo_dias";
+        tr3.appendChild(td4);
+
+        //CREAMOS TDS PARA TR3
+        let td5 = document.createElement("td");
+        td5.textContent = "Wed";
+        td5.style.border = "1px solid black";
+        td5.style.textAlign = "center";
+        td5.className = "fondo_dias";
+        tr3.appendChild(td5);
+
+        //CREAMOS TDS PARA TR3
+        let td6 = document.createElement("td");
+        td6.textContent = "Thu";
+        td6.style.border = "1px solid black";
+        td6.style.textAlign = "center";
+        td6.className = "fondo_dias";
+        tr3.appendChild(td6);
+
+        //CREAMOS TDS PARA TR3
+        let td7 = document.createElement("td");
+        td7.textContent = "Fri";
+        td7.style.border = "1px solid black";
+        td7.style.textAlign = "center";
+        td7.className = "fondo_dias";
+        tr3.appendChild(td7);
+
+        //CREAMOS TDS PARA TR3
+        let td8 = document.createElement("td");
+        td8.textContent = "Sat";
+        td8.style.border = "1px solid black";
+        td8.style.textAlign = "center";
+        td8.className = "fondo_dias";
+        tr3.appendChild(td8);
+
+        //CREAMOS TDS PARA TR3
+        let td9 = document.createElement("td");
+        td9.textContent = "Sun";
+        td9.style.border = "1px solid black";
+        td9.style.textAlign = "center";
+        td9.className = "fondo_dias";
+        tr3.appendChild(td9);
+
+        //CREAMOS AHORA LOS DÍAS
+        let tr_dias = document.createElement("tr");
+        tabla.appendChild(tr_dias);
+
+        for(let i = 0; i < dia_de_la_semana_que_empieza;i++){
+
+            let celda_vacia = document.createElement("td");
+            celda_vacia.style.border = "1px solid black";
+            tr_dias.appendChild(celda_vacia);
+        }
+
+        let contador = dia_de_la_semana_que_empieza;
+
+        for(let i = 1; i <= cantidad_de_dias; i++){
+            let cada_dia = document.createElement("td");
+            cada_dia.style.border = "1px solid black";
+            cada_dia.style.textAlign = "center";
+            if(contador == 5 || contador == 6){
+                cada_dia.className = "fondo_sab_dom";
+            }
+            if(i === 28){
+                let horas = fecha_actual.getHours();
+                let minutos = fecha_actual.getMinutes();
+                cada_dia.textContent = i +" "+ horas + ":" + minutos;
+            } else {
+                cada_dia.textContent = i;
+            }
+            tr_dias.appendChild(cada_dia);
+            
+            contador++;
+
+            if(contador == 7){
+                tr_dias = document.createElement("tr");
+                tabla.appendChild(tr_dias);
+                contador = 0;
+            }
+        }
+    </script>
+</body>
+</html>

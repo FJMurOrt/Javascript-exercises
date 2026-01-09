@@ -1,0 +1,53 @@
+<html>
+<head>
+<script languaje="javascript">
+
+    function departamento(){
+        this.personal = new Array();
+        this.anyadir = anyadir;
+        this.calcularNomina = calcularNominaDept;
+    }
+
+    function empleado(nomina){
+        this.nomina = nomina;
+        this.calcularNomina = calcularNominaEmpl;
+    }
+
+    function anyadir(objeto){
+        this.personal.push(objeto);
+    }
+
+    function calcularNominaDept(){
+        var nomina = 0;
+
+            for(var i = 0; i < this.personal.length; i++){
+                nomina += this.personal[i].calcularNomina();
+            }
+        return nomina;
+    }
+
+    function calcularNominaEmpl(){
+        return this.nomina;
+    }
+
+</script>
+</head>
+<body>
+<script language="javascript">
+    empresa = new departamento();
+    empresa.anyadir(new empleado(200));
+    empresa.anyadir(new empleado(100));
+    contabilidad = new departamento();
+    contabilidad.anyadir(new empleado(120));
+    empresa.anyadir(contabilidad);
+    document.write(empresa.calcularNomina());
+</script>
+</body>
+</html>
+
+¿QUÉ HACE?
+
+1. SE CREAN DOS CLASES QUE SON EMPRESA Y EMPLEADO (CON NOMINA COMO PARAMETRO). 
+2. LOS EMPLEADOS QUE SE CREEN LOS PUEDE AÑADIR AL LISTADO DE EMPLEADOS DE LA EMPRESA, QUE ES UN ARRAY, CON EL MÉTODO ANYADIR()
+3. LUEGO SE PUEDE TAMBIEN CALCULAR EL SALARIO TOTAL DE TODOS LOS EMPLEADOS DE LA EMPRESA CON EL MÉTODO calcularNomina() que llama a la función calcularNominaDept que suma todos los salarios de cada empleado del array de empleados.
+4. También se puede ver la nómina de cada empleado con el método calcularNominaEmpl.

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer3_3</title>
+    <style>
+        #resultado{
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mostrando datos con AJAX</h1><br>
+    <input type="button" id = "boton" value = "Mostrar mensaje"><br>
+    <div id = "resultado">
+        Aquí aparecerá texto
+    </div>
+    <script language = "javascript">
+        //ACCEDEMOS AL BOTÓN Y AL DIV
+        let boton = document.getElementById("boton");
+        let div = document.getElementById("resultado");
+
+        //FUNCIÓN Y EVENTO PARA LA PETICIÓN AL SERVIDOR
+        boton.addEventListener("click", function(){
+            //CREAMOS EL OBJETO DE PETICIÓN
+            let peticion = new XMLHttpRequest();
+
+            //DEFINIMOS URL Y ABRIMOS LA PETICIÓN
+            let url = "archivo_php.php";
+            peticion.open("GET", url, true);
+
+            //VERIFICAMOS LA RESPUESTA DEL SERVIDOR
+            peticion.onreadystatechange = respuestaServidor;
+
+            //FUNCIÓN PARA LA RESPUESTA DEL SERVIDOR
+            function respuestaServidor(){
+                if(peticion.readyState === 4 && peticion.status === 200){
+                    div.innerHTML = peticion.responseText;
+                }
+            }
+            //ENVIAMOS LA PETICIÓN
+            peticion.send();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejercicio1_relacion1</title>
+</head>
+<body>
+    Consultar registros con ajax
+    <br><br>
+    <input type="button" id="consultar" value="Consultar">
+    <br><br>
+    <div id="resultado">
+    </div>
+    <script langauge = "javascript">
+        //ACCEDEMOS AL BOTÓN PARA LUEGO Y AL DIV TAMBIÉN
+        let boton_consultar = document.getElementById("consultar");
+        let div = document.getElementById("resultado");
+
+        //FUNCIÓN PARA CREAR EL OBJETO DE LA PETICIÓN
+        function crearObjetoPeticion(){
+            let objeto_peticion = false;
+
+            try{
+                objeto_peticion = new XMLHttpRequest();
+            }catch(primer_error){
+                try{
+                    objeto_peticion = ActiveXObject("Msxml2.XMLTHPP");
+                }catch(segundo_error){
+                    try{
+                        objeto_peticion = ActiveXObject("Microsoft.XMLHTTP");
+                    }catch(tercer_error){
+                        objeto_peticion = false;
+                    }
+                }
+            }
+            return objeto_peticion;
+        }
+
+        //CREAMOS TODA LA PETICIÓN DENTRO DEL BOTÓN
+        boton_consultar.addEventListener("click", function(){
+            //CREAMOS EL OBJETO DE LA PETICIÓN
+            let peticion = crearObjetoPeticion();
+
+            //SI POR ALGUNA RAZÓN NO CONSEGUIMOS CREAR EL OBJETO PARA LA PETICIÓN, CANCELAMOS.
+            if(!peticion){
+                return;
+            }
+
+            //DEFINIMOS EL MÉTODO Y LA URL Y LUEGO ABRIMOS LA PETICIÓN
+            let url = "php_consulta.php";
+            peticion.open("GET", url, true);
+
+            //AHORA TOCA VERIFICAR SI LA CONEXIÓN ES CORRECTA CON EL SERVIDOR Y SI LO ES, OBTENER LOS DATOS
+            peticion.onreadystatechange = respuestaServidor;
+
+            function respuestaServidor(){
+                if(peticion.readyState == 4 && peticion.status == 200){
+                    div.innerHTML = peticion.responseText;
+                }
+            }
+
+            //ENVIAMOS LA PETICIÓN
+            peticion.send();
+        });
+    </script>
+</body>
+</html>

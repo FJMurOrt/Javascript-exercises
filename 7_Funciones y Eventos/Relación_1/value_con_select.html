@@ -1,0 +1,45 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script type="text/javascript" >
+        function numero(){
+        var n=document.f.num.value;
+        //accedo al numero introducido
+        var division= n % 2;
+        //guardo el valor del resto de la division
+        document.f.resto.value=division;
+        //en funcion del valor de division selecciono un elemento u otro.
+        }
+</script>
+</head>
+<body>
+<form name="f">
+    Numero: <br /> <input type="text" name="num"
+    maxlength="9"></input>
+    <select name="resto">
+        <option>EL NUMERO INTRODUCIDO</option>
+        <option value="0">Numero par</option>
+        <option value="1">Numero impar </option>
+    </select><br />
+    <input type="button" value="Comprobar" name="comprobar"
+    onclick="numero()"></input>
+</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

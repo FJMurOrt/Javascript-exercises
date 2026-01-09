@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer6_8</title>
+    <style>
+        .formulario{
+            margin: auto;
+            width: 190px;
+            height: 440px;
+            background-color: brown;
+            color: white
+        }
+        .form1{
+            padding: 2%;
+        }
+    </style>
+</head>
+<body>
+    <script language="javascript">
+    
+    function funcion(f){
+        //PARA MOSTRAR EL ÍNDICE (NO HACE FALTA ACCEDER CON "OPTIONS")
+        indice = f.rios.selectedIndex;
+        f.numero.value = indice;
+
+        //PARA MOSTRAR EL RÍO (PARA ACCEDER AL VALUE O AL TEXT DE UNA OPCIÓN, SI HACE FALTA ACCEDER CON OPTIONS ANTES)
+        rio_elegido = f.rios.options[f.rios.selectedIndex].text;
+        f.rio.value = rio_elegido;
+    }
+    
+    </script>
+</body>
+<div class = "formulario">
+    <form class ="form1">
+    <lable for="ind">Número de la lista</lable><br>
+    <input type="text" name="numero" id="numero"></input>
+    <br>
+    <lable for="rio">Nombre del Río</lable><br>
+    <input type="text" name="rio" id="rio"></input>
+
+    <select name = "rios" size="20" style="background-color: lightgoldenrodyellow;" onchange="funcion(this.form)">
+        <option value="amazonas">Amazona</option>
+        <option value="nilo">Nilo</option>
+        <option value="misisipi">Misisipi</option>
+        <option value="yangtsé">JavaScript</option>
+        <option value="Tajo">Tajo </option>
+        <option value=Ebro>Ebro</option>
+        <option value= Duero>Duero</option>
+        <option value="Guadalquivir">Guadalquivir</option>
+        <option value="Guadiana">Guadiana</option>
+        <option value="Ganjes">Ganjes</option>
+        <option value="Indo">Indo</option>
+        <option value="Huang He"> Huang He</option>
+        <option value="Obi">Obi</option>
+        <option value="Yaniséi">Yeniséi</option>
+        <option value="Mekong">Mekong</option>
+        <option value="Tigris">Tigris</option>
+        <option value="Éufrates">Éufrates</option>
+        <option value="Coatzacoalcos">Coatzacoalcos</option>
+        <option value="Balsas">Balsas</option>
+        <option value="Llobregat">Llobregat</option>
+    </select>
+</form>

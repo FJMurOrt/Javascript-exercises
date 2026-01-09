@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ejercicio Colores</title>
+</head>
+<body>
+<script>
+    // 1️⃣ Array normal
+    const coloresNormales = ["rojo", "azul", "verde", "amarillo"];
+
+    // Mostrar usando for tradicional
+    document.write("<h3>Array normal:</h3>");
+    for(let i = 0; i < coloresNormales.length; i++){
+      document.write(coloresNormales[i]+"<br>");
+    }
+
+    // 2️⃣ Array asociativo (objeto)
+    let coloresAsociativos = [];
+    coloresAsociativos = {color1:"rojo",color2:"azul",color3:"verde",color4:"amarillo"};
+
+    // Mostrar usando for...in
+    document.write("<h3>Array asociativo:</h3>");
+    for(var color in coloresAsociativos){
+      document.write(coloresAsociativos[color]+"<br>");
+    }
+</script>
+</body>
+</html>

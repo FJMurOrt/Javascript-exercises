@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input[type = "button"]{
+            width: 40px; height: 40px;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <table border = "1px">
+        <tr>
+            <td colspan="4"><input type = "text" id = "operacion"></td>
+        </tr>
+        <tr>
+            <td><input type = "button" id = "uno" value = "1"></td>
+            <td><input type = "button" id = "dos" value = "2"></td>
+            <td><input type = "button" id = "tres" value = "3"></td>
+            <td><input type = "button" id = "sumar" value = "+"></td>
+        </tr>
+        <tr>
+            <td><input type = "button" id = "cuatro" value = "4"></td>
+            <td><input type = "button" id = "cinco" value = "5"></td>
+            <td><input type = "button" id = "seis" value = "6"></td>
+            <td><input type = "button" id = "restar" value = "-"></td>
+        </tr>
+        <tr>
+            <td><input type = "button" id = "siete" value = "7"></td>
+            <td><input type = "button" id = "ocho" value = "8"></td>
+            <td><input type = "button" id = "nueve" value = "9"></td>
+            <td><input type = "button" id = "multi" value = "*"></td>
+        </tr>
+        <tr>
+            <td><input type = "button" id = "c" value = "c"></td>
+            <td><input type = "button" id = "cero" value = "0"></td>
+            <td><input type = "button" id = "resultado" value = "="></td>
+            <td><input type = "button" id = "dividir" value = "/"></td>
+        </tr>
+    </table>
+</form>
+
+<script language = "javascript">
+        //ACCEDEMOS AL BOTÓN
+        const uno = document.getElementById("uno");
+        const dos = document.getElementById("dos");
+        const tres = document.getElementById("tres");
+        const cuatro = document.getElementById("cuatro");
+        const cinco = document.getElementById("cinco");
+        const seis = document.getElementById("seis");
+        const siete = document.getElementById("siete");
+        const ocho = document.getElementById("ocho");
+        const nueve = document.getElementById("nueve");
+        const c = document.getElementById("c");
+        const cero = document.getElementById("cero");
+        const resultado = document.getElementById("resultado");
+        const sumar = document.getElementById("sumar");
+        const restar = document.getElementById("restar");
+        const multi = document.getElementById("multi");
+        const dividir = document.getElementById("dividir");
+
+    
+        //AHORA LE METEMOS LO QUE QUEREMOS QUE HAGA EL BOTON MEDIANTE UNA FUNCIÓN Y ADDEVENTLISTENER
+        let operacion;
+
+        uno.addEventListener("click", function(){
+            const uno = document.getElementById("uno").value;
+            const campo_operacion = document.getElementById("operacion");
+            campo_operacion.value += uno;
+        });
+
+        dos.addEventListener("click", function(){
+            const dos = document.getElementById("dos").value;
+            const campo_operacion = document.getElementById("operacion");
+            campo_operacion.value += dos;
+        });
+
+        tres.addEventListener("click", function(){
+            const tres = document.getElementById("tres").value;
+            const campo_operacion = document.getElementById("operacion");
+            campo_operacion.value += tres;
+        });
+
+        cuatro.addEventListener("click", function(){
+            const cuatro = document.getElementById("cuatro").value;
+            const campo_operacion = document.getElementById("operacion");
+            campo_operacion.value += cuatro;
+        });
+
+        cinco.addEventListener("click", function(){
+            const cinco = document.getElementById("cinco").value;
+            const campo_operacion = document.getElementById("operacion");
+            campo_operacion.value += cinco;
+        });
+
+        seis.addEventListener("click", function(){
+            const seis = document.getElementById("seis").value;
+            const campo_operacion = document.getElementById("operacion");
+            campo_operacion.value += seis;
+        });
+
+        siete.addEventListener("click", function(){
+            const siete = document.getElementById("siete").value;
+            const campo_operacion = document.getElementById("operacion");
+            campo_operacion.value += siete;
+        });
+
+        ocho.addEventListener("click", function(){
+            const ocho = document.getElementById("ocho").value;
+            const campo_operacion = document.getElementById("operacion");
+            campo_operacion.value += ocho;
+        });
+
+        nueve.addEventListener("click", function(){
+            const nueve = document.getElementById("nueve").value;
+            const campo_operacion = document.getElementById("operacion");
+            campo_operacion.value += nueve;
+        });
+
+        cero.addEventListener("click", function(){
+            const cero = document.getElementById("cero").value;
+            const campo_operacion = document.getElementById("operacion");
+            campo_operacion.value += cero;
+        });
+
+        c.addEventListener("click", function(){
+            const c = document.getElementById("c").value;
+            const campo_operacion = document.getElementById("operacion");
+            campo_operacion.value = "";
+        });
+
+        resultado.addEventListener("click", function(){
+            let resul = 0;
+            const campo_operacion = document.getElementById("operacion");
+            resul = eval(campo_operacion.value);
+            campo_operacion.value = resul;
+        });
+
+        sumar.addEventListener("click", function(){
+            const sumar = document.getElementById("sumar").value;
+            const campo_operacion = document.getElementById("operacion");
+            campo_operacion.value += sumar;
+        });
+
+        restar.addEventListener("click", function(){
+            const restar = document.getElementById("restar").value;
+            const campo_operacion = document.getElementById("operacion");
+            campo_operacion.value += restar;
+        });
+
+        multi.addEventListener("click", function(){
+            const multi = document.getElementById("multi").value;
+            const campo_operacion = document.getElementById("operacion");
+            campo_operacion.value += multi;
+        });
+
+        dividir.addEventListener("click", function(){
+            const dividir = document.getElementById("dividir").value;
+            const campo_operacion = document.getElementById("operacion");
+            campo_operacion.value += dividir;
+        });
+    </script>
+</body>
+</html>

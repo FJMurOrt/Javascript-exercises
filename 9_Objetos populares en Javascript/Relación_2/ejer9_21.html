@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer9_21</title>
+</head>
+<body>
+    <table border = '1'>
+        <tr>
+            <td id = "rojo">Rojo</td>
+            <td id = "verde">Verde</td>
+            <td id = "azul">Azul</td>
+        </tr>
+    </table>
+    <script language = "javascript">
+        
+        //VARIABLE DONDE GUARDO EL COLOR ELEGIDO POR EL USUARIO
+        let color = prompt("Elige uno de los siguientes colores: red (rojo), green(verde) o blue(azul)").toLowerCase();
+
+        //VARIBALES DONDE GUARDO LOS TD DE LOS COLORES
+        let rojo = document.getElementById("rojo");
+        let verde = document.getElementById("verde");
+        let azul = document.getElementById("azul");
+
+        //EVENTO PARA CUANDO EL RATÓN ESTÁ ENCIMA
+        rojo.addEventListener("mouseover", function(){
+            if(color == "red"){
+               rojo.style.background = "red";
+            }
+        });
+
+        verde.addEventListener("mouseover", function(){
+            if(color == "green"){
+               verde.style.background = "green";
+            }
+        });
+
+        azul.addEventListener("mouseover", function(){
+            if(color == "blue"){
+               azul.style.background = "blue";
+            }
+        });
+
+        //EVENTO PARA CUANDO EL RATÓN ESTÁ FUERA
+        rojo.addEventListener("mouseout", function(){
+            rojo.style.background = "white";
+        });
+
+        verde.addEventListener("mouseout", function(){
+            verde.style.background = "white";
+        });
+
+        azul.addEventListener("mouseout", function(){
+            azul.style.background = "white";
+            
+        });
+    </script>
+</body>
+</html>

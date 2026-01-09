@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer6_2</title>
+</head>
+<body>
+    <script language="javascript">
+        nombre = prompt("Introduce el nombre del alumno");
+        nombre = nombre.toUpperCase();
+        lista = new Array("MIGUEL","ELENA","JORGE","CRISTINA","IGNACIO","ALICIA");
+
+        encontrado_OK = false;
+
+        for(i in lista){
+            if(lista[i] === nombre){
+                alert("¡Nombre encontrado!");
+                encontrado_OK = true;
+                break;
+            }
+        }
+        
+        if(encontrado_OK === false){
+            alert("No se pudo encontrar el nombre en la lista");
+        }
+    </script>
+</body>
+</html>

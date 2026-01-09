@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        #texto{
+            display: inline-block;
+            background-color: lightblue;
+            border-radius: 10px;
+        }
+        p{
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="texto">
+        <p>BLOQUE DE PRUEBA</p>
+    </div>
+    <br>
+    <input type="button" id="ocultar_aparecer" value="Ocultar y aparecer"><br>
+    <script>
+        $(document).ready(function(){
+            //OCUTLAMOS EL TEXTO Y APARECE LENTAMENTE DESPUES CON FADE IN
+            $("#ocultar_aparecer").click(function(){
+                $("#texto").hide(function(){
+                    setTimeout(function(){
+                        $("#texto").fadeIn(900);
+                    }, 1500);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

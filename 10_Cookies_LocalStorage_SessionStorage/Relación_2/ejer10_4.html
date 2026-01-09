@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eje10_4</title>
+</head>
+<body>
+    <script language = "javascript">
+    //EL OBJETO SOBRE EL QUE VAMOS A TRABAJAR ES ESTE
+    var factura = {
+    empresa: {
+        nombre: "Nombre de la empresa",
+        direccion: "Dirección de la empresa",
+        telefono: "900900900",
+        nif: ""
+        },
+    cliente: {
+        nombre: "Nombre del cliente",
+        direccion: "Dirección del cliente",
+        telefono: "600600600",
+        nif: "XXXXXXXXX"
+        },
+    elementos: [
+        { descripcion: "Producto 1", cantidad: 2, precio: 2 },
+        { descripcion: "Producto 2", cantidad: 3, precio: 3 },
+        { descripcion: "Producto 3", cantidad: 1, precio: 1 }
+        ],
+    informacion: {
+        baseImponible: 0,
+        iva: 16,
+        total: 0,
+        formaPago: "contado"
+        }
+    };
+
+    //AHORA VAMOS A CREARLE UN MÉTODO QUE CARCULE EL PRECIO TOTAL DE LOS PRODUCTOS COMPRADOS DE LA FACTURA
+    factura.calcularPrecioTotal = function(){
+        //CALCULAMOS PRIMERO EL PRECIO TOTAL SIN IVA
+        let total = 0;
+        this.elementos.forEach(producto => {
+            total += producto.cantidad * producto.precio;
+        });
+
+        //AHORA NECESITAMOS APLCIARLE EL IVA A ESTE TOTAL
+        let iva = 0;
+
+        for(let clave in this.informacion){
+            if(clave === "iva"){
+                iva = this.informacion[clave];
+            }
+        }
+
+        //YA TENEMOS EL IVA, AHORA LO APLICAMOS AL PRECIO TOTAL QUE TENIAMOS
+        total = total + (total * (iva / 100));
+
+        //LO MOSTRAMOS
+        alert("TOTAL = "+total);
+    };
+
+    factura.calcularPrecioTotal();
+    </script>
+</body>
+</html>

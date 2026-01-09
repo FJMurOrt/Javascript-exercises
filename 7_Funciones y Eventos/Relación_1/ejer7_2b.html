@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer7_2_Con_Botones</title>
+</head>
+<body>
+    <script language = "javascript">
+
+        //LOS ARRAYS QUE VAMOS A NECESITAR
+        var nombres = new Array("MIGUEL","ELENA", "JORGE", "CRISTINA", "IGNACIO", "ALICIA");
+        var nombres_original = new Array("MIGUEL","ELENA", "JORGE", "CRISTINA", "IGNACIO", "ALICIA");
+        var apellidos = new Array("GIL", "SANCHEZ", "RODRIGUEZ", "ALONSO", "VEGA", "REY");
+        var apellidos_original = new Array("GIL", "SANCHEZ", "RODRIGUEZ", "ALONSO", "VEGA", "REY");
+
+        //FUNCIONES QUE VAMOS A NECESITAR QUE LOS BOTONES LLAMAN PARA REALIZAR LAS OPERACIONES
+
+
+        //FUNCIÓN PARA AÑADIR UN NUEVO ELEMENTO AL ARRAY.
+        function anadir_elemento(form){
+            let elemento = form.palabra.value;
+            nombres.push(elemento);
+            document.write("El array original de nombres es:"+nombres_original);
+            document.write("<br>");
+            document.write("El array con el elemento que añadiste es:"+nombres);
+            } 
+
+
+
+        //FUNCIÓN PARA CONCATENAR 2 ARRAYS. EL DE NOMBRES Y EL DE APELLIDOS.
+        function concat_arrays(){
+            var arrays_unidos = new Array();
+            for(i = 0; i < nombres.length; i++){
+                arrays_unidos.push(nombres[i]+" "+apellidos[i]);
+            }
+            document.write(arrays_unidos);
+        }
+
+        //FUNCIÓN PARA INVERTIR EL ARRAY NOMBRES
+        function invertir_nombres(){
+            nombres.reverse();
+            document.write("El array original de nombres es: "+nombres_original);
+            document.write("<br>");
+            document.write("El array invertido de nombres es: "+nombres);
+        }
+
+        //FUNCIÓN PARA AÑAIR ELEMENTO
+        function anadir_ele_nuevo(form){
+            let elemento = form.elemento_nuevo.value;
+            nombres.unshift(elemento);
+            form.elemento_nuevo.value = "";
+        }
+        function ver_array_actu(){
+            document.write(nombres);
+        }
+
+        //FUNCIÓN PARA ELIMINAR EL PRIMER ELEMENTO DEL ARRAY NOMBRES.
+        function eliminar_primero(){
+            nombres.shift()
+            document.write("El array original de nombres es: "+nombres_original);
+            document.write("<br>");
+            document.write("El array con el primer elemento eliminado es: "+nombres);
+        }
+
+        //FUNCIÓN PARA ELIMINAR EL ÚLTIMO ELEMENTO DEL ARRAY NOMBRES.
+        function eliminar_ultimo(){
+            nombres.pop();
+            document.write("El array original de nombres es: "+nombres_original);
+            document.write("<br>");
+            document.write("El array con el último elemento eliminado es: "+nombres);
+        }
+        
+        //FUNCIÓN PARA OBTENER UN NUEVO SUBCONJUNTO DEL ARRAY NOMBRES
+        function crear_subconjunto(form){
+            var subconjunto = new Array();
+
+            let inicio = form.inicio.value;
+            let final = form.final.value;
+
+            if(inicio > final){
+                for(i = inicio; i >= final; i--){
+                    subconjunto.push(nombres[i])
+                }
+                document.write(subconjunto);
+            }else{
+                for(i = inicio; i <= final; i++){
+                    subconjunto.push(nombres[i]);
+                }
+                document.write(subconjunto);
+            }
+        }
+
+        //FUNCIÓN PARA ORDENAR EL ARRAY DE NOMBRES
+        function ordenar_array(){
+            nombres.sort()
+            document.write("El array original de nombres es: "+nombres_original);
+            document.write("<br>");
+            document.write("El array ordenado alfabéticamente es: "+nombres);
+        }
+
+
+
+
+    </script>
+    <form id = "menu">
+        <b>A continuación, podremos realizar una serie de operaciones sobre nuestros arrays. Los array son los siguientes:<br><br>
+        Array de nombres = ["MIGUEL","ELENA", "JORGE", "CRISTINA", "IGNACIO", "ALICIA"]<br>
+        Array de apellidos = ["GIL", "SANCHEZ", "RODRIGUEZ", "ALONSO", "VEGA", "REY"]<br><br>
+        Teniendo en cuenta nuestros arrays, puede realizar una de las siguientes operaciones:</b><br><br>
+
+        1. Para añadir un nuevo elemento al array nombres, escribe la palabra que desees añadir y pulsar el botón.
+        <input type = "text" name = "palabra">
+        <input type = "button" value = "¡Hacer!" onclick="anadir_elemento(this.form)"><br><br>
+        2. Si deseas concatenar el array de nombres con el array de apellidos pulsa en el botón.
+        <input type = "button" value = "¡Hacer!" onclick="concat_arrays()"><br><br>
+        3. Invierte el orden del array nombres.
+        <input type ="button" value= "¡Hacer" onclick="invertir_nombres()"><br><br>
+        4. Añade nuevos elementos de uno en uno al inicio del array nombres.
+        <input type = "text" name = "elemento_nuevo">
+        <input type = "button" value = "¡Añadir elemento!" onclick="anadir_ele_nuevo(this.form)">
+        <input type = "button" value = "Ver array actualizado!" onclick="ver_array_actu()"><br><br>
+        5. Eliminar el primer elemento del array
+        <input type = "button" value = "¡Eliminar el primer elemento!" onclick="eliminar_primero()"><br><br>
+        6. Eliminar el último elemento del array
+        <input type = "button" value = "¡Eliminar el último elemento!" onclick="eliminar_ultimo()"><br><br>
+        7. Devuelve un nuevo subconjunto del array nombres. Introduce el número del elemento por donde quieres que acabe y empiece el nuevo subconjunto.<br>
+        Empieza en:
+        <input type = "number" name = "inicio"> y 
+        acaba por el:
+        <input type = "number" name = "final">
+        <input type = "button" value = "¡Obtener subconjunto!" onclick="crear_subconjunto(this.form)"><br><br>
+        8. Ordenar alfabéticamente los elementos del array nombre.
+        <input type = "button" value = "¡Ordenar array!" onclick="ordenar_array()">
+    </form>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer9_27</title>
+</head>
+<body>
+    <script langauge = "javascript">
+
+        //TODO EL FUNCIONAMIENTO SERÁ AL CARGAR LA PÁGINA ASI QUE LO METEMOS DENTRO DE WINDOW.ONLOAD
+        
+            //ARRAY CON LAS WEBS
+        const enlances = new Array(" https://www.w3schools.com", "https://www.nike.com/es/", "https://www.zara.com/es/");
+
+        //INDICE ALEATORIO QUE LUEGO USAREMOS PARA ESCOGER UNA WEB DEL ARRAY
+        let indice_web = Math.floor(Math.random() * (2 - 0 + 1) + 0);
+        let pag_destino = enlances[indice_web];
+
+        document.write("En 5 segundos, saltaremos a la página "+pag_destino);
+        //FUNCTIÓN QUE TRAS PASADOS 5 SEGUNDOS REDIRIGE A OTRA PÁGINA
+        setTimeout(() => {
+            window.location.href = pag_destino;
+        }, 5000);
+        
+
+    </script>
+</body>
+</html>

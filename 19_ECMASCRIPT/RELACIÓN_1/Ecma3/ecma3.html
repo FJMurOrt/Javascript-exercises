@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecma3</title>
+</head>
+<body>
+    <div id="resultado">
+    </div>
+    <script src="ecma3.js">
+    </script>
+    <script>
+        //ACCEDEMOS AL DIV PARA MOSTRAR LA INFORMACIÓN
+        let div = document.getElementById("resultado");
+
+        //HACEMOS UNA PRUEBA
+        let cliente_1 = new clienteBanco("Diego", 1200);
+        div.innerHTML = "<h1>Datos del cliente de banco</h1>"+
+        "El nombre del cliente es "+cliente_1.nombre+"<br>"+
+        "El saldo del cliente es "+cliente_1.saldo+"<br><br>";
+
+        //DEPOSITAMOS Y MOSTRAMOS
+        cliente_1.depositar(120);
+        div.innerHTML += "<h1>Nuevos datos del cliente de banco después de realizar un depósito</h1>"+
+        "El nombre del cliente es "+cliente_1.nombre+"<br>"+
+        "El nuevo saldo del cliente es "+cliente_1.saldo+"<br><br>";
+
+        //EXTRAEMOS Y MOSTRAMOS
+        cliente_1.extraer(1000);
+        div.innerHTML += "<h1>Nuevos datos del cliente de banco después de realizar una extracción</h1>"+
+        "El nombre del cliente es "+cliente_1.nombre+"<br>"+
+        "El nuevo saldo del cliente es "+cliente_1.saldo+"<br><br>";
+    </script>
+</body>
+</html>

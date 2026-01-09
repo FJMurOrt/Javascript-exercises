@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    Introduce un nombre
+    <input type="text" id="nombre"><br>
+    <input type="button" id="saludar" value="Saludar">
+    <script>
+        //ACCEDEMOS AL BOTÓN
+        let boton = $("#saludar");
+
+        $("document").ready(function(){
+            boton.click(function(){
+
+                //ACCEDEMOS AL CAMPO DEL NOMBRE
+                let nombre = $("#nombre").val();
+
+                //VERIFICAMOS QUE NO SEA UN NÚMERO O QUE ESTÉ VACÍO
+                if(!isNaN(nombre) || nombre == ""){
+                    alert("El campo del nombre no puede estar vacío o ser un número");
+                    return;
+                }else{
+                    alert("Hola "+nombre);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

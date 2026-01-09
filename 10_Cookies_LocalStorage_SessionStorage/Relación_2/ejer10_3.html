@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer10_3</title>
+</head>
+<body>
+    <form id = "mi_form">
+        <label for = "fruta">¿Qué fruta deseas?</label>
+        <input type="text" id = "nombre"><br>
+
+        <label for = "cantidad">¿Qué cantidad deseas?</label>
+        <input type="text" id = "cantidad"><br><br>
+
+        <input type="button" id = "total" value="Ver precio total"><br>
+
+        <div id = "resultado">
+        </div>
+    </form>
+    <script language = "javascript">
+        //ARRAY DE FRUTAS
+        frutas = {'Plátano':1.35, 'Manzana':0.8, 'Pera':0.85, 'Naranja':0.7};
+
+        //ACCDEMOS AL BOTÓN Y LOS CAMPOS
+        let nombre_fruta = document.getElementById("nombre");
+        let cantidad_fruta = document.getElementById("cantidad");
+        let boton_total = document.getElementById("total");
+        let div = document.getElementById("resultado");
+        let fruta_buscada;
+        let cantidad_deseada;
+
+        //EVENTO Y FUNCIÓN
+        boton_total.addEventListener("click", function(){
+            //VERIFICAMOS EL EL CAMPO NOMBRE
+        if(nombre_fruta.value == "" || !isNaN(nombre_fruta.value)){
+            alert("El campo del nombre de la fruta no puede estar vacío o ser un número.")
+            return;
+        }else{
+            fruta_buscada = nombre_fruta.value.toLowerCase().trim();
+        }
+
+            //VERIFICAMOS EL CAMPO DE LA CANTIDAD
+        if(cantidad_fruta.value == "" || isNaN(cantidad_fruta.value)){
+            alert("El campo del nombre de la fruta no puede estar vacío y debe ser un número.")
+            return;
+        }else{
+            cantidad_deseada = parseFloat(cantidad_fruta.value.trim());
+        }
+
+        //AHORA BUSCAMOS LA FRUTA EN EL ARRAY Y, SI ESTÁ, CALCULAMOS EL TOTAL DE SU PRECIO;
+
+        let fruta_encontrada = false;
+
+        Object.keys(frutas).forEach(fruta => {
+            if(fruta.toLowerCase() === fruta_buscada){
+                fruta_encontrada = true;
+                let precio_total = frutas[fruta] * cantidad_deseada;
+                div.innerHTML = cantidad_deseada+" Kilos de "+fruta_buscada+" valen "+precio_total+"€";
+            }
+        });
+        if(fruta_encontrada == false){
+            alert("No se pudo encontrar la fruta que buscas.");
+        }
+        nombre_fruta.value = "";
+        cantidad_fruta.value = "";
+        });
+    </script>
+</body>
+</html>

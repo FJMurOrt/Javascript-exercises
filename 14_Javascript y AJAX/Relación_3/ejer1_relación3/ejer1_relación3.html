@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer1_Relación3</title>
+</head>
+<body>
+    <img src="imgs/1.png"><br>
+    <div id = "numeros" style="background-color: bisque; display: inline-block;">
+    <a href="#" id="1" style = "color: red;">1</a>
+    <a href="#" id="2" style = "color: red;">2</a>
+    <a href="#" id="3" style = "color: red;">3</a>
+    <a href="#" id="4" style = "color: red;">4</a>
+    <a href="#" id="5" style = "color: red;">5</a>
+    <a href="#" id="6" style = "color: red;">6</a>
+    <a href="#" id="7" style = "color: red;">7</a>
+    <a href="#" id="8" style = "color: red;">8</a>
+    <a href="#" id="9" style = "color: red;">9</a>
+    <a href="#" id="10" style = "color: red;">10</a>
+    </div><br>
+    Gracias<br>
+    <a href="#" id="resultados">Ver resultados</a><br><br>
+
+    <div id = "lista_de_votos">
+    </div>
+    <script langauge = "javascript">
+        //ACCEDEMOS AL DIV ANTES DE NADA
+        let div = document.getElementById("lista_de_votos");
+
+        //APLICAMOS EL EVENTO MOUSEOVER PARA QUE EL FONDO DE LOS NUMEROS CAMBIE SI PASAMOS POR ENCIMA
+        //PRIMERO ACCEDEMOS A CADA UNO DE ELLOS POR EL ID
+        for(let i = 1; i <= 10; i++){
+            let numero = document.getElementById(i);
+            numero.addEventListener("mouseover", function(){
+                if(numero.style.backgroundColor === "bisque" || numero.style.backgroundColor === "none"){
+                    numero.style.backgroundColor = "red";
+                    numero.style.color = "white";
+                }else{
+                    numero.style.backgroundColor = "bisque";
+                    numero.style.color = "red";
+                }
+            });
+        }
+
+        //AHORA ENVIAMOS LA PETICIÓN AL SERVIDOR
+        function crearObjetoPeticion(){
+            let objeto_peticion = false;
+
+            try{
+                objeto_peticion = new XMLHttpRequest();
+            }catch(primero_error){
+                try{
+                    objeto_peticion = ActiveXObject("Msxml2.XMLHTTP");
+                }catch(segundo_error){
+                    try{
+                        objeto_peticion = ActiveXObject("Microsoft.XMLHTTP");
+                    }catch(tercer_error){
+                        objeto_peticion = false;
+                    }
+                }
+            }
+            return objeto_peticion;
+        }
+
+        //ACCEDEMOS A LOS ENLACES PARA QUE CUANDO HAGAMOS CLICK SOBRE ELLOS SE ABRA LA PETICIÓN Y SE MANDE LA INFORMACIÓN
+        let enlace1 = document.getElementById("1");
+        let enlace2 = document.getElementById("2");
+        let enlace3 = document.getElementById("3");
+        let enlace4 = document.getElementById("4");
+        let enlace5 = document.getElementById("5");
+        let enlace6 = document.getElementById("6");
+        let enlace7 = document.getElementById("7");
+        let enlace8 = document.getElementById("8");
+        let enlace9 = document.getElementById("9");
+        let enlace10 = document.getElementById("10");
+
+        let enlace_ver_resultados = document.getElementById("resultados");
+
+
+        //EVENTO AL PRIMER ENLACE
+        enlace1.addEventListener("click", function(e){
+            e.preventDefault();
+             let peticion = crearObjetoPeticion();
+
+             //DEFINIMOS LA URL
+             let url = "archivo_php.php?enlace=1";
+
+             //ABRIMOS LA PETICIÓN
+             peticion.open("GET", url, true);
+
+             //VERIFICAMOS LA RESPUESTA
+             peticion.onreadystatechange = respuestaServidor;
+
+             function respuestaServidor(){
+                if(peticion.readyState == 4 && peticion.status == 200){
+                    div.innerHTML = "Tu voto se regitró correctamente";
+                }
+             }
+
+             //ENVIAMOS LA PETICIÓN
+             peticion.send();
+        });
+
+        //PARA EL SEGUNDO ENLACE
+        enlace2.addEventListener("click", function(e){
+            e.preventDefault();
+             let peticion = crearObjetoPeticion();
+
+             //DEFINIMOS LA URL
+             let url = "archivo_php.php?enlace=2";
+
+             //ABRIMOS LA PETICIÓN
+             peticion.open("GET", url, true);
+
+             //VERIFICAMOS LA RESPUESTA
+             peticion.onreadystatechange = respuestaServidor;
+
+             function respuestaServidor(){
+                if(peticion.readyState == 4 && peticion.status == 200){
+                    div.innerHTML = "Tu voto se regitró correctamente";
+                }
+             }
+
+             //ENVIAMOS LA PETICIÓN
+             peticion.send();
+        });
+
+        //PARA EL TERCER ENLACE
+        enlace3.addEventListener("click", function(e){
+            e.preventDefault();
+             let peticion = crearObjetoPeticion();
+
+             //DEFINIMOS LA URL
+             let url = "archivo_php.php?enlace=3";
+
+             //ABRIMOS LA PETICIÓN
+             peticion.open("GET", url, true);
+
+             //VERIFICAMOS LA RESPUESTA
+             peticion.onreadystatechange = respuestaServidor;
+
+             function respuestaServidor(){
+                if(peticion.readyState == 4 && peticion.status == 200){
+                    div.innerHTML = "Tu voto se regitró correctamente";
+                }
+             }
+
+             //ENVIAMOS LA PETICIÓN
+             peticion.send();
+        });
+
+        //PARA EL CUARTO ENLACE
+        enlace4.addEventListener("click", function(e){
+            e.preventDefault();
+             let peticion = crearObjetoPeticion();
+
+             //DEFINIMOS LA URL
+             let url = "archivo_php.php?enlace=4";
+
+             //ABRIMOS LA PETICIÓN
+             peticion.open("GET", url, true);
+
+             //VERIFICAMOS LA RESPUESTA
+             peticion.onreadystatechange = respuestaServidor;
+
+             function respuestaServidor(){
+                if(peticion.readyState == 4 && peticion.status == 200){
+                    div.innerHTML = "Tu voto se regitró correctamente";
+                }
+             }
+
+             //ENVIAMOS LA PETICIÓN
+             peticion.send();
+        });
+
+        //PARA EL QUINTO ENLACE
+        enlace5.addEventListener("click", function(e){
+            e.preventDefault();
+             let peticion = crearObjetoPeticion();
+
+             //DEFINIMOS LA URL
+             let url = "archivo_php.php?enlace=5";
+
+             //ABRIMOS LA PETICIÓN
+             peticion.open("GET", url, true);
+
+             //VERIFICAMOS LA RESPUESTA
+             peticion.onreadystatechange = respuestaServidor;
+
+             function respuestaServidor(){
+                if(peticion.readyState == 4 && peticion.status == 200){
+                    div.innerHTML = "Tu voto se regitró correctamente";
+                }
+             }
+
+             //ENVIAMOS LA PETICIÓN
+             peticion.send();
+        });
+
+        //PARA EL SEXTO ENLACE
+        enlace6.addEventListener("click", function(e){
+            e.preventDefault();
+             let peticion = crearObjetoPeticion();
+
+             //DEFINIMOS LA URL
+             let url = "archivo_php.php?enlace=6";
+
+             //ABRIMOS LA PETICIÓN
+             peticion.open("GET", url, true);
+
+             //VERIFICAMOS LA RESPUESTA
+             peticion.onreadystatechange = respuestaServidor;
+
+             function respuestaServidor(){
+                if(peticion.readyState == 4 && peticion.status == 200){
+                    div.innerHTML = "Tu voto se regitró correctamente";
+                }
+             }
+
+             //ENVIAMOS LA PETICIÓN
+             peticion.send();
+        });
+
+        //PARA EL SEPTIMO ENLACE
+        enlace7.addEventListener("click", function(e){
+            e.preventDefault();
+             let peticion = crearObjetoPeticion();
+
+             //DEFINIMOS LA URL
+             let url = "archivo_php.php?enlace=7";
+
+             //ABRIMOS LA PETICIÓN
+             peticion.open("GET", url, true);
+
+             //VERIFICAMOS LA RESPUESTA
+             peticion.onreadystatechange = respuestaServidor;
+
+             function respuestaServidor(){
+                if(peticion.readyState == 4 && peticion.status == 200){
+                    div.innerHTML = "Tu voto se regitró correctamente";
+                }
+             }
+
+             //ENVIAMOS LA PETICIÓN
+             peticion.send();
+        });
+
+        //PARA EL OCTAVO ENLACE
+        enlace8.addEventListener("click", function(e){
+            e.preventDefault();
+             let peticion = crearObjetoPeticion();
+
+             //DEFINIMOS LA URL
+             let url = "archivo_php.php?enlace=8";
+
+             //ABRIMOS LA PETICIÓN
+             peticion.open("GET", url, true);
+
+             //VERIFICAMOS LA RESPUESTA
+             peticion.onreadystatechange = respuestaServidor;
+
+             function respuestaServidor(){
+                if(peticion.readyState == 4 && peticion.status == 200){
+                    div.innerHTML = "Tu voto se regitró correctamente";
+                }
+             }
+
+             //ENVIAMOS LA PETICIÓN
+             peticion.send();
+        });
+
+        //PARA EL NOVENO ENLACE
+        enlace9.addEventListener("click", function(e){
+            e.preventDefault();
+             let peticion = crearObjetoPeticion();
+
+             //DEFINIMOS LA URL
+             let url = "archivo_php.php?enlace=9";
+
+             //ABRIMOS LA PETICIÓN
+             peticion.open("GET", url, true);
+
+             //VERIFICAMOS LA RESPUESTA
+             peticion.onreadystatechange = respuestaServidor;
+
+             function respuestaServidor(){
+                if(peticion.readyState == 4 && peticion.status == 200){
+                    div.innerHTML = "Tu voto se regitró correctamente";
+                }
+             }
+
+             //ENVIAMOS LA PETICIÓN
+             peticion.send();
+        });
+
+        //PARA EL DÉCIMO ENLACE
+        enlace10.addEventListener("click", function(e){
+            e.preventDefault();
+             let peticion = crearObjetoPeticion();
+
+             //DEFINIMOS LA URL
+             let url = "archivo_php.php?enlace=10";
+
+             //ABRIMOS LA PETICIÓN
+             peticion.open("GET", url, true);
+
+             //VERIFICAMOS LA RESPUESTA
+             peticion.onreadystatechange = respuestaServidor;
+
+             function respuestaServidor(){
+                if(peticion.readyState == 4 && peticion.status == 200){
+                    div.innerHTML = "Tu voto se regitró correctamente";
+                }
+             }
+
+             //ENVIAMOS LA PETICIÓN
+             peticion.send();
+        });
+
+
+        //PARA EL ENLACE DE VER RESULTADOS
+        enlace_ver_resultados.addEventListener("click", function(e){
+            e.preventDefault();
+             let peticion = crearObjetoPeticion();
+
+             //DEFINIMOS LA URL
+             let url = "archivo_php.php";
+
+             //ABRIMOS LA PETICIÓN
+             peticion.open("GET", url, true);
+
+             //VERIFICAMOS LA RESPUESTA
+             peticion.onreadystatechange = respuestaServidor;
+
+             function respuestaServidor(){
+                if(peticion.readyState == 4 && peticion.status == 200){
+                    div.innerHTML = peticion.responseText;
+                }
+             }
+
+             //ENVIAMOS LA PETICIÓN
+             peticion.send();
+        });
+    </script>
+</body>
+</html>

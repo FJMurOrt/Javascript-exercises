@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejemplo_tema15</title>
+</head>
+<body>
+    <label for="marca">Marcas:</label>
+    <select id = "marcas">    
+    </select>
+
+    <br><br>
+
+    <label for="modelos">Modelos:</label>
+    <select id = "modelos" disabled>
+        <option value="">Selecciona un modelo</option>
+    </select>
+    <br><br>
+    
+    <input type="button" id="enviar" value="enviar peticion">
+    <script lanaguage = "javascript">
+        //CREAMOS EL OBJETO DE LA PETICIÓN
+
+        function crearObjetoPeticion(){
+            let objeto_peticion = false;
+
+            try{
+                objeto_peticion = new XMLHttpRequest();
+            }catch(primer_error){
+                try{
+                    objeto_peticion = ActiveXObject("Msxml2.XMLHTTP");
+                }catch(segundo_error){
+                    try{
+                        objeto_peticion = ActiveXObject("Microsoft.XMLHTTP");
+                    }catch(tercer_error){
+                        objeto_peticion = false;
+                    }
+                }
+            }
+            return objeto_peticion;
+        }
+
+        //HACEMOS QUE AL CARGAR LA PÁGINA SE CARGUEN LOS ELEMENTOS DE LAS MARCAS
+        let select_marcas = document.getElementById("marcas");
+        let select_modelos = document.getElementById("modelos");
+
+        window.onload = function(){
+            let peticion = crearObjetoPeticion();
+
+            //SI LA PETICIÓN NO SE CREA, PUES SE CANCELA LA FUNCIÓN
+            if(peticion === false){
+                return;
+            }
+
+            //LE PASAMOS EN LA URL EL ARCHIVO PHP QUE PROCESARÁ LAS MARCAS Y NOS LAS DEVOLVERÁ
+            let url = "php_marcas.php";
+            peticion.open("GET", url, true);
+
+            //FUNCIÓN PARA COMPROBAR LA CONEXION
+            peticion.onreadystatechange = respuestaServidor;
+
+            function respuestaServidor(){
+                if(peticion.readyState == 4 && peticion.status == 200){
+                select_marcas.innerHTML = peticion.responseText;
+                }
+            }
+            
+            //ENVIAMOS LA PETICIÓN
+            peticion.send();
+        }
+
+        //AHORA LO QUE VAMOS A HACER ES HACER UN EVENTO ONCHANGE PARA EL PRIMER SELECT. SI SE SELECCIONA UNA MARCA, SE CARGAN SUS MODELOS
+            select_marcas.addEventListener("change", function(){
+                //ACTIVAMOS LOS MODELOS SI SE SELECCIONA UNA MARCA
+                select_modelos.disabled = false;
+
+                //EMPEZAMOS CON LA PETICIÓN
+                let peticion = crearObjetoPeticion();
+
+                //ACCEDEMOS AL ID PARA PASARSELO AL PHP TAMBIÉN
+                let id = select_marcas.value;
+
+                //ABRIMOS LA PETICIÓN DEFINIENDO LA URL Y EL MÉTODO
+                let url = "php_modelos.php?marca="+id;
+                peticion.open("GET", url, true);
+
+                //AHORA NECESITAMOS VERIFICAR LA PETICIÓN Y SI TODO ESTÁ CORRECTO IMPRIMIMOS LO QUE NOS DEVUELVA PHP AL ENVIAR LA PETICIÓN
+                peticion.onreadystatechange = respuestaServidor2;
+
+                function respuestaServidor2(){
+                    if(peticion.readyState == 4 && peticion.status == 200){
+                        select_modelos.innerHTML = peticion.responseText;
+                    }
+                }
+
+                //ENVIAMOS LA PETICIÓN
+                peticion.send();
+            });
+    </script>
+</body>
+</html>

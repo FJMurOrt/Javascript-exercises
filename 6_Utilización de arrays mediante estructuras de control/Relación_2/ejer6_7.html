@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer6_7</title>
+</head>
+<body>
+    <script language = "javascript">
+        numero_original = prompt("Inser un número positivo");
+
+        array = numero_original.split("");
+
+        inver = array.reverse();
+        inver_sin_comas = array.join("");
+
+        if(numero_original < 0){
+            alert("Se ha cancelado a operación porque has introducido un número negativo");
+        }
+        document.write("<table border='1px'><tr><td style='background-color: turquoise'><b>EL NÚMERO INTRODUCIDO ES: "+numero_original+"</b></td></tr>");
+        document.write("<tr><td style='text-align: center'>"+"<i><b>EL NÚMERO AL REVES ES: "+inver_sin_comas+"</b></i></td></tr>");
+        document.write("</table>");
+    </script>
+</body>
+</html>

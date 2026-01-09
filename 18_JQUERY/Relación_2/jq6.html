@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        img{
+            width: 80px;
+            height: 80px;
+        }
+        #imagen_en_grande img{
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <img id="delfin" src="img/delfin.png">
+    <img id="perro" src="img/perro.png">
+    <img id="gato" src="img/gato.png"> 
+    <div id="imagen_en_grande">
+    </div>
+    <script>
+        
+        $(document).ready(function(){
+            $("img").hover(
+                function(){
+                let imagen = $(this).attr("src");
+                $("#imagen_en_grande").html("<img src="+imagen+">");
+            },
+                function(){
+                    $("#imagen_en_grande").html("");
+                }
+            );
+        });
+    </script>
+</body>
+</html>

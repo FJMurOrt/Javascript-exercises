@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer4_9</title>
+</head>
+<body>
+    <script language = "javascript">
+        
+        numero = parseInt(prompt("Introduce un número para realizar el factorial"));
+
+        if(isNaN(numero)){
+            alert("El número introducido no es un número");
+        }else{
+            a_multiplicar = 1;
+            
+            document.write(numero+"! = "+numero+ " ");
+
+        for(i = numero - 1; i > 0; i--){
+            document.write(" x "+ i);
+            a_multiplicar *= i;
+        }
+
+        total = numero * a_multiplicar;
+
+        alert(total);
+        }
+    </script>
+</body>
+</html>

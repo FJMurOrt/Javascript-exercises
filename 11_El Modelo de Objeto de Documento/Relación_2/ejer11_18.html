@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer11_18</title>
+</head>
+<style>
+    #contenedor_de_ambos_contenedores{
+        display: flex;
+    }
+    #texto_original{
+        width: 400px;
+        height: 200px;
+    }
+    #resultado{
+        width: 400px;
+        height: 200px;
+    }
+</style>
+<body>
+    <h1>Método para expresiones regulares</h1>
+    <b>Texto de ejemplo:</b><br><br>
+    <div id = "contenedor_de_ambos_contenedores">
+        <div id = "texto_original">
+    En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo vivía un hidalgo de los de lanza de astillero, adarga antigua, rocin flaco y galgo corredor. Una olla de algo más vaca que carnero, salpicon de las más noches, duelos y quebrantos los sabados, lentejas los viernes, algun palomino de anadidura los domingos, consumían las tres partes desu hacienda.
+        </div>
+        <div id = "resultado">
+        </div>
+    </div>
+    <b>Buscar la palabra hidalgo</b><br><br>
+    <input type="button" id="buscar" value="Método exec">
+    <script language = "javascript">
+        //ACCEDEMOS AL BOTÓN, AL TEXTO Y AL CONTENEDOR DEL RESULTADO
+        let buscar = document.getElementById("buscar");
+        let texto = document.getElementById("texto_original").textContent;
+        let resultado_contenedor = document.getElementById("resultado");
+
+        //FUNCIÓN Y EVENTO
+        buscar.addEventListener("click", function(){
+
+            //CREAMOS LA EXPRESIÓN
+            let mi_expresion = new RegExp("hidalgo");
+
+            //LA BUSCAMOS
+            let resultado = mi_expresion.exec(texto);
+            if(resultado){
+                resultado_contenedor.innerHTML += "Palabra buscada: hidalgo<br>";
+                resultado_contenedor.innerHTML += "posición: "+resultado.index+"<br>";
+                resultado_contenedor.innerHTML += "Texto en que se encuentra: "+resultado.input;
+            }
+            
+            //LE PONEMOS UN BORDE AL CONTENEDOR DEL RESULTADO
+            resultado_contenedor.style.border = "1px solid black";
+        });
+    </script>
+</body>
+</html>

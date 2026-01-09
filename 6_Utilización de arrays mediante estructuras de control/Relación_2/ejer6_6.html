@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer6_6</title>
+    <style>
+        .tablas{
+            width: fit-content;
+            margin: 0 auto;
+            text-align: center;
+        }
+        table{
+            margin: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <script language="javascript">
+        let importe;
+        do {
+            importe = parseInt(prompt("Inserta un número"));            
+        } while (isNaN(importe) || importe < 0);
+
+        billetes = new Array(5000,2000,1000,500,200,100,50,25,10,5,1);
+        
+        let cantidad_por_billetes = "";
+
+        document.write("<div class='tablas'>");
+        document.write("<table border = '1px'>");
+        document.write("<tr style='background-color: lightblue'>");
+        document.write("<td>");
+        document.write("DESGLOSES DE LA CANTIDAD: "+importe);
+        document.write("</td>");
+        document.write("</tr>");
+        document.write("</table>");
+        document.write("<table border = '1px'>");
+            
+        for(i = 0; i < billetes.length; i++){
+            cantidad_billetes = Math.floor(importe / billetes[i]);
+            importe = importe % billetes[i];
+
+            if(cantidad_billetes > 0){
+                cantidad_por_billetes += "<tr><td><b>"+"Unidades de "+billetes[i]+": "+cantidad_billetes+"</b></td></tr>";
+            }else{
+                cantidad_por_billetes += "<tr><td>"+"Unidades de "+billetes[i]+": "+cantidad_billetes+"</td></tr>";
+            }
+        }
+
+        document.write(cantidad_por_billetes);
+        document.write("</table>");
+        document.write("</div>");
+    </script>
+</body>
+</html>

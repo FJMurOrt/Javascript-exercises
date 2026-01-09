@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script language = "javascript">
+        //CREAMOS LA EXPRESIÓN PARA VERIFICAR LA FECHA
+        let mi_expresion = new RegExp("(\\d{4})\\/(0[1-9]|1[0-2])\\/(0[1-9]|1[0-9]|2[0-9]|3[0-1])$");
+
+        //DEFINIMOS UNA VARIABLE CON FECHA PARA COMPROBAR LA EXPRESIÓN
+        let fecha = "2025/11/13";
+
+        //LA VERIFICAMOS
+        let resultado = mi_expresion.exec(fecha);
+
+        //IMPRIMIMOS
+        if(resultado){
+            document.write("¡Fecha válida!"+"<br><br>");
+            document.write("El año: "+resultado[1]+"<br>");
+            document.write("El mes: "+resultado[2]+"<br>");
+            document.write("El día: "+resultado[3]+"<br>");
+        }else{
+            document.write("¡Fecha no válida!");
+        }
+    </script>
+</body>
+</html>

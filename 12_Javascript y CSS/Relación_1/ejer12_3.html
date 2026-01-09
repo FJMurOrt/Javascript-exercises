@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer12_3</title>
+</head>
+<style>
+    .con_imagen{
+        background-image: url(imgs/cielo.jpg);
+    }
+    .color_fondo{
+        background-color: lightyellow;
+    }
+</style>
+<body>
+    <h1>Página de inicio de Bach</h1>
+    <strong>Johann Sebastian Bach fue un compositor prolífico. Entre sus obras, se incluyen:</strong>
+    <ul>
+        <li>Las Variaciones de Goldberg</li>
+        <li>Los Conciertos de Brandemburgo</li>
+        <li>El Oratorio de Navidad</li>
+    </ul>
+    <script language = "javascript">
+        //ACCEDEMOS AL ELEMENTO BODY PARA APLICARLE EL FONDO DE IMAGEN Y VER QUE NO SE HERENDAN A LOS ELEMENTOS HIJOS
+        let body = document.getElementsByTagName("body")[0];
+        body.className = "con_imagen";
+
+        //PARA DEMOSTRAR QUE NO SE HEREDA, MODIFICO EL FONDO DEL H1 POR EJEMPLO
+        let h1 = document.getElementsByTagName("h1")[0];
+        h1.className = "color_fondo";
+    </script>
+</body>
+</html>

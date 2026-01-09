@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer5_8</title>
+</head>
+<body>
+    <script language = "javascript">
+        alea = Math.round(Math.random() * (10-0) + 0);
+        alert("¡Se ha generado un número aleatorio y tendras que adivinarlo! Tendrás 5 intentos.");
+        
+        intentos = 0;
+
+        while(intentos < 5){
+             
+            numero = parseInt(prompt("Introduce un número"));
+            intentos++;
+
+            if(numero === alea){
+                alert("¡Enhorabuena has acertado el número!");
+                document.write("Has conseguido acertarlo en: "+intentos+" intentos.");
+                break;
+             }else if(numero < alea){
+                alert("El número que has insertado es menor al aleatorio");
+             }else{
+                alert("El número que has insertado es mayor al aleatorio");
+             }
+            }
+
+            if(numero != alea){
+                alert("¡No te quedan intentos, has perdido!")
+                document.write("Numero de intentos: "+intentos);
+            }
+    </script>
+</body>
+</html>

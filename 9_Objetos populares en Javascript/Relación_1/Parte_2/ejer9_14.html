@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer9_14</title>
+</head>
+<body>
+    <script language = "javascript">
+
+    //INTRODUCIMOS UNA FECHA DE NACIMIENTO
+        let fecha = prompt("Introduce una fecha de nacimiento en formato aaaa-mm-dd");
+
+    //CONVERTIRMOS LA FECHA A OBJETO DATE PARA APLICAR MÉTODOS
+        let fecha_nacimiento = new Date(fecha);
+    
+    //ARRAY CON NOMBRES DE LOS MESES
+        const nombres_meses = new Array("Enero","Febero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+
+    //MES Y AÑO DE LA FECHA INTRODUCIDA
+        let mes = fecha_nacimiento.getMonth();
+        let anio = fecha_nacimiento.getFullYear();
+
+    //DIA DE LA SEMANA POR DONDE EMPIEZA EL MES DE LA FECHA INTRODUCIDA
+        let dia_inicio = new Date(anio, mes, 1);
+        let dia_de_la_semana_inicio = dia_inicio.getDay();
+    
+    //PARA SABER CUANTOS DÍAS TIENE EL MES INTRODUCIDO, MIRAMOS CUAL ES EL ÚLTIMO DÍA
+        let dia_ultimo = new Date(anio, mes + 1, 0);
+        let dias_del_mes = dia_ultimo.getDate();
+
+    //AHORA IMPRIMIMOS EL CALENDARIO
+    document.write("<table border = '1' style = 'margin:0 auto'>");
+        document.write("<tr>");
+            document.write("<td>");
+                document.write("Mes de "+nombres_meses[fecha_nacimiento.getMonth()]);
+            document.write("</td>");
+        document.write("</tr>");
+    document.write("</table>");
+
+    document.write("<table border = '1' style = 'margin:0 auto'>");
+        document.write("<tr>");
+            document.write("<td>");
+                document.write("L");
+            document.write("</td>");
+            document.write("<td>");
+                document.write("M");
+            document.write("</td>");
+            document.write("<td>");
+                document.write("X");
+            document.write("</td>");
+            document.write("<td>");
+                document.write("J");
+            document.write("</td>");
+            document.write("<td>");
+                document.write("V");
+            document.write("</td>");
+            document.write("<td>");
+                document.write("S");
+            document.write("</td>");
+            document.write("<td>");
+                document.write("D");
+            document.write("</td>");
+        document.write("</tr>");
+
+
+    document.write("<tr>");
+
+        for(let i = 0; i < dia_de_la_semana_inicio; i++){
+            document.write("<td></td>");
+        }
+
+        for(let dia = 1; dia <= dias_del_mes; dia++){
+            document.write("<td>"+dia+"</td>");
+
+            if((dia + dia_de_la_semana_inicio) % 7 === 0){
+                document.write("</tr>");
+                document.write("<tr>");
+            }
+        }
+        
+        document.write("</tr>");
+        document.write("</table>");
+    </script>
+</body>
+</html>

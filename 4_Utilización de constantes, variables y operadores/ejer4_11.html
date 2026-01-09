@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer4_11</title>
+</head>
+<body>
+    
+<form id = "form_eval">
+    <label for="expresion" style="color:green">Introduzca la expresión:</label>
+    <input type="text" id="expresion" name="expresion"><br><br>
+
+    <div style="display:inline-block; width:300px; text-align:center;">
+        <label for="resultado" style="color:green">Resultado:</label>
+        <input type="text" id="resultado" name="resutlado"><br><br>
+        <button style="color:green" type = "button" onClick = "mi_funcion(form_eval)">Evaluar</button>
+    </div>
+</form>
+
+<script language = "javascript">
+    
+function mi_funcion(e){
+        cadena = e.expresion.value;
+        proceso = eval(cadena);
+
+        e.resultado.value = proceso;
+}
+</script>
+</body>
+</html>

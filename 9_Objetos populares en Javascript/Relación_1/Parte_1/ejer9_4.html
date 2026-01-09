@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer9_4</title>
+    <style>
+        .titulo{
+            text-align: center;
+        }
+        #form_ventana{
+            margin: auto;
+            background-color: yellow;
+            width: 430px;
+            height: 110px;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="titulo">Introduce el alto y el ancho de la ventana</h2>
+    <form id = "form_ventana">
+        <label for = ancho>ANCHO VENTANA</label>
+        <input type="text" id = "ancho"><br><br>
+        <label for = alto>ALTO VENTANA</label>
+        <input type="text" id="alto"><br><br>
+        <input type="button" id = "crear_ventana" value = "Crear Ventana">
+        <input type="button" id = "cerrar_ventana" value = "Cerrar Ventana">
+    </form>
+
+    <script language = "javascript">
+
+            //DEFINIMOS Y DECLARAMOS VARIABLES NECESARIAS
+            let crear = document.getElementById("crear_ventana"); //VARIABLE DONDE GUARDO EL BOTÓN CREAR
+            let cerrar = document.getElementById("cerrar_ventana"); //VARIABLE DONDE GUARDO EL BOTÓN CERRAR
+            let nueva_ventana; //VARIABLE DONDE GUARDARÉ LA VENTANA CREADA CON EL BOTÓN.
+
+
+            //FUNCIÓN PARA EL BOTÓN CREAR
+            function crearVentana(){
+                let ancho = document.getElementById("ancho").value;
+                let alto = document.getElementById("alto").value;
+
+                //VERIFICAMOS QUE LOS CAMPOS SON CORRETOS
+                if(isNaN(ancho) || !ancho || ancho < 0){
+                    alert("Debes introducir un número en el campo para el ANCHO");
+                    return;
+                }else{
+                    ancho = parseInt(ancho);
+                }
+                if(isNaN(alto) || !alto || alto < 0){
+                    alert("Debes introducir un número en el campo para el ALTO");
+                    return;
+                }else{
+                    alto = parseInt(alto);
+                }
+
+                nueva_ventana = window.open("", "Ventana_Creada", "width="+ancho+",height="+alto);
+            }
+            //METEMOS LA FUNCION CON EL EVENTO AL BOTÓN CREAR
+            crear.addEventListener("click",crearVentana);
+            
+            
+            
+            //FUNCIÓN PARA EL BOTÓN CERRAR
+            function cerrarVentana(){
+                nueva_ventana.close();
+                window.close();
+            }
+
+            //METEMOS LA FUNCION CON EL EVENTO AL BOTÓN CERRAR
+            cerrar.addEventListener("click",cerrarVentana);
+    </script>
+</body>
+</html>

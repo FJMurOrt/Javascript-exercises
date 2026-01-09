@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer3_4</title>
+</head>
+<body>
+    <div id = "resultado">
+    </div>
+    <script language = "javascript">
+        //ACCEDEMOS ANTES DE NADA AL DIV
+        let div = document.getElementById("resultado");
+        
+        //CREAMOS LA PETICIÓN AL SERVIDOR
+        function crearObjetoPeticion(){
+            let peticion = false;
+
+            try{
+                peticion = new XMLHttpRequest();
+            }catch(primer_error){
+                try{
+                    peticion = ActiveXObject("Msxml2.XMLHTTP");
+                }catch(segundo_error){
+                    try{
+                        peticion = ActiveXObject("Microsoft.XMLHTTP");
+                    }catch(tercer_error){
+                        peticion = false;
+                    }
+                }
+            }
+            return peticion;
+        }
+        
+        //ABRIMOS LA PETICIÓN AL SERVIDOR
+        let peticion_al_servidor = crearObjetoPeticion();
+
+        //DEFINIMOS LA URL
+        let url = "email.xml";
+        peticion_al_servidor.open("GET", url, true);
+
+        //VERIFICAMOS LA RESPUESTA
+        peticion_al_servidor.onreadystatechange = respuestaServidor;
+
+        function respuestaServidor(){
+            if(peticion_al_servidor.readyState == 4 && peticion_al_servidor.status == 200){
+                let xml = peticion_al_servidor.responseXML;
+
+                let autor = xml.getElementsByTagName("de")[0].textContent;
+                let destino = xml.getElementsByTagName("para")[0].textContent;
+                let asunto = xml.getElementsByTagName("entete")[0].textContent;
+                let mensaje = xml.getElementsByTagName("mensaje")[0].textContent;
+
+                let mensaje_final = "<h1>Mostrar un mensaje de tipo mail cifrado en XML</h1>";
+                mensaje_final += "<b>Autor:</b>: "+autor+"<br>";
+                mensaje_final += "<b>Destino:</b>: "+destino+"<br>";
+                mensaje_final += "<b>Asunto:</b>: "+asunto+"<br>";
+                mensaje_final += "<b>Mensaje:</b>: "+mensaje+"<br>";
+
+                div.innerHTML = mensaje_final;
+            }
+        }
+
+        //ENVIAMOS LA PETICIÓN
+        peticion_al_servidor.send();
+    </script>
+</body>
+</html>

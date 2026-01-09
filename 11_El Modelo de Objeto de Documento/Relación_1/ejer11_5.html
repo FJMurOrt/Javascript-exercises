@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer11_5</title>
+</head>
+<body>
+    <label for = "tipo">Para la celda tipo:</label>
+    <input type="text" id = "tipo"><br>
+    <label for = "fecha">Para la celda fecha(dd-mm-aaaa):</label>
+    <input type="text" id = "fecha"><br>
+    <label for = "diag">Para la celda diag:</label>
+    <input type="text" id = "diag"><br>
+
+
+    <h1>EXÁMENES MÉDICOS</h1>
+    <table id = "mi_tabla" border = "1">
+        <tr>
+            <td><b>Tipo</b></td>
+            <td><b>Fecha</b></td>
+            <td><b>Diag</b></td>
+        </tr>
+        <tr>
+            <td><b>Sangre</b></td>
+            <td><b>05/02/12</b></td>
+            <td><b>Colesterol Alto</b></td>
+        </tr>
+    </table><br>
+    Analisis clínicos: <input type="button" id = "agregar" value ="Agregar">
+    <script language = "javascript">
+        //ACCEDEMOS AL BOTÓN Y A LOS CAMPOS
+        let celda_tipo = document.getElementById("tipo");
+        let celda_fecha = document.getElementById("fecha");
+        let celda_dag = document.getElementById("diag");
+        let boton = document.getElementById("agregar");
+
+        //EVENTO Y FUNCIÓN DEL BOTÓN
+        boton.addEventListener("click", function(){
+            //VERIFICAMOS CAMPO TIPO
+        if(celda_tipo.value == "" || !isNaN(celda_tipo.value)){
+            alert("El campo del tipo no puede estar vacío y tampoco puede ser un número");
+            return;
+        }else{
+            celda_tipo.value = celda_tipo.value; 
+        }
+
+        //VERIFICAMOS CAMPO FECHA
+        if(celda_fecha.value == "" || celda_fecha.value.charAt(2) !== "/" || celda_fecha.value.charAt(5) !== "/"){
+            alert("El campo del tiempo no puede estar vacío y se debe respetar el formato");
+            return;
+        }else{
+            celda_fecha.value = celda_fecha.value; 
+        }
+
+        //VERIFICAMOS DAG
+        if(celda_dag.value == "" || !isNaN(celda_dag.value)){
+            alert("El campo del dag no puede estar vacío y tampoco puede ser un número");
+            return;
+        }else{
+            celda_dag.value = celda_dag.value; 
+        }
+
+        //CREAMOS LA FILA CON LOS DATOS QUE HAYAMOS INTRODUCIDOS
+        let fila = document.createElement("tr");
+
+        //CREAMOS LAS CELDAS CON LOS DATOS INTRODUCIDOS
+        let creacion_celda_tipo = document.createElement("td");
+        creacion_celda_tipo.innerHTML = "<b>"+celda_tipo.value+"</b>";
+        fila.appendChild(creacion_celda_tipo);
+
+        let creacion_celda_fecha = document.createElement("td");
+        creacion_celda_fecha.innerHTML = "<b>"+celda_fecha.value+"</b>";
+        fila.appendChild(creacion_celda_fecha);
+
+        let creacion_celda_diag = document.createElement("td");
+        creacion_celda_diag.innerHTML = "<b>"+celda_dag.value+"</b>";
+        fila.appendChild(creacion_celda_diag);
+        
+        //AHORA AÑADIMOS LA FILA CON LAS CELDAS A LA TABLA
+        let tabla = document.getElementById("mi_tabla");
+        tabla.appendChild(fila);
+
+        //VACIAMOS CAMPOS
+        celda_tipo.value = "";
+        celda_fecha.value = "";
+        celda_dag.value = "";
+        });
+    </script>
+</body>
+</html>

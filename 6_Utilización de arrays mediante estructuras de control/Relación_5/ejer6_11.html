@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer6_11</title>
+</head>
+<body>
+    <script language = "javascript">
+        //CREAMOS EL ARRAY ESTUDIANTES
+        estudiantes = new Array();
+        //RELLENAMOS EL ARRAY MANUALMENTE
+        estudiantes[0] = {nombre: "Ana", edad: 20, puntuaje: 85};
+        estudiantes[1] = {nombre: "Luis", edad: 22, puntuaje: 92};
+        estudiantes[2] = {nombre: "Carlos", edad: 19, puntuaje: 78};
+        estudiantes[3] = {nombre: "Sofía", edad: 21, puntuaje: 95};
+        estudiantes[4] = {nombre: "Miguel", edad: 20, puntuaje: 70};
+
+        //VAMOS A BUSCAR LOS ESTUDIANTES CON UN PUNTUAJE MAYOR A 80
+        let mayor_80 = estudiantes.filter(es => es.puntuaje >= 80);
+        let lista = "";
+        for(var estu of mayor_80){
+            lista += estu.nombre + ", "+estu.edad+", "+estu.puntuaje+"<br>";
+        }
+  
+        console.log(lista);
+
+        //VAMOS A ORDENAR LA LISA DE ESTUDIANTES DE MAYOR A MENOR PUNTUAJE
+        ordenador_por_notas = estudiantes.sort((a,b) => b.puntuaje - a.puntuaje);
+        let lista_ordenada = "";
+        for(var estu of ordenador_por_notas){
+            lista_ordenada += estu.nombre +", "+estu.edad+", "+estu.puntuaje+"<br>";
+        }
+        console.log(lista_ordenada);
+
+        //AHORA VAMOS A CALCULAR EL PUNTUAJE PROMEDIO DE LOS ESTUDIANTES
+        let media = 0.0;
+        let total = 0;
+        for(var estu of estudiantes){
+            total += estu.puntuaje;
+            media = total / estudiantes.length;
+        }
+        console.log(media);
+
+        //AHORA VAMOS A MOSTRAR LOS NOMBRES DE TODOS LOS ESTUDIANTES
+
+        estu_nombres = estudiantes.map(es => es.nombre);
+        let lista_nombres = "";
+        for(var i in estu_nombres){
+            lista_nombres += estu_nombres[i]+"<br>";
+        }
+        console.log(lista_nombres);
+    </script>
+</body>
+</html>

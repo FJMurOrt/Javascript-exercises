@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer8_4</title>
+    <style>
+        #tabla1, #tabla2, #tabla3, #tabla4 {
+            display: flex;
+            justify-content: center;
+        }
+        #tabla4{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form id = "formulario_registro">
+        <table id = "tabla1">
+            <tr>
+                <td><label for = "nombre">Nombre*:</label></td>
+                <td><input type = "text" id = "nombre"></td>
+            </tr>
+            <tr>
+                <td><label for = "apellidos">Apellidos*:</label></td>
+                <td><input type = "text" id = "apellidos"><br></td>
+            </tr>
+            <tr>
+                <td><label for = "email">e-mail*:</label></td>
+                <td><input type = "text" id = "email"><br></td>
+            </tr>
+            <tr>
+                <td><label for = "web">Página web:</label></td>
+                <td><input type = "text" id = "web"><br></td>
+            </tr>
+            <tr>
+                <td><label for = "edad">Edad:</label></td>
+                <td><input type = "text" id = "edad" style="width: 80px;"></td>
+                <td><label for = "sexo">Sexo:</label><input type = "radio" name = "sexo" value = "hombre"><label for = "hombre">Hombre</label><input type = "radio" name = "sexo" value = "mujer"><label for = "hombre">Mujer</label></td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <table id = "tabla2">
+            <tr>
+                <td><label for = "fnac">Fecha Nacimiento:</label></td>
+                <td><input tyoe = "text" id = "dia_nac" style="width: 30px;">de</td>
+                <td><select id = "mes_nac">
+                    <option disabled selected>Elige un mes</option>
+                    <option>Enero</option>
+                    <option>Febrero</option>
+                    <option>Marzo</option>
+                    <option>Abril</option>
+                    <option>Mayo</option>
+                    <option>Junio</option>
+                    <option>Julio</option>
+                    <option>Agosto</option>
+                    <option>Septiembre</option>
+                    <option>Octubre</option>
+                    <option>Noviembre</option>
+                    <option>Diciembre</option>
+
+                </select>de
+                </td>
+                <td><input type = "text" id = "anio_nac" style="width: 80px;"></td>
+            </tr>
+        </table>
+        <br><br>
+        <table id = tabla3>
+            <tr>
+                <td><label for = "nombre_usuario">Escoge un nombre de usuario*:</label></td>
+                <td><input type = "text" id = "usuario"></td>
+            </tr>
+            <tr>
+                <td><label for = "clave">Introduce tu clave*:</label></td>
+                <td><input type = "text" id = "clave"></td>
+            </tr>
+            <tr>
+                <td><label for = "vuelve_clave">Vuelve a escribir tu clave*:</label></td>
+                <td><input type = "text" id = "vuelve_clave"></td>
+            </tr>
+        </table>
+        <table id = tabla4>
+            <tr>
+                <td><input type = "submit" id = "registrar" value = "Registrar"><input type = "button" id = "borrar" value = "Borrar datos"></td>
+            </tr>
+        </table>
+    </form>
+    <script src="ejer8_4.js">
+    </script>
+</body>
+</html>

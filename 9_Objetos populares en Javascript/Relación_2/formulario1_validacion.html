@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>formulario1_validacion</title>
+</head>
+<body>
+    <form id ="mi_form">
+        <label for = "nombre">Nombre: </label>
+        <input type="text" id = "nombre"><br><br>
+        <label for = "edad">Edad: </label>
+        <input type="text" id = "edad"><br><br>
+        <label for = "email">Correo electronico: </label>
+        <input type="text" id = "email"><br><br>
+        <label for = "fecha">Fecha: </label>
+        <input type="date" id = "fecha"><br><br>
+        <label for = "opciones">Selecciona una opción: </label>
+        <select id = "selecciona">
+            <option value = "valor por defecto" disabled selected>Valor por defecto</option>
+            <option value = "opcion1">Opcion 1</option>
+            <option value = "opcion2">Opcion 2</option>
+        </select><br><br>
+        <label for = "checkbx">Un checkbox: </label>
+        <input type="checkbox" id = "check">Haz click en mí<br><br>
+        <label for = "rad">Selecciona una opción: </label><br>
+        <input type="radio" name = "radios" id = "1boton">Un botón<br>
+        <input type="radio" name = "radios" id = "2boton">Otro botón<br>
+        <input type="radio" name = "radios" id = "3boton">Más botónes<br><br>
+        <input type="submit" id = "submit" value="Submit">
+    </form>
+    <script language = "javascript">
+        //ACCEDEMOS AL BOTÓN PARA LUEGO HACER LAS VALIDACIONES DE CADA CAMPO
+        let boton = document.getElementById("submit");
+
+        boton.addEventListener("click", function(event){
+            //HACEMOS QUE EL SUBMIT NO ENVIE EL FORMULARIO ANTES DE QUE SE VALIDE
+            event.preventDefault();
+
+            //CREAMOS UNA EXPRESIÓN PARA LOS ESPACIOS EN BLANCO
+            let expresion_espacios = new RegExp("^\\s+$");
+
+            //EXPRESIÓN PARA EL NOMBRE
+            let expresion_nombre = new RegExp("^[a-zA-Zñ]+$");
+
+            //EXPRESIÓN PARA VALIDAR EL RANGO DE EDAD DE 18 A 100 AÑOS
+            let expresion_edad = new RegExp("^(1[8-9]|[2-9][0-9]|100)$");
+
+            //EXPRESIÓN PARA VALIDAR EL CORREO
+            let expresion_correo = new RegExp("^[a-zA-Zñ0-9._-]+@[a-zA-Z]+\\.[a-z]{2,3}$");
+
+            //ACCEDEMOS AL CAMPO DE NOMBRE Y VALIDAMOS
+            let nombre = document.getElementById("nombre");
+            if(nombre.value == "" || expresion_espacios.test(nombre.value)){
+                alert("El campo nombre se encuentra vacío");
+                return;
+            }else if(!isNaN(nombre.value)){
+                alert("El nombre no puede ser un número");
+                return;
+            }else if(!expresion_nombre.test(nombre.value)){
+                alert("El nombre solo puede contener letras");
+                return;
+            }else{
+                nombre = nombre.value;
+            }
+
+            //AHORA, VAMOS CON LA VALIDACIÓN DE LA EDAD
+            let edad = document.getElementById("edad");
+            if(edad.value == "" || expresion_espacios.test(edad.value)){
+                alert("El campo edad no puede estar vacío.");
+                return;
+            }else if(isNaN(edad.value)){
+                alert("La edad tiene que ser un número.");
+                return;
+            }else if(!expresion_edad.test(edad.value)){
+                alert("La edad deber ser un número entre 18 y 100. Es decir, tienes que tener 18 años o más.");
+                return;
+            }else{
+                edad = parseInt(edad.value);
+            }
+
+            //ACCEDEMOS AL CORREO ELECTRÓNICO Y LO VALIDAMOS TAMBIÉN
+            let correo = document.getElementById("email");
+            if(correo.value == "" || expresion_espacios.test(correo.value)){
+                alert("El correo no puede estar vacío.");
+                return;
+            }else if(!isNaN(correo.value)){
+                alert("El correo no puede ser un número.");
+                return;
+            }else if(!expresion_correo.test(correo.value)){
+                alert("El formato del correo es incorrecto.");
+                return;
+            }else{
+                correo = correo.value;
+            }
+
+            //ACCEDEMOS A LA FECHA Y VALIDAMOS PARA QUE NO LA DEJEN EN BLANCO
+            let fecha = document.getElementById("fecha");
+            if(fecha.value == ""){
+                alert("El campo de la fecha no puede dejarse en blanco.");
+                return;
+            }else{
+                //SI INTRODUCE FECHA, QUE SEA MAYOR DE 18 AÑOS
+                let fecha_introducida = new Date(fecha.value);
+                let hoy = new Date();
+                let edad = hoy.getFullYear() - fecha_introducida.getFullYear();
+                let diferencia_de_meses = hoy.getMonth() - fecha_introducida.getMonth();
+                let dia_que_cumple = hoy.getDate() - fecha_introducida.getDate()
+                //VEMOS SI HA CUMPLIDO AÑOS ESTE AÑO INDEPENDIENTEMENTE DE LA EDAD QUE TENGA
+                    if(diferencia_de_meses < 0 || (diferencia_de_meses == 0 && dia_que_cumple < 0)){
+                        edad = edad - 1;
+                    }
+                //AHORA COMPROBAMOS, UNA VEZ SABEMOS SI HA CUMPLIDO AÑOS O NO, CUANTOS TIENE CON LA FECHA INTRODUCIDA
+                    if(edad < 18){
+                        alert("La fecha introducida no dice que tengas 18 años o más.");
+                        return;
+                    }else{
+                        fecha = fecha.value;
+                    }
+            }
+
+            //ACCEDEMOS A LISTA DE SELECCIÓN E IGUAL, VALIDAMOS QUE NO SE PUEDA DEJA EN BLANCO Y TENGA QUE SELECCIONARSE UNO SI ON SI.
+            let lista_seleccion = document.getElementById("selecciona");
+            if(lista_seleccion.value == ""){
+                alert("Debes seleccionar una de las opciones disponibles.");
+                return;
+            }else{
+                lista_seleccion = lista_seleccion.value;
+            }
+
+            //IGUAL, ACCEDEMOS AL ELEMENTO CHECKBOX Y VERIFICAMOS SI SE ENCUENTRA SELECCIONADO
+            let check = document.getElementById("check");
+            if(!check.checked){
+                alert("Es obligatorio que selecciones el checkbox.");
+                return;
+            }else{
+                check = check.value;
+            }
+
+            //FINALMENTE, VAMOS CON LOS BOTONES TIPO RADIO
+            let radio_seleccionado = "";
+            let lista_de_radios = document.getElementsByName("radios");
+            for(let i = 0; i < lista_de_radios.length; i++){
+                if(lista_de_radios[i].checked){
+                    radio_seleccionado = lista_de_radios[i].value;
+                    break;
+                }
+            }
+            if(radio_seleccionado == ""){
+                alert("Debes seleccionar una de las tres opciones finales");
+                return;
+            }
+
+            //ACCEDEMOS AL FORMULARIO PARA HACER EL SUBMIT AHORA AL FINAL MANUALMENTE.
+            let formulario = document.getElementById("mi_form");
+            formulario.submit();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        th, td{
+            border: none;
+        }
+        #todo_el_contenido{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Modificar datos del empleado</h1>
+    <p>Clic en el código del empleado para modificar sus datos</p>
+    <div id="todo_el_contenido">
+        <div id="form_empleado">
+        </div>
+        <div id="tabla_empleados">
+        </div>
+    </div>
+    <script>
+        //PRIMERO CARGAMOS LA TABLA DE LOS EMPLEADOS AL CARGAR LA PÁGINA.
+        $(document).ready(function(){
+            //REALIZAMOS LA PETICIÓN AL SERVIDOR PARA CARGAR LA TABLA DE EMPLEADOS.
+                $.get("cargar_empleados.php", function(respuesta, estado_respuesta){
+                    $("#tabla_empleados").html(respuesta);
+                });
+
+            //DECLARAMOS LA VARIABLE DEL ID DEL EMPLEADO AQUÍ PARA LUEGO VOLVER A USARLA
+            let idempleado;
+            //ACCEDEMOS A LOS ENLACES
+            $("#tabla_empleados").on("click", "a", function(evento){
+                //EVITAMOS QUE SE RECARGUE LA PÁGINA AL PULSAR UNO DE LOS ENLACES.
+                evento.preventDefault();
+
+                //GUARDAMOS EL ID, QUE SERÁ EL ID DEL EMPLEADO, EN UNA VARIABLE PARA ENVIARLO AL ARCHIVO PHP Y TRABJAR SOBRE ESE EMPLEADO EN EL OTRO ARCHIVO.
+                idempleado = $(this).attr("id");
+
+                //ENVIAMOS LA PETICIÓN
+                $.get("cargar_form_empleado.php", {idempleado: idempleado}, function(respuesta_enlace, estado_respuesta_enlace){
+                    $("#form_empleado").html(respuesta_enlace);
+                });
+            });
+
+            //ACCEDEMOS AL BOTÓN
+            $("#form_empleado").on("click","#actualizar", function(){
+                let nombre = $("#nombre").val();
+                let departamento = $("#departamentos").val();
+                let sueldo = $("#sueldo").val();
+
+                //VERIFICAMOS LOS CAMPOS ANTES DE ACTUALIZAR NADA.
+                if(nombre == ""){
+                    alert("El campo nombre no puede estar vacío");
+                    return;
+                }
+                if(departamento == ""){
+                    alert("El campo departamento no puede estar vacío. Tienes que seleccionar uno obligatoriamente.");
+                    return;
+                }
+                if(sueldo == "" || isNaN(sueldo)){
+                    alert("El campo del sueldo no puede estar vacío o no ser un número");
+                    return;
+                }else{
+                    sueldo = parseInt($("#sueldo").val());
+                }
+
+                //UNA VEZ VERIFICADOS, HACEMOS LA PETICIÓN PARA ACTUALIZAR LOS CAMPOS EN LA BASE DE DATOS.
+                $.get("actualizar_empleado.php", {idempleado: idempleado, nombre: nombre, departamento: departamento, sueldo: sueldo}, function(respuesta_boton, estado_respuesta_boton){
+                    $("#form_empleado").html("<p style='border: 1px solid red;'>La actualización se realizó correctamente</p>");
+                });
+            });
+        });
+    </script>
+</body>
+</html>

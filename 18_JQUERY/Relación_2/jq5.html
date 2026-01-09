@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        img{
+            opacity: 0.2;
+        }
+    </style>
+</head>
+<body>
+    <img id="delfin" src="img/delfin.png">
+    <img id="perro" src="img/perro.png">
+    <img id="gato" src="img/gato.png">
+    <script>
+        $(document).ready(function(){
+            //QUITAMOS OPACIDAD AL DELFIN
+            $("#delfin").click(function(){
+                $(this).css({
+                    opacity: "1"
+                });
+            });
+
+            //QUITAMOS OPACIDAD AL PERRO
+            $("#perro").click(function(){
+                $(this).css({
+                    opacity: "1"
+                });
+            });
+
+            //QUITAMOS OPACIDAD AL GATO
+            $("#gato").click(function(){
+                $(this).css({
+                    opacity: "1"
+                });
+            });
+        });
+    </script>
+</body>
+</html>

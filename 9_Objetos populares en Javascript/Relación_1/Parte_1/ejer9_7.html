@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer9_7</title>
+</head>
+<body>
+    <form>
+        <input type="button" id = "crear" value = "Crear ventana con enlaces">
+    </form>
+    <script language = "javascript">
+        let boton_crear = document.getElementById("crear");
+
+        function crearVentana(){
+            let ventana_nueva = window.open("ejer9_7b.html", "VENTANA_CON_ENLACES", "width=200px,height=200px");
+        }
+
+        boton_crear.addEventListener("click",crearVentana);
+    </script>
+</body>
+</html>

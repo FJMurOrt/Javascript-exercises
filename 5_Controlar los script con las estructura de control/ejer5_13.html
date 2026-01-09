@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script language ="javascript">
+
+        contador = 0;
+        resultado = 0;
+        alert("A continuación se te van a pedir 10 números y al final se motrará la suma de todos ellos.");
+
+        while(contador < 10){
+
+            numero = parseInt(prompt(("Introduce un número.")));
+
+            if(isNaN(numero)){
+                alert("El número introducido no es un número. Vuelve a introducirlo.");
+            }else if(numero < 0){
+                contador++;
+            }else{
+                resultado += numero;
+                contador++;
+            }
+        }
+
+        if (contador === 10) {
+            alert("La suma de todos los números es: " + resultado);
+        }
+    </script>
+</body>
+</html>

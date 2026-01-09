@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer9_26</title>
+</head>
+<body>
+    
+    <form>
+        <label for = "introduce">Introduce el número de días: </label>
+        <input type="text" id = "cantidad">
+        <input type="button" id="boton" value="Modificar fecha">
+    </form>
+    <br><br>
+    <div id = "fecha_modificada">
+    </div>
+    <script language = "javascript">
+        //OBTENEMOS LO QUE HAYAMOS INTRODUCIDO EN EL CAMPO DEL FORMULARIO
+        let cantidad_dias = document.getElementById("cantidad");
+
+        //ACCEDEMOS AL ELEMENTO DEL BOTÓN PARA DARLE EL EVENTO
+        let boton = document.getElementById("boton");
+        let div = document.getElementById("fecha_modificada");
+
+        boton.addEventListener("click", function(){
+            let fecha_actual = new Date();
+            fecha_actual.setDate(fecha_actual.getDate()+parseInt(cantidad_dias.value));
+            div.innerHTML = "La fecha actual más los días introducidos es: "+fecha_actual;
+        });
+    </script>
+</body>
+</html>

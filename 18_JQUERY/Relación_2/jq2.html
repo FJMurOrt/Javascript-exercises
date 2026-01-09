@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        #texto{
+            display: inline-block;
+            background-color: lightblue;
+            border-radius: 10px;
+        }
+        p{
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="texto">
+        <p>BLOQUE DE PRUEBA</p>
+    </div>
+    <br>
+    <input type="button" id="ocultar" value="Ocultar bloque"><br>
+    <input type="button" id="mostrar" value="Mostrar bloque"><br>
+    <input type="button" id="ocultar_mostrar" value="Ocultar / Mostrar"><br>
+    <input type="button" id="cambiar_tamanio" value="Cambiar tamaño"><br>
+    <input type="button" id="fade_out" value="Ocultar con FadeOut"><br>
+    <input type="button" id="fade_in" value="Mostrar con Fadein"><br>
+    <input type="button" id="mover" value="Mover"><br>
+    <input type="button" id="css" value="Cambio estilo CSS"><br>
+    <script>
+        $(document).ready(function(){
+            //BOTÓN OCULTAR
+            $("#ocultar").click(function(){
+                $("#texto").hide();
+            });
+
+            //BOTÓN MOSTRAR
+            $("#mostrar").click(function(){
+                $("#texto").show();
+            });
+
+            //BOTÓN OCULTAR / MOSTRAR
+            $("#ocultar_mostrar").click(function(){
+                $("#texto").toggle();
+            });
+
+            //BOTÓN CAMBIAR TAMANIO
+            $("#cambiar_tamanio").click(function () {
+                $("#texto").animate({
+                    fontSize: "20px",
+                }, 500);
+            });
+
+            //BOTÓN FADE OUT
+            $("#fade_out").click(function(){
+                $("#texto").fadeOut(900);
+            });
+
+            //BOTÓN FADE IN
+            $("#fade_in").click(function(){
+                $("#texto").fadeIn(900);
+            });
+
+            //BOTÓN MOVER
+            $("#mover").click(function(){
+                $("#texto").animate({
+                    marginLeft: "200px"
+                });
+            });
+
+            //BOTÓN CSS
+            $("#css").click(function(){
+                $("#texto").css({
+                    "background-color": "lightgreen",
+                    "color": "red",
+                });
+            });
+        });
+    </script>
+</body>
+</html>

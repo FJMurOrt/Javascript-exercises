@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        .capitulo{
+            border: 1px solid black;
+            background-color: lightblue;
+            font-weight: bold;
+            width: 80px;
+        }
+        ul{
+            list-style: none;
+        }
+        .puntos{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+        <p class="capitulo">Capítulo 1</p>
+        <ul class="puntos">
+            <li>Punto 1</li>
+            <li>Punto 2</li>
+            <li>Punto 3</li>
+        </ul>
+        <p class="capitulo">Capítulo 2</p>
+        <ul class="puntos">
+            <li>Punto 1</li>
+            <li>Punto 2</li>
+            <li>Punto 3</li>
+        </ul>
+        <p class="capitulo">Capítulo 3</p> 
+        <ul class="puntos">
+            <li>Punto 1</li>
+            <li>Punto 2</li>
+            <li>Punto 3</li>
+        </ul>
+
+        <script>
+        $(document).ready(function(){
+            $(".capitulo").click(function(){
+                $(".puntos").not($(this).next()).slideUp();
+                $(this).next(".puntos").slideToggle();
+            });
+        });
+</script>
+</body>
+</html>

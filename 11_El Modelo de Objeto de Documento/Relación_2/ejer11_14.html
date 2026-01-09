@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer11_14</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Tabla de multiplicar</legend>
+        <br>
+        <label for = "número">Número:</label><br>
+        <input type= "text" id = "número">
+        <input type= "button" id= "multi" value= "multiplica">
+    </fieldset>
+    <br>
+    <div id = "tabla_multiplicar">
+        La tabla de multiplicar
+    </div>
+    <script language = "javascript">
+        //ACCEDEMOS AL BOTÓN
+        let boton = document.getElementById("multi");
+        let div = document.getElementById("tabla_multiplicar");
+
+        //EVENTO Y FUNCIÓN
+        boton.addEventListener("click", function(){
+            let numero = document.getElementById("número");
+            let numero_a_multiplicar;
+            
+            //VERIFICAMOS EL CAMPO DEL NÚMERO
+            if(numero.value == "" || isNaN(numero.value)){
+                alert("El campo del número no puede estar vacío y debe ser un número");
+            }else{
+                numero_a_multiplicar = parseInt(numero.value);
+            }
+
+            //MOSTRAMOS LA TABLA
+            let tabla_completa = "";
+            tabla_completa += "<table>";
+            tabla_completa += "<tr><td colspan = '2' style = 'text-align: center'>Tabla de multiplicar del "+numero_a_multiplicar+"</td></tr>";
+            for(let i = 0; i <= 10; i++){
+                tabla_completa += "<tr><td style='text-align:center;'>"+numero_a_multiplicar+" x "+i+" ="+"</td>";
+                tabla_completa += "<td>"+numero_a_multiplicar * i+"</td></tr>";
+            }
+            tabla_completa += "</table>";
+            //MOSTRAMOS LA TABLA
+            div.innerHTML = tabla_completa;
+        });
+    </script>
+</body>
+</html>

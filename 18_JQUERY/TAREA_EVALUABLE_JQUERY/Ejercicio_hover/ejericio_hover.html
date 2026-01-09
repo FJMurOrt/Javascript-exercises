@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        ul{
+            list-style: none;
+            float: left;
+            width: 100px;
+        }
+        #bloque_1, #bloque_2, #bloque_3{
+            padding: 5px;
+        }
+
+        li{
+            font-size: 14px;
+            font-weight: bold;
+            padding-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+    <nav id="menu">
+        <ul id="bloque_1">
+            <li>Opción 1</li>
+            <li>Subopción 1.1</li>
+            <li>Subopción 1.2</li>
+            <li>Subopción 1.3</li>
+        </ul>
+        <ul id="bloque_2">
+            <li>Opción 2</li>
+            <li>Subopción 2.1</li>
+            <li>Subopción 2.2</li>
+            <li>Subopción 2.3</li>
+        </ul>
+        <ul id="bloque_3">
+            <li>Opción 3</li>
+            <li>Subopción 3.1</li>
+            <li>Subopción 3.2</li>
+            <li>Subopción 3.3</li>
+        </ul>
+    </nav>
+    <script>
+        $(document).ready(function(){
+            //APLICAMOS COLORES AL BLOQUE1.
+            $("#bloque_1").css({
+                "background-color": "red",
+                "color": "white"
+            });
+
+            //OCULTAMOS TODOS LOS LI DEL BLOQUE1.
+            $("#bloque_1 li").first().nextAll().hide();
+
+            //APLICAMOS COLORES AL BLOQUE2.
+            $("#bloque_2").css({
+                "background-color": "orange",
+                "color": "white"
+            });
+
+            //OCULTAMOS TODOS LOS LI DEL BLOQUE2.
+            $("#bloque_2 li").first().nextAll().hide();
+
+            //APLICAMOS COLORES AL BLOQUE3.
+            $("#bloque_3").css({
+                "background-color": "green",
+                "color": "white"
+            });
+
+            //OCULTAMOS TODOS LOS LI DEL BLOQUE3.
+            $("#bloque_3 li").first().nextAll().hide();
+
+            //AHORA HACEMOS LOS EVENTOS DEL DESPLEGABLE CON SLIDEDOWN CON UN HOVER PARA CADA BLOQUE.
+            $("#bloque_1").hover(
+                function(){
+                    $("#bloque_1 li").first().nextAll().slideDown();
+                },
+                function(){
+                    $("#bloque_1 li").first().nextAll().slideUp();
+                }
+            );
+
+            //HOVER PARA EL SLIDEDOWN DEL BLOQUE2.
+            $("#bloque_2").hover(
+                function(){
+                    $("#bloque_2 li").first().nextAll().slideDown();
+                },
+                function(){
+                    $("#bloque_2 li").first().nextAll().slideUp();
+                }
+            );
+
+            //EL HOVER PARA EL SLIDEDOWN DEL BLOQUE3.
+            $("#bloque_3").hover(
+                function(){
+                    $("#bloque_3 li").first().nextAll().slideDown();
+                },
+                function(){
+                    $("#bloque_3 li").first().nextAll().slideUp();
+                }
+            );
+        });
+    </script>
+</body>
+</html>

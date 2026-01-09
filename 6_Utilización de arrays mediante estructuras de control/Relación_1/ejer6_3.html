@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer6_3</title>
+    <style>
+        table{
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <script language = "javascript">
+        numeros = new Array();
+
+        while(numeros.length !== 10){
+            numero = prompt("Introduce un número");
+            numeros.push(numero);
+        }
+
+
+        //TABLA PARA LOS NUMEROS EN ORDEN ORIGINAL
+
+        document.write("<table border = '1px'><tr><td colspan='10' style = 'background-color:turquoise'>NUMEROS INTRODUCIDOS INICIALMENTE</td></tr></table>");
+        document.write("<table border='1px'");
+        document.write("<tr >");
+
+        for(i in numeros){
+            document.write("<td>"+numeros[i]);
+            document.write("</td>");
+        }
+        document.write("</table>");
+
+        
+        //AHORA PARA LOS NUMEROS INVERTIDOS
+        
+        numeros_inv = numeros.reverse(numeros);
+
+        document.write("<table border = '1px'><tr><td colspan='10' style = 'background-color:yellow'>NUMEROS EN ORDEN INVERSO</td></tr></table>");
+        document.write("<table border='1px'");
+        document.write("<tr >");
+        
+        for(i in numeros_inv){
+            document.write("<td>"+numeros_inv[i]);
+            document.write("</td>");
+        }
+        document.write("</table>");
+
+    
+    
+    
+    
+    
+    
+    </script>
+</body>
+</html>

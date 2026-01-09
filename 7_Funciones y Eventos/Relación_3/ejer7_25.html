@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer7_25</title>
+</head>
+<body>
+    <script language = "javascript">
+        //EL ARRAY DE COLORES
+        const colores = new Array("Rojo","Verde","Azul");
+
+        //PRIMER ARRAY DE NÚMEROS
+        const primero = new Array(70,9,800);
+
+        //SEGUNDO ARRAY DE NÚMEROS
+        const segundo = new Array(10,50,2,300);
+
+        //TERCER ARRAY DE NÚMEROS
+        const tercero = new Array(400,70,850,8,5,10,30);
+
+        //AHORA MOSTRAMOS LAS LISTAS ORDENADAS ALFABÉTICAMENTE Y NUMERICAMENTE
+        document.write("Ordenado: "+colores.sort());
+        document.write("<br><br>");
+        document.write("Ordenado sin compareNum: "+primero.sort());
+        document.write("<br>");
+        document.write("Ordenado con compareNum: "+primero.sort((a,b)=> a - b));
+        document.write("<br><br>");
+        document.write("Ordenado sin compareNum: "+segundo.sort());
+        document.write("<br>");
+        document.write("Ordenado con compareNum: "+segundo.sort((a,b) => a - b));
+        document.write("<br><br>");
+        document.write("Ordenado sin compareNum: "+tercero.sort());
+        document.write("<br>");
+        document.write("Ordenado con compareNum: "+tercero.sort((a,b) => a - b));
+
+
+    </script>
+</body>
+</html>

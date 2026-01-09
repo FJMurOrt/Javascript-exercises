@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer6_4</title>
+</head>
+<body>
+    <script language = "javascript">
+        function funcion(uno){
+            cadena = (uno.cade.value);
+            document.write("La cadena introducida es: "+cadena);
+
+            array_cadena = cadena.split(" ");
+            document.write("<br>");
+
+            document.write("El número de palabras es: "+array_cadena.length);
+            document.write("<br>");
+
+            document.write("La última palabra es: "+array_cadena[array_cadena.length-1]);
+            document.write("<br>");
+
+            array_invertido = array_cadena.reverse();
+            document.write("Orden invertido de las palabras: "+array_invertido.join(" "));
+            document.write("<br>");
+
+            document.write("Las palabras ordenadas alfabeticamente de la a a la z: "+array_cadena.sort());
+            document.write("<br>");
+            
+            document.write("Las palabras ordenadas alfabeticamente de la z a la a: "+array_cadena.sort().reverse());
+
+
+
+        }
+    </script>
+</body>
+    <form name="uno">
+        <label for="nombre">Cadena:</label>
+        <input type="text" name="cade" id="cade"></input>
+
+        <button type="button" onclick="funcion(this.form)">Comprobar</button>
+    </form>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer11_4</title>
+</head>
+<body>
+    <script language = "javascript">
+        //FUNCIÓN PARA CREAR EL CAMPO DE TEXTO Y METERLO EN EL BODY
+        function crearCampoDeTexto(){
+            let campo_de_texo = document.createElement("input");
+
+        //AHORA LE VAMOS AÑADIENDO LOS ATRIBUTOS Y SUS VALORES
+        campo_de_texo.type = "text";
+        campo_de_texo.value = "Soy una inocente caja de texto";
+        campo_de_texo.style.backgroundColor = "blue";
+        campo_de_texo.style.color = "white";
+        
+        //AL FINAL, METEMOS EL CAMPO DE TEXTO EN EL BODY
+        document.body.appendChild(campo_de_texo);
+        }
+        //LLAMAMOS A LA FUNCIÓN
+        crearCampoDeTexto();
+    </script>
+</body>
+</html>

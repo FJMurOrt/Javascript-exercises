@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer9_9</title>
+    <style>
+        .form1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form class = "form1">
+        <label for = "cantidad">INTRODUCE LA CANTIDAD A DESGLOSAR: </label>
+        <input type = "text" id = "cantidad"><br><br>
+        <input type="button" id ="desglosar" value = "Desglosar Cantidad">
+    </form>
+    <script language = "javascript">
+
+        //DECLARAMOS Y DEFINIMOS VARIABLES
+        let boton_desglosar = document.getElementById("desglosar"); //PARA EL BOTÓN
+        let cantidad; //PARA LA CANTIDAD
+        const array_billetes = new Array(5000,2000,1000,500,200,100,50,25,10,5,1); //ARRAY DE LOS BILLETES
+        
+
+        //FUNCIÓN PARA VERIFICAR QUE LA CANTIDAD ES CORRECTA
+        function verificarCantidad(){
+             cantidad = parseInt(document.getElementById("cantidad").value);
+             if(isNaN(cantidad) || !cantidad || cantidad < 0){
+                alert("Debes introducir una cantidad en el campo para desglosar algo");
+                document.getElementById("cantidad").value = "";
+                return false;
+             }else{
+                return true;
+             }
+             
+        }
+
+        //FUNCIÓN PARA DESGLOSAR LA CANTIDAD
+        function desglosar(canti){
+            //DECLARACIÓN DE VARIABLES QUE NECESITO
+                let numero_de_billetes;
+                let resto_de_la_cantidad;
+                let ventana_para_resultado;
+
+                ventana_para_resultado = window.open("", "Desglose de la cantidad", "width=500px,height=800px");
+                ventana_para_resultado.document.write(
+                    "<table border = '1' solid black style = 'margin: 0 auto'><tr><td>"+
+                        "DESGLOSES DE LA CANTIDAD: "+canti+
+                    "</td></tr></table>"+
+                    "<table border = '1' solid black style = 'margin: 0 auto'>"
+                );
+                
+                for(let i = 0; i < array_billetes.length; i++){
+                    numero_de_billetes = Math.floor(canti / array_billetes[i]);
+                    resto_de_la_cantidad = canti % array_billetes[i];
+                    canti = resto_de_la_cantidad;
+                    ventana_para_resultado.document.write("<tr><td>Unidades de "+array_billetes[i]+":"+numero_de_billetes+"</td></tr>");
+                }
+                ventana_para_resultado.document.write("</table>");
+            }
+        
+        boton_desglosar.addEventListener("click",() => {
+            if(verificarCantidad()){ //SI LA FUNCIÓN DE VERFIICAR LA CANTIDAD DEVUELVE TRUE, SUCEDE LA SIGUIENTE FUNCIÓN
+                desglosar(cantidad);
+            }
+        });
+        
+    </script>
+</body>
+</html>

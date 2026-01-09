@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecma9</title>
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Introduce tu edad para saber si puedes pasar a la discoteca</h1>
+    Edad: <input type="text" id="edad"><br><br>
+    <input type="button" id="boton_preguntar" value="¡Preguntar!">
+    <br><br>
+    <div id="resultado">
+    </div>
+    <script language = "javascript">
+        //ACCEDEMOS AL BOTÓN
+        let boton_preguntar = document.getElementById("boton_preguntar");
+
+        //EVENTO Y FUNCIÓN DEL BOTÓN PARA REALIZAR LA PROMESA
+        boton_preguntar.addEventListener("click", function(){
+            //CREAMOS LA PROMESA
+            let promesa_discoteca = new Promise(function(pasas, no_pasas){
+
+                try{
+                    //ACCEDEMOS AL CAMPO DE LA EDAD
+                    let edad = document.getElementById("edad").value;
+
+                    //VERIFICAMOS EL CAMPO Y LO GUARDAMOS EN UNA VARIABLE
+                    if(isNaN(edad) || edad == ""){
+                        throw new Error("Sólo se pueden introducir números en el campo de la edad y no puede quedar vacío."); //CREAMOS EL ERROR CON THROW NEW ERROR Y LUEGO LO CAPTURAMOS ABAJO CON EL CATCH.
+                    }else{
+                        edad = parseInt(document.getElementById("edad").value);
+                    }
+
+                    //AHORA ENCAMINAMOS LA PROMESA DEPENDIENDO LO INTRODUCIDO EN EL CAMPO DE LA EDAD
+                    if(edad >= 18){
+                        pasas("¡Ya tienes los 18 años! ¡Puedes pasar!");
+                    }else{
+                        no_pasas("¡Lo sentimos, aún eres menor de 18 años y no puedes pasar.");
+                    }
+
+                }catch(error_al_introducir_letras){ //CAPTURAMOS EL ERROR DEL CAMPO DE LA EDAD Y ESTO HARA QUE CUANDO OCURRA, SE IMPRIMA GRACIAS A QUE SE PASA MÁS ADELANTE AL PROMESA_DISCOTECA.CATCH
+                    no_pasas(error_al_introducir_letras);
+                }
+                
+
+            });
+
+            //AHORA EJECUTAMOS LA PROMESA DEPENDIENDO HACIA DONDE VAYA.
+            //EN CASO DE QUE VAYA BIEN
+            promesa_discoteca.then(function(promesa_exitosa){
+                let div = document.getElementById("resultado");
+
+                div.innerHTML = promesa_exitosa;
+            });
+
+            //EN CASO DE QUE VAYA MAL
+            promesa_discoteca.catch(function(promesa_fallida){
+                let div = document.getElementById("resultado");
+                div.innerHTML = promesa_fallida;
+            });
+        });
+    </script>
+</body>
+</html>

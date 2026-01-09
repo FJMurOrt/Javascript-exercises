@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer9_37</title>
+</head>
+<body>
+    <script language = "javascript">
+        //VAMOS A CREAR VARIAS CADENAS QUE VAMOS A GUARDAR EN VARIABLES Y LUEGO LAS VAMOS A MANIPULAR CON MÉTODOS DEL OBJETO STRING
+        let titulo = "<h2>Manejo de cadenas o tira de caracteres</h2>";
+        let cadena1 = "Esta cadena es un objeto string";
+        let cadena2 = ",y este trozo también";
+        let cadena_negrita = "Esta cadena es un objeto string,"
+        let cadena_cursiva = "Esto también es una cadena u objeto string."
+
+        //EMPEZAMOS A IMPRIMIR
+        document.write(titulo.bold());
+        document.write("<br><br>");
+        document.write(cadena1.concat(cadena2)+"<br>");
+        document.write(cadena_negrita.bold());
+        document.write("<br><br>");
+        document.write("De la URL podemos obtener el nombre del fichero:"+"<br><br>");
+        
+
+        //SEGUIMOS CON MÁS VARIABLES
+        let URL = window.location.href;
+        //CREAMOS UN ARRAY DE ELEMENTOS A PARTIR DE LA / COMO DVISIÓN EN LA CADENA
+        let URL_formato_array = URL.split("/");
+        //OBTENEMOS EL NOMBRE DEL ARCHIVO QUE ESTÁ AL FINAL DEL TODO
+        let nombre_archivo = URL_formato_array[URL_formato_array.length - 1];
+
+        //SEGUIMOS IMPRIMIENDO
+        document.write("URL completa (href): "+URL.bold());
+        document.write("<br>");
+        document.write("Nombre del archivo: "+nombre_archivo.bold()+"<br>");
+        document.write("y mostrarlo de formas diferenes: "+nombre_archivo+", "+nombre_archivo.fontcolor("red")+", "+nombre_archivo.fontcolor("green"));
+        document.write("<br><br>");
+        document.write(cadena_cursiva.italics());
+    </script>
+</body>
+</html>

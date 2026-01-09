@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecma10</title>
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    Introduce un número: <input type="text" id="numero"><br><br>
+    <input type="button" id="boton" value="¡Ejecutar promesas!">
+    <br><br>
+    <div id="resultado">
+    </div>
+    <script language = "javascript">
+        //ACCEDEMOS AL BOTÓN
+        let boton_numeros = document.getElementById("boton");
+
+        boton_numeros.addEventListener("click", function(){
+            //GUARDAMOS EL NÚMERO EN UNA VARIABLE
+            let numero = document.getElementById("numero").value;
+
+            //ABRIMOS LA PROMESA
+            let primera_promesa = new Promise(function(funciona, no_funciona){
+                try{
+                    if(numero == "" || isNaN(numero)){
+                        throw new Error("El campo del número no puede estar vacío y debe ser un número.");
+                    }else{
+                        funciona(parseInt(numero));
+                    }
+                }catch(error_campo_numero){
+                    no_funciona(error_campo_numero);
+                }
+            });
+
+            //AHORA CONCATENO DOS PROMESAS MÁS EN CASO DE QUE LA PRIMERA QUE HEMOS CREADO SALGA BIEN.
+            primera_promesa.then(function(numero){
+                console.log(numero);
+                let segunda_promesa = new Promise(function(hace_el_primer_calculo){
+                    hace_el_primer_calculo(numero + 5);
+                });
+                return segunda_promesa;
+            })
+
+            //AHORA LA TERCERA PROMESA
+            .then(function(numero_de_la_segunda){
+                console.log(numero_de_la_segunda);
+                let tercera_promesa = new Promise(function(se_vuelve_a_calcular){
+                    se_vuelve_a_calcular(numero_de_la_segunda + 20);
+                });
+                return tercera_promesa;
+            })
+
+            //AHORA YA MOSTRAMOS EL RESULTADO
+            .then(function(resultado){
+                console.log(resultado);
+                let div = document.getElementById("resultado");
+                div.innerHTML = "¡Se calculó el resultado, para verlo, abre la consola!";
+            })
+
+            //TAMBIEN EL CATCH EN CASO DE QUE HAYA ERROR Y LA PROMESA NO SE CUMPLA
+            .catch(function(error){
+                let div = document.getElementById("resultado");
+                div.innerHTML = error;
+            })
+
+            //HACEMOS EL FINALLY QUE SE EJECUTARÁ SÍ O SÍ AL FINAL DE LA EJCUCIÓN DE LAS PROMESAS. HAYA O NO HAYA ERRORES.
+            .finally(function(){
+                console.log("Fin del programa.");
+            });
+        });
+    </script>
+</body>
+</html>

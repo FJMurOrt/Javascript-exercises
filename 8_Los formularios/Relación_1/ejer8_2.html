@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer8_2</title>
+</head>
+<body>
+    <form>
+        <table>
+            <tr>
+                <td><label for="nombre">Nombre:</label></td>
+                <td><input type = "text" id ="nombre"></td>
+            </tr>
+            <tr>
+                <td><label for="edad">Edad:</label></td>
+                <td><input type = "text" id ="edad" style="width: 50px;"></td>
+            </tr>
+            <tr>
+                <td><label for="interes">Interés:</label></td>
+                <td><select id = "interes" style = "width: 100px;">
+                        <option disabled selected>Elige una</option>
+                        <option>Contacto comercial</option>
+                        <option>Atención al cliente</option>
+                        <option>Contacto de proveedores</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><label for="fecha">Fecha:</label></td>
+                <td><input type = "text" id ="fecha"></td>
+            </tr>
+            <tr>
+                <td colspan ="2" style = "text-align: center;"><input type = "button" id ="enviar" value = "Enviar" style="width: 50px;"></td>
+            </tr>
+        </table>
+    </form>
+
+    <script language = "javascript">
+        //VALIDACIÓN
+        let boton = document.getElementById("enviar");
+        boton.addEventListener("click", function(){
+            //VALIDAMOS LA PARTE DEL NOMBRE
+            let nombre = document.getElementById("nombre");
+            let cadena_de_nombre = nombre.value;
+
+            if(cadena_de_nombre.length < 1){
+                nombre.focus();
+                return;
+            }
+
+            //VALIDAMOS LA PARTE DE LA EDAD
+            let edad = document.getElementById("edad");
+            let edad_valor = parseInt(edad.value);
+
+            if(isNaN(edad_valor) || edad_valor < 18){
+                edad.focus();
+                return;
+            }
+
+            //VALIDAMOS LA PARTE DEL SELECT
+            let select = document.getElementById("interes");
+            let valor = select.value;
+
+            if(valor === ""){
+                select.focus();
+                return;
+            }
+
+            //VALIDAMOS LA FECHA
+            const meses_de_31 = new Array(1,3,5,7,8,10,12);
+            const meses_de_30 = new Array(4,6,9,11);
+
+            let fecha = document.getElementById("fecha");
+            let fecha_valor = fecha.value;
+
+            let array_fecha = fecha_valor.split("-");
+            if(array_fecha.length !== 3){
+                fecha.focus();
+                return;
+            }
+            //CONVERTIMOS A NÚMERO CADA PARTE
+            let dia = parseInt(array_fecha[0]);
+            let mes = parseInt(array_fecha[1]);
+            let anio = parseInt(array_fecha[2]);
+
+            if(isNaN(dia) || isNaN(mes) || isNaN(anio)){
+                fecha.focus();
+                return;
+            }
+
+            for(let i = 0; i < meses_de_31.length; i++){
+                if(mes === meses_de_31[i] && (dia < 1 || dia > 31)){
+                    fecha.focus();
+                    return;
+                }
+            }
+
+            for(let i = 0; i < meses_de_30.length; i++){
+                if(mes === meses_de_30[i] && (dia < 1 || dia > 30)){
+                    fecha.focus();
+                    return;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

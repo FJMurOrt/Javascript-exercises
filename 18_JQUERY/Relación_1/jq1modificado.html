@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jq1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        td{
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
+        </tr>
+    </table>
+    <script>
+        //EVENTO Y FUNCIONES
+        $("document").ready(function(){
+            
+            //VAMOS A ACCEDER A TODAS LAS FILAS Y SOLO CAMBIAR EL FONDO DE LAS FILAS QUE SEAN PARES RECORRIENDOLAS CON EACH
+            $("table tr").each(function(indice){
+                if(indice % 2 == 0){
+                    $(this).css("background-color", "lightblue");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

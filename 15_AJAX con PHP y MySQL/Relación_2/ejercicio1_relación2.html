@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejercicio1_relación2</title>
+</head>
+<body>
+    <h1>Modificar datos del empleado</h1>
+    <p>Clic en el código del empleado para modificar sus datos</p>
+    <div id="form">
+    </div><br><br>
+    <div id="datos">
+    </div>
+    <script language = "javascript">
+        //VARIABLES PARA ACCEDER A LOS ELEMENTOS QUE NECESITAREMOS
+        let div_form = document.getElementById("form");
+        let div_datos = document.getElementById("datos");
+
+        
+        //PRIMER LA FUNCIÓN PARA CREAR LOS OBJETOS PARA LAS PETICIONS
+        function crearObjetoPeticion(){
+            let objeto_peticion = false;
+
+            try{
+                objeto_peticion = new XMLHttpRequest();
+            }catch(primer_error){
+                try{
+                    objeto_peticion = ActiveXObject("Msxml2.XMLHTTP");
+                }catch(segundo_error){
+                    try{
+                        objeto_peticion = ActiveXObject("Microsoft.XMLHTTP");
+                    }catch{
+                        objeto_peticion = false;
+                    }
+                }
+            }
+            return objeto_peticion;
+        }
+
+        //LLAMAMOS A LA PETICIÓN
+        let peticion = crearObjetoPeticion();
+
+        //DEFINIMOS EL MÉTODO Y LA URL Y LUEGO LA ABRIMOS
+        let url = "php_datos.php";
+        peticion.open("GET", url, true);
+
+        //VERIFICAMOS QUE LA CONEXIÓN ES CORRECTA Y SI LO ES, OBTENEMOS LOS RESULTADOS
+        peticion.onreadystatechange = respuestaServidor;
+
+        function respuestaServidor(){
+            if(peticion.readyState == 4 && peticion.status == 200){
+                div_datos.innerHTML = peticion.responseText;
+
+        //-------------AHORA QUE YA NOS DEVUELVE LA TABLA, VAMOS A CREAR EVENTOS PARA CUANDO HAGAMOS CLICK EN EL ENLACE-----------
+                let enlaces = document.getElementsByTagName("a");
+
+                for(let i = 0; i < enlaces.length; i++){
+                    enlaces[i].addEventListener("click", function(){
+                        let peticion = crearObjetoPeticion();
+                        
+                        let idempleado = this.id;
+
+                        let url = "php_enlaces.php?enlace="+idempleado;
+                        peticion.open("GET", url, true);
+
+                        peticion.onreadystatechange = respuestaEnlaces;
+                        function respuestaEnlaces(){
+                            if(peticion.readyState == 4 && peticion.status == 200){
+                                div_form.innerHTML = peticion.responseText;
+
+                                //--------------AHORA PARA ACTUALIZAR LOS DATOS CON EL BOTÓN ACTUALIZAR------------
+                                let boton_actualizar = document.getElementById("actualizar");
+                                boton_actualizar.addEventListener("click", function(){
+                                    //RECOGEMOS LOS DATOS DE LOS CAMPOS
+                                    let nombre = document.getElementById("nombre").value;
+                                    let departamento = document.getElementById("departamentos").value;
+                                    let sueldo = document.getElementById("sueldo").value;
+
+                                    //INICIAMOS OTRA PETICION PARA ENVIARLE LOS DATOS AL ARCHIVO PHP
+                                    let peticion = crearObjetoPeticion();
+
+                                    //URL Y MÉTODO
+                                    let url = "php_actualizar.php?nombre="+nombre+"&departamento="+departamento+"&sueldo="+sueldo+"&idempleado="+idempleado;
+                                    peticion.open("GET", url, true);
+
+                                    //VERIFICAMOS
+                                    peticion.onreadystatechange = respuestaActualizacion;
+                                    function respuestaActualizacion(){
+                                        if(peticion.readyState == 4 && peticion.status == 200){
+                                            div_form.innerHTML = "La actualización se realizó correctamente.";
+                                        }
+                                    }
+
+                                    //ENVIAMOS LA PETICIÓN
+                                    peticion.send();
+                                });
+                            }
+                        }
+                        peticion.send();
+                    });
+                }
+            }
+        }
+
+        //ENVIAMOS LA PETICIÓN
+        peticion.send();
+    </script>
+</body>
+</html>

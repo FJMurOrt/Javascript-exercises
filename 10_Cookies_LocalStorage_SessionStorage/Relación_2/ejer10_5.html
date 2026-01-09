@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer10_5</title>
+</head>
+<body>
+    <form id = "mi_form">
+        <label for ="cantidad">Cantidad: </label>
+        <input type = "text" id ="cantidad">
+        <input type = "button" id ="sumar" value= "Sumar">
+        <input type = "button" id ="borrar" value= "Borrar"><br><br>
+    </form>
+    <h1 id = "resultado">
+
+    </h1>
+    <script language  = "javascript">
+        //ACCEDEMOS A LOS CAMPOS Y BOTONES
+        let cantidad = document.getElementById("cantidad");
+        let sumar = document.getElementById("sumar");
+        let borrar = document.getElementById("borrar");
+        let h1 = document.getElementById("resultado");
+
+        //EVENTO Y FUNCIÓN PARA EL BOTÓN SUMAR
+        sumar.addEventListener("click",function(){
+            //VERIFICAMOS EL CAMPO CANTIDAD
+            let cantidad_a_sumar;
+            if(cantidad.value == "" || isNaN(cantidad.value)){
+                alert("El campo cantidad no puede estar vacío y debe contener solo números.");
+                return;
+            }else{
+                cantidad_a_sumar = parseInt(cantidad.value);
+            }
+
+            let total;
+            total = parseInt(localStorage.getItem("cantidad")); 
+            if(!total){
+                total = 0;
+                total += cantidad_a_sumar;
+                localStorage.setItem("cantidad", total);
+            }else{
+                total += cantidad_a_sumar;
+                localStorage.setItem("cantidad", total);
+            }
+            
+
+            h1.innerHTML = total;
+        });
+
+        borrar.addEventListener("click", function(){
+            //BORRAMOS EL LOCAL STORAGE
+            localStorage.clear();
+        });
+    </script>
+</body>
+</html>

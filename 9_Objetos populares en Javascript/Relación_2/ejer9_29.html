@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for = "anio">Introduce un año: </label>
+        <input type="text" id = "anio">
+        <input type = "button" id = "boton" value="Introducir">
+    </form>
+    <script language = "javascript">
+
+            //ACCEDEMOS AL BOTON
+            let boton = document.getElementById("boton");
+
+            boton.addEventListener("click", function(){
+            //EXPRESIONES PARA VALIDAR EL AÑO
+            let expresion_1999 =  new RegExp("^19\\d{2}$");
+            let expresion_2021 = new RegExp("^20(0\\d|1\\d|20|21)$");
+
+            //ACCEDEMOS AL CAMPO DEL FORMULARIO
+            let campo_anio = document.getElementById("anio");
+            let anio = document.getElementById("anio").value;
+
+            if(anio == "" || isNaN(anio)){
+                alert("Debes introducir un número");
+                return;
+            }else{
+                anio = parseInt(document.getElementById("anio").value);
+
+                if(expresion_1999.test(anio) || expresion_2021.test(anio)){
+                    alert("¡Año válido!");
+                }else{
+                    alert("¡Año no válido!");
+                }
+            }
+        });
+    </script>
+</body>
+</html>

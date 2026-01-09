@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer7_22</title>
+</head>
+<body>
+    <script language = "javascript">
+        //VAMOS A CREAR UNA FUNCIÓN PARA PODER CREAR LAS LISTAS
+        function crearLista(tipo, ...elementos){
+            document.write("<"+tipo+">");
+            for(i = 0; i < elementos.length; i++){
+                document.write("<li>"+elementos[i]+"</li>");
+            }
+            document.write("</"+tipo+">");
+        }
+
+        //USAMOS LA FUNCIÓN
+        crearLista("ol","primero","segundo","tercero");
+        document.write("<br><br>");
+        crearLista("ol","hola","adios");
+        document.write("<br><br>");
+        crearLista("ul","a","b","c","d","e");
+
+    </script>
+</body>
+</html>

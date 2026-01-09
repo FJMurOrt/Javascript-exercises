@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15</title>
+</head>
+<body>
+    <script language = "javascript">
+        //PEDIMOS LA FECHA
+        let fecha = prompt("Introduce una fecha en formato dd-mm-aa");
+
+        //AHORA, OBTENEMOS LA FECHA DE LA CADENA EN FORMATO NUMERO ENTERO.
+        let dia = parseInt(fecha.charAt(0)+fecha.charAt(1));
+        let mes = parseInt(fecha.charAt(3)+fecha.charAt(4));
+        let anio = parseInt(fecha.charAt(6)+fecha.charAt(7));
+
+        //AHORA VAMOS A EMPEZAR A VERIFICAR. EMPEZAMOS CON EL MES.
+
+        if(mes < 1 || mes > 12){
+            alert("El mes introducido no es válido")
+        }else{
+            //SI EL MES ES CORRECTO, PASAMOS A CON EL AÑO. PRIMERO LO CONSTRUIMOS.
+            let anio_completo;
+            if(anio > 25){
+                anio_completo = parseInt("19"+anio);  
+            }else if(anio < 25){
+                anio_completo = parseInt("20"+anio);
+            }else if(anio < 0 || isNaN(anio)){
+                alert("El anño introducido no es válido.")
+            }
+            //AHORA LO VERIFICAMOS SI ES O NO BISIESTO.
+            let anio_bisiesto = false;
+
+            if((anio_completo % 4 == 0 && anio_completo % 100 != 0) || (anio_completo % 400) == 0){
+                anio_bisiesto = true;
+            }
+            //AHORA QUE YA TENEMOS LOS AÑOS. VAMOS A VERIFICAR EL NÚMERO DE DÍAS EN FUNCIÓN DEL MES.
+            let dias_mes = 31;
+            if(mes == 4 || mes == 6 || mes == 9 || mes == 11){
+                dias_mes = 30;
+            }else if(mes == 2){
+                if(anio_bisiesto){
+                    dias_mes == 29;
+                }else{
+                    dias_mes == 28;
+                }
+            }else{
+                dias_mes == 31;
+            }
+            //VAMOS AHORA A VERIFICAR QUE EL NÚMERO DE DÍAS NO SE SALGA DEL RANGO POSIBLE TENIENDO EN CUENTA EL MES TAMBIÉN.
+            if(dia > dias_mes || isNaN(dia)){
+                alert("El número de días no es válido.");
+            }else if(anio_bisiesto){
+                alert("La fecha es válida y el año es bisiesto");
+            }else{
+                alert("La fecha es válida pero el año no es bisiesto.");
+            }
+        }
+    </script>
+</body>
+</html>

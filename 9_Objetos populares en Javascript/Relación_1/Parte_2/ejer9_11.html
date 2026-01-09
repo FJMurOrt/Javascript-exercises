@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer9_11
+    </title>
+</head>
+<body>
+    <script language = "javascript">
+
+        //NECESITAMOS LA FECHA DEL USUARIO
+        let fecha;
+
+        do {
+             fecha = prompt("Introduce tu fecha de nacimiento en formato (aaaa-mm-dd)");
+        } while (fecha[4] !== "-" || fecha[7] !== "-");
+       
+        //CONVERTIMOS AHORA LA FECHA EN UN OBJETO DE DATE PARA PODER APLICARLE LOS MÉTODOS.
+        let fecha_nacimiento;
+        fecha_nacimiento = new Date(fecha);
+
+        //AHORA, HACEMOS LO MISMO PERO PARA LA FECHA ACTUAL.
+        let fecha_actual;
+        fecha_actual = new Date();
+
+        //AHORA VAMOS A SACAR EL AÑO DE CADA FECHA Y SABER LA EDAD SOLO COMPARANDO POR AÑO.
+        let anio_actual = fecha_actual.getFullYear();
+        let anio_fecha_introducida = fecha_nacimiento.getFullYear();
+        let edad = anio_actual - anio_fecha_introducida;
+
+        //AHORA VAMOS A VER SI POR MES, LOS HA CUMPLIDO YA O AÚN NO Y HABRÍA QUE RESTARLE 1 AL AÑO.
+        let mes_fecha_introducida = fecha_nacimiento.getMonth()+1;
+        let mes_actual = fecha_actual.getMonth() + 1;
+
+        //IGUAL VAMOS A COMPROBAR SI HA CUMPLIDO AÑOS ALGÚN DÁI DE ESTE MES
+        let dia_fecha_introducida = fecha_nacimiento.getDate();
+        let dia_actual = fecha_actual.getDate();
+
+        //CONCLUIMOS SI YA HA CUMPLIDO AÑOS ESTE AÑO O AÚN NO.
+        
+        if((mes_fecha_introducida > mes_actual) || (mes_fecha_introducida == mes_actual && dia_actual < dia_fecha_introducida)){
+            alert("Tu edad es "+(edad - 1));
+        }else{
+            alert("Tu edad es: "+edad);
+        }
+    </script>
+</body>
+</html>

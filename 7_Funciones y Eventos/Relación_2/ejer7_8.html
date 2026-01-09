@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer7_8</title>
+</head>
+<body>
+    <form id = "formu">
+        <input type = text id = "numero">
+        <select id = "letras">
+            <option value = "letra"></option>
+        </select>
+        <input type = "button" id = "boton" value = "¡Calcular letra!">
+    </form>
+
+    <script language = "javascript">
+        //CREAMOS EL ARRAY CON CADA UNA DE LAS LETRAS POSIBLES PARA EL DNI
+        const array_letras = new Array("T","R","W","A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V","H","L","C","K","E");
+
+        //DECLARAMOS VARIABLES NECESARIAS
+        let numero;
+        let posicion_letra;
+
+        //CREAMOS LA FUNCION JUNTO AL EVENTO QUE SE LLEVARÁ A CABO CUANDO PULSEMOS EL BOTÓN CON ADDEVENLISTENER
+        const boton = document.getElementById("boton");
+
+        //CREAMOS EL ADDEVENTLISTENER Y ACCEDEMOS A LOS ELEMENTOS DEL FORMULARIO CON GETELEMENTBYID
+        boton.addEventListener("click", function(){
+            numero = parseInt(document.getElementById("numero").value);
+
+            posicion_letra = numero % 23;
+
+            const select = document.getElementById("letras");
+            select.options[0].text = array_letras[posicion_letra];
+        });
+    </script>
+</body>
+</html>

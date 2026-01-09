@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer9_35</title>
+</head>
+<body>
+    <form>
+        <label for = "numero">Introduce tu número de teléfono:</label>
+        <input type="text" id = "num">
+        <input type="button" id="boton" value="Aceptar">
+    </form>
+    <script language ="javascript">
+        
+
+        //ACCEDEMOS AL BOTÓN
+        let boton = document.getElementById("boton");
+
+        boton.addEventListener("click", function(){
+        //EXPRESIÓN PARA VERIFICAR QUE EL TELÉFONO SEA CORRECTO CON 9 NÚMEROS
+        let mi_expresion = new RegExp("^[0-9]{9}$");
+
+        //RECOGEMOS EL NÚMERO INTRODUCIDO EN EL CAMPO
+        let telefono = document.getElementById("num");
+
+        if(mi_expresion.test(telefono.value)){
+            alert("¡Número con formato correcto!");
+        }else{
+            alert("Error al introducir el número de teléfono, intentalo de nuevo.");
+            telefono.value = "";
+        }
+        });
+    </script>
+</body>
+</html>

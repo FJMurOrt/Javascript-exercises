@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jq11</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Comprobar disponibilidad de usuario mediante objeto JSON</h1>
+    Nombre de usuario: <input type="text" id="nombre">
+    <a href="#" id="disponibilidad">Comprobar disponibilidad</a>
+    <div id="resultado">
+    </div>
+    <script>
+        $(document).ready(function(){
+            $("#disponibilidad").click(function(event){
+                //PARAMOS EL EVENTO PARA QUE NO SE ACTUALICE LA PÁGINA
+                event.preventDefault();
+
+                //ACCDEMOS AL NOMBRE
+                let nombre = $("#nombre").val().trim().toLowerCase();
+
+                //VERIFICAMOS EL NOMBRE
+                if(nombre == "" || !isNaN(nombre)){
+                    alert("El campo del nombre no puede estar vacío o ser un número.");
+                    return;
+                }
+
+                //ENVIAMOS LA PETICIÓN
+                $.getJSON("disponibilidad.php", {nombre: nombre}, function(respuesta){
+                    if(respuesta.disponible == true){
+                        $("#resultado").html("El nombre "+nombre+" está disponible.");
+                    }else{
+                        let info_alternativas = "<br>El nombre no está disponible<br><br>";
+                        respuesta.alternativas.forEach(alternativa => {
+                            info_alternativas += alternativa+"<br>";
+                        });
+                        $("#resultado").html(info_alternativas);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

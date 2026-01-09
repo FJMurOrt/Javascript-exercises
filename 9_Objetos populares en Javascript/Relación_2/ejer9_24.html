@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer9_24</title>
+</head>
+<body>
+    <form id = "mi_form">
+        <h2>¿QUÉ ESTUDIOS TIENES?</h2><br><br>
+        <label for = "uno">ESO</label>
+        <input type = "radio" name = "estudios" id = "eso"><br><br>
+        <label for = "dos">BACHILLERATO</label>
+        <input type = "radio" name = "estudios" id = "bachillerato"><br><br>
+        <label for = "tres">GRADO SUPERIOR</label>
+        <input type = "radio" name = "estudios" id = "superior"><br><br>
+        <label for = "cuatro">GRADO UNIVERSITARIO</label>
+        <input type = "radio" name = "estudios" id = "universidad"><br><br>
+    </form>
+    <div id = "resultado">
+    </div>
+    <script language = "javascript">
+
+        let eso = document.getElementById("eso");
+        let bachillerato = document.getElementById("bachillerato");
+        let superior = document.getElementById("superior");
+        let universidad = document.getElementById("universidad");
+
+        let div = document.getElementById("resultado");
+
+        eso.addEventListener("change", function(){
+            if(eso.checked){
+            div.innerHTML = "¡Felicidades por tener la ESO!";
+            }
+        });
+            
+        bachillerato.addEventListener("change", function(){
+            if(bachillerato.checked){
+            div.innerHTML = "¡Felicidades por tener el bachillerato!";
+            }
+        });
+
+        superior.addEventListener("change", function(){
+            if(superior.checked){
+            div.innerHTML = "¡Felicidades por tener un Grado Superior!";
+            }
+        });
+
+        universidad.addEventListener("change", function(){
+            if(universidad.checked){
+            div.innerHTML = "¡Felicidades por tener un Grado Univesitario!";
+            }
+        });
+
+    </script>
+</body>
+</html>

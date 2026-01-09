@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecma6</title>
+</head>
+<body>
+    <div id="resultado">
+    </div>
+    <script language = "javascript">
+        //CREAMOS LA FUNCIÓN PARA EL OBJETO DE LA PETICIÓN
+        function crearObjetoPeticion(){
+            let objeto_peticion = false;
+            try{
+                objeto_peticion = new XMLHttpRequest();
+            }catch(primer_error){
+                try{
+                    objeto_peticion = ActiveXObject("Msxml2.XMLHTTP");
+                }catch(segundo_error){
+                    try{
+                        objeto_peticion = ActiveXObject("Microsoft.XMLHTTP");
+                    }catch(tercer_error){
+                        objeto_peticion = false;
+                    }
+                }
+            }
+            return objeto_peticion;
+        }
+
+        //CREAMOS LA PROMERSA
+        let promesa = new Promise(function(funciona, no_funciona){
+        
+        //CREAMOS LA PETICIÓN
+        let peticion = crearObjetoPeticion();
+
+        //DEFINIMOS LA PETICIÓN
+        let url = "archivo_json.json";
+
+        //ABRIMOS LA PETICIÓN
+        peticion.open("GET", url, true);
+
+        //VERIFICAMOS LA PETICIÓN
+        peticion.onreadystatechange = respuestaServidor;
+        function respuestaServidor(){
+            if(peticion.readyState == 4){
+                if(peticion.status == 200){
+                    let json = JSON.parse(peticion.responseText);
+                    funciona(json);
+                }else{
+                    no_funciona("Hubo un error en la petición "+peticion.status);
+                }
+            }
+        }
+
+        //ENVIAMOS LA PETICIÓN
+        peticion.send();
+        });
+
+        //AHORA DEPENDIENDO DE COMO HAYA SALIDO, EJECUTAMOS LA PROMESA.
+        //EL CAMINO QUE SE VA A EJECUTAR CUANDO SALE BIEN, ES EL DE THEN
+        promesa.then(function(json){
+            //SI TODO BIEN, MOSTRAMOS LOS DATOS
+            let div =  document.getElementById("resultado");
+
+            //VAMOS A CREAR UNA TABLA
+            let tabla = "<table border ='1'>";
+                tabla += "<tr>";
+                    tabla += "<td>ID DE USUARIO</td><td>ID</td><td>TÍTULO</td><td>CONTENIDO</td>";
+                tabla += "</tr>";
+                json.forEach(objeto => {
+                    tabla += "<tr><td>"+objeto.userId+"</td>"+"<td>"+objeto.id+"</td>"+"<td>"+objeto.title+"</td>"+"<td>"+objeto.body+"</td></tr>";
+                });
+                tabla += "</table>";
+                div.innerHTML = tabla;
+        });
+
+        //AHORA CUANDO SALE MAL, HACEMOS EL CATCH
+        promesa.catch(function(error){
+            let div = document.getElementById("resultado");
+            div.innerHTML = error;
+        });
+
+    </script>
+</body>
+</html>

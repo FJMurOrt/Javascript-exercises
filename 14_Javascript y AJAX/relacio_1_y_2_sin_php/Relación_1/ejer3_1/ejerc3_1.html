@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejerc3_1
+    </title>
+</head>
+<body>
+    <img src="imgs/1.png">
+    <form>
+        <label for = "nombre">Nombre:</label>
+        <input type="text" id ="nombre"><br>
+        <select id = "voto">
+            <option disabled selected>selecciona</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+        </select><br>
+        <input type="button" id = "vota" value="Vota"><br>
+        <div id = "resultado">
+        </div>
+    </form>
+    <script language = "javascript">
+        //ACCEDEMO AL BOTÓN
+        let boton = document.getElementById("vota");
+
+        boton.addEventListener("click", function(){
+        //ACCEDEMOS A LOS CAMPOS Y AL BOTÓN
+        let nombre = document.getElementById("nombre").value;
+        let voto = document.getElementById("voto").value;
+        let div = document.getElementById("resultado");
+
+        //VALIDAMOS EL CAMPO DE NOMBRE
+            if(nombre == "" || !isNaN(nombre)){
+                alert("El campo nombre debe ser completado y no puede ser un número");
+                return;
+            }else{
+                nombre = nombre;;
+            }
+        
+        //VALIDAMOS EL CAMPO DE LOS VOTOS
+            if(voto == ""){
+                alert("Debes seleccionar una votación");
+                return;
+            }else{
+                voto = voto;
+            }
+        
+        //CREAMOS EL OBJETO PARA LA PETICIÓN AL SERVIDOR
+        let peticion = new XMLHttpRequest();
+
+
+        //DEFINIMOS LA PETICIÓN Y EL TIPO DE CONTENIDO
+        let url = "votos_realizados.php?nombre="+nombre+"&voto="+voto;
+        peticion.open("GET", url, true);
+        peticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        peticion.send(null);
+
+        //VERIFICO EL ESTADO DE LA RESPUESTA
+        peticion.onreadystatechange = respuestaServidor;
+
+        function respuestaServidor(){
+            if(peticion.readyState == 4){
+                if(peticion.status == 200){
+                    div.innerHTML = peticion.responseText;
+                }else{
+                    peticion.statusText;
+                }
+            }
+        }
+        });
+
+    </script>
+</body>
+</html>

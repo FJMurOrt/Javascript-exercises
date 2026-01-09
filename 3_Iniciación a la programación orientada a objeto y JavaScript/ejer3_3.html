@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer_3_1</title>
+    <style>
+        table, tr, td{
+            border: 1px, solid, black;
+            margin-bottom: 3px;
+        }
+    </style>
+</head>
+<body>
+    <script language="javascript">
+        let numero;
+
+        do {
+            numero = prompt("Inserta un número");
+        } while (numero == "");
+
+        numero = parseInt(numero);
+        
+        alert("El número insertado es: " + numero);
+        document.write(
+            "<table align= 'center'>" +
+                "<tr>" +
+                    "<th>" + "Tabla de multiplicar" + "</th>" +
+                "</tr>" +
+            "</table>")
+
+        document.write("<table align = 'center'>")
+        document.write(
+                    "<tr>" +
+                        "<td>" + numero + "*" + 1 + "</td>" +
+                        "<td>" + numero * 1 + "</td>" +
+                    "<tr>"
+                )
+        document.write(
+                    "<tr>" +
+                        "<td>" + numero + "*" + 2 + "</td>" +
+                        "<td>" + numero * 2 + "</td>" +
+                    "<tr>"
+                )
+        document.write(
+                    "<tr>" +
+                        "<td>" + numero + "*" +3 + "</td>" +
+                        "<td>" + numero * 3 + "</td>" +
+                    "<tr>"
+                )
+        document.write(
+                    "<tr>" +
+                        "<td>" + numero + "*" + 4 + "</td>" +
+                        "<td>" + numero * 4 + "</td>" +
+                    "<tr>"
+                )
+        document.write(
+                    "<tr>" +
+                        "<td>" + numero + "*" + 5 + "</td>" +
+                        "<td>" + numero * 5 + "</td>" +
+                    "<tr>"
+                )
+        document.write(
+                    "<tr>" +
+                        "<td>" + numero + "*" + 6 + "</td>" +
+                        "<td>" + numero * 6 + "</td>" +
+                    "<tr>"
+                )
+        document.write(
+                    "<tr>" +
+                        "<td>" + numero + "*" + 7 + "</td>" +
+                        "<td>" + numero * 7 + "</td>" +
+                    "<tr>"
+                )
+        document.write(
+                    "<tr>" +
+                        "<td>" + numero + "*" + 8 + "</td>" +
+                        "<td>" + numero * 8 + "</td>" +
+                    "<tr>"
+                )
+        document.write(
+                    "<tr>" +
+                        "<td>" + numero + "*" + 9 + "</td>" +
+                        "<td>" + numero * 9 + "</td>" +
+                    "<tr>"
+                )
+        document.write(
+                    "<tr>" +
+                        "<td>" + numero + "*" + 10 + "</td>" +
+                        "<td>" + numero * 10 + "</td>" +
+                    "<tr>"
+                )
+        document.write ("</table>");
+    </script>
+</body>
+</html>

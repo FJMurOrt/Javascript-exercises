@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script language = "javascript">
+        //ARRAY CON LOS ELEMENTOS QUE QUEREMOS VERIFICAR
+        let array_elementos = new Array("Joe's Cooking Book", "Sam's Cookbook", "JavaScript CookBook", "JavaScript BookCook");
+
+        //EXPRESIÓN PARA VERIFICAR LOS ELEMENTOS DEL ARRAY
+        let mi_expresion = new RegExp("Cook.*Book");
+
+        //RECORREMOS EL ARRAY Y VAMOS COMPROBANDO
+        for(let i = 0; i < array_elementos.length;i++){
+            if(mi_expresion.test(array_elementos[i])){
+                document.write("El elemento "+array_elementos[i]+" tiene coincidencias.<br><br>");
+            }else{
+                document.write("El elemento "+array_elementos[i]+" no tiene coincidencias.<br><br>");
+            }
+        }
+    </script>
+</body>
+</html>

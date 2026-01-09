@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer3_6</title>
+</head>
+<body>
+    <div id="resultado">
+    </div>
+    <script language = "javascript">
+        //ACCEDEMOS AL DIV
+        let div = document.getElementById("resultado");
+
+        //CREAMOS EL OBJETO PARA LA CONEXIÓN
+        function crearObjetoServidor(){
+            let objeto_conexión = false
+
+            try{
+                objeto_conexión = new XMLHttpRequest();
+            }catch(primer_error){
+                try{
+                    objeto_conexión = ActiveXObject("Msxml2.XMLHTTP");
+                }catch(segundo_error){
+                    try{
+                        objeto_conexión = ActiveXObject("Microsoft.XMLHTTP");
+                    }catch(tercer_error){
+                        objeto_conexión = false;
+                    }
+                }
+            }
+            return objeto_conexión;
+        }
+
+        //DEFINIMOS LA CONEXIÓN CON EL OBJETO
+        let peticion_servidor = crearObjetoServidor();
+
+        //DEFINIMOS EL MÉTODO Y LA URL
+        let url = "archivo_php.php";
+        peticion_servidor.open("GET", url, true);
+
+        //VERFICAMOS EL ESTADO Y OBTENEMOS LA RESPUESTA
+        peticion_servidor.onreadystatechange = respuestaServidor;
+
+        function respuestaServidor(){
+            if(peticion_servidor.readyState == 4 && peticion_servidor.status == 200){
+            div.innerHTML = peticion_servidor.responseText;
+            }
+        }
+
+        //ENVIAMOS LA PETICIÓN AL SERVIDOR
+        peticion_servidor.send();
+    </script>
+</body>
+</html>

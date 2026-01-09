@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer11_7</title>
+</head>
+<body>
+    <script language = "javascript">
+        //CREAMOS EL PRIMER SELECT
+        let primer_select = document.createElement("select");
+        primer_select.id = "primer_select";
+
+        //CREAMOS LAS OPCIONES PARA EL PRIMER SELECT
+        let negro = document.createElement("option");
+        negro.innerHTML = "Negro";
+        primer_select.appendChild(negro);
+
+        let azul_oscuro = document.createElement("option");
+        azul_oscuro.innerHTML = "Azul oscuro";
+        primer_select.appendChild(azul_oscuro);
+
+        //CREAMOS EL SEGUNDO SELECT
+        let segundo_select = document.createElement("select");
+        segundo_select.id = "segundo_select";
+        
+        //CREAMOS LAS OPCIONES PARA EL SEGUNDO SELECT
+        let blanco = document.createElement("option");
+        blanco.innerHTML = "Blanco";
+        segundo_select.appendChild(blanco);
+
+        let gris = document.createElement("option");
+        gris.innerHTML = "Azul oscuro";
+        segundo_select.appendChild(gris);
+
+        //CREAMOS EL TERCER SELECT
+        let tercer_select = document.createElement("select");
+        tercer_select.id = "tercer_select";
+
+        //CREAMOS LAS OPCIONES PARA EL SEGUNDO SELECT
+        let azul = document.createElement("option");
+        azul.innerHTML = "Azul";
+        tercer_select.appendChild(azul);
+
+        let verde = document.createElement("option");
+        verde.innerHTML = "Verde";
+        tercer_select.appendChild(verde);
+
+
+        //VAMOS A CREAR ETIQUETAS PARA CADA SELECT Y PONER EL TEXTO
+        let titulo_primer_select = document.createElement("label");
+        titulo_primer_select.innerHTML = "text";
+
+        let titulo_segundo_select = document.createElement("label");
+        titulo_segundo_select.innerHTML = "bgColor";
+
+        let titulo_tercer_select = document.createElement("label");
+        titulo_tercer_select.innerHTML = "link";
+
+
+
+        //CREAMOS EL ENLACE
+        let a = document.createElement("a");
+        a.href = "#";
+        a.textContent = "enlance_de_prueba";
+
+
+        //AÑADIMOS LOS 3 SELECTS AL BODY
+        document.body.appendChild(titulo_primer_select);
+        document.body.appendChild(document.createElement("br"));
+        document.body.appendChild(document.createElement("br"));
+        document.body.appendChild(primer_select);
+        document.body.appendChild(document.createElement("br"));
+        document.body.appendChild(document.createElement("br"));
+        document.body.appendChild(titulo_segundo_select);
+        document.body.appendChild(document.createElement("br"));
+        document.body.appendChild(document.createElement("br"));
+        document.body.appendChild(segundo_select);
+        document.body.appendChild(document.createElement("br"));
+        document.body.appendChild(document.createElement("br"));
+        document.body.appendChild(titulo_tercer_select);
+        document.body.appendChild(document.createElement("br"));
+        document.body.appendChild(document.createElement("br"));
+        document.body.appendChild(tercer_select);
+        document.body.appendChild(a);
+
+        primer_select.addEventListener("change", function(){
+            if(primer_select.value === "Negro"){
+                a.style.color = "black";
+            }
+            if(primer_select.value === "Azul oscuro"){
+                a.style.color = "darkblue";
+            }
+        });
+
+        segundo_select.addEventListener("change", function(){
+            if(segundo_select.value === "Blanco"){
+                a.style.backgroundColor = "white";
+            }
+            if(segundo_select.value === "Azul oscuro"){
+                a.style.backgroundColor = "darkblue";
+            }
+        });
+
+        tercer_select.addEventListener("change", function(){
+            if(tercer_select.value === "Azul"){
+                a.style.color = "blue";
+            }
+            if(tercer_select.value === "Verde"){
+                a.style.color = "green";
+            }
+        });
+
+    </script>
+</body>
+</html>

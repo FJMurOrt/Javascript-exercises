@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jq4</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Manipulando DOM</h1>
+    <ul id="lista">
+        <li>Primer item.</li>
+        <li>Segundo item.</li>
+        <li>Tercer item.</li>
+        <li>Cuarto item.</li>
+    </ul>
+    <br>
+    <input type="button" id="eliminar_lista" value="Eliminar la lista completa"><br>
+    <input type="button" id="restaurar_lista" value="Restaurar Lista"><br>
+    <input type="button" id="elemento_final_de_lista" value="Añadir un elemento al final de la lista"><br>
+    <input type="button" id="eliminar_principio_de_lista" value="Añadir un elemento al principio de la lista"><br>
+    <input type="button" id="eliminar_ultimo_elemento" value="Eliminar último elemento"><br>
+    <input type="button" id="eliminar_primer_elemento" value="Eliminar el primer elemento"><br>
+    <input type="button" id="decorar_colores" value="Decorar colores alternos"><br>
+    <script>
+        //ACCEDEMOS A LA LISTA
+        let lista = $("#lista");
+
+        //HACEMOS UNA COPIA DE LA LISTA ORIGINAL PARA LUEGO PODER RESTAURARLA A COMO ESTABA
+        let lista_copia = lista.html();
+
+        //ACCDEMOS A LOS BOTONES
+        let eliminar_lista = $("#eliminar_lista");
+        let restaurar_lista = $("#restaurar_lista");
+        let anadir_elemento_final = $("#elemento_final_de_lista");
+        let anadir_elemento_principio = $("#eliminar_principio_de_lista");
+        let eliminar_ultimo_elemento = $("#eliminar_ultimo_elemento");
+        let eliminar_primer_elemento = $("#eliminar_primer_elemento");
+        let decorar_colores = $("#decorar_colores");
+
+        //EVENTO Y FUNCIÓN DE CADA BOTÓN
+
+        //ELIMINAR LA LISTA
+        $("document").ready(function(){
+            eliminar_lista.on("click", function(){
+                lista.empty();
+            });
+        });
+
+        //RESTAURAR LA LISTA
+        $("document").ready(function(){
+            restaurar_lista.on("click", function(){
+                lista.html(lista_copia);
+            });
+        });
+
+        //AÑADIR UN ELEMENTO AL FINAL
+        $("document").ready(function(){
+            anadir_elemento_final.on("click", function(){
+                lista.append("<li>Nuevo elemento creado al final</li>")
+            });
+        });
+
+        //AÑADIR UN ELEMENTO AL PRINCIPIO
+        $("document").ready(function(){
+            anadir_elemento_principio.on("click", function(){
+                lista.prepend("<li>Nuevo elemento creado al principio</li>")
+            });
+        });
+
+        //ELIMINAR EL ÚLTIMO ELEMENTO
+        $("document").ready(function(){
+            eliminar_ultimo_elemento.on("click", function(){
+                let listado_de_elementos = $("#lista li");
+                listado_de_elementos.eq(listado_de_elementos.length - 1).remove();
+            });
+        });
+
+        //ELIMINAR EL PRIMER ELEMENTO
+        $("document").ready(function(){
+            eliminar_primer_elemento.on("click", function(){
+                let listado_de_elementos = $("#lista li");
+                listado_de_elementos.eq(0).remove();
+            });
+        });
+
+        //DECORAR COLORES ALTERNOS
+        $("document").ready(function(){
+            decorar_colores.on("click", function(){
+                let listado_de_elementos = $("#lista li");
+                listado_de_elementos.each(function(indice){
+                    if(indice % 2 == 0){
+                        listado_de_elementos.eq(indice).css("color", "green");
+                    }else{
+                        listado_de_elementos.eq(indice).css("color", "yellow");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

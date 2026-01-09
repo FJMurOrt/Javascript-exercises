@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer11_12</title>
+</head>
+<body>
+    <h1>Ejercicio de DOM</h1>
+    <input type="button" id = "añadir" value="Añadir">
+    <input type="button" id = "quitar" value="Quitar">
+    <script language = "javascript">
+        //ACCEDEMOS A LOS BOTONES Y CREAMOS UN CONTADOR PARA LA LISTA
+        let agregar = document.getElementById("añadir");
+        let contador = 1;
+        let tipo_lista = document.createElement("ul");
+        agregar.addEventListener("click", function(){
+            let elemento_de_la_lista = document.createElement("li");
+            elemento_de_la_lista.innerHTML = "Opcion "+contador;
+            contador++;
+            tipo_lista.appendChild(elemento_de_la_lista);
+            document.body.appendChild(tipo_lista);
+        });
+
+        //ACCEDEMOS AL BOTÓN QUITAR
+        let quitar = document.getElementById("quitar");
+        quitar.addEventListener("click", function(){
+            if(tipo_lista.lastChild !== tipo_lista.firstChild){
+                tipo_lista.removeChild(tipo_lista.lastChild);
+            }
+        });
+    </script>
+</body>
+</html>

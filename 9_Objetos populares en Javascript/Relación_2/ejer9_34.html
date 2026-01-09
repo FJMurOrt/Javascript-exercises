@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer9_34</title>
+</head>
+<body>
+    <script language = "javascript">
+        //MI EXPRESIÓN PARA VALIDAR EL EMAIL
+        let mi_expresion = new RegExp("^[a-zA-Z][a-zA-Z_]*@[a-zA-Z]+\.[a-zA-Z]{2,3}$");
+
+        //PRUEBA DE LA EXPRESIÓN
+        let correo = "fran_muriel@ieslaarboleda.es"
+
+        //VERIFICACIÓN
+        if(mi_expresion.test(correo)){
+            alert("¡Correo válido!");
+        }else{
+            alert("¡Correo no válido!");
+        }
+    </script>
+</body>
+</html>

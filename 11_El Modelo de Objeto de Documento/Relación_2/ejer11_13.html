@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejer11_13</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Contenido de la capa</legend>
+        <br>
+        <label for = "contenido_de_capa">Contenido de la capa:</label><br>
+        <input type= "text" id = "contenido"><br><br>
+        <input type= "button" id= "cambiar" value= "Cambiar contenido">
+    </fieldset>
+    <br>
+    <div id = "capa">
+        Esto es una capa
+    </div>
+    <script language = "javascript">
+        //ACCEDEMOS AL BOTÓN
+        let boton = document.getElementById("cambiar");
+
+        //EVENTO Y FUNCIÓN DEL BOTÓN
+        boton.addEventListener("click", function(){
+            //DEFINIMOS VARIABLES
+            let contenido = document.getElementById("contenido");
+            let contenido_para_la_capa = "";
+            let div = document.getElementById("capa");
+
+            //VERIFICAMOS EL CAMPO DE CONTENIDO
+            if(contenido.value == ""){
+                alert("El campo del contenido tiene que ser rellenado.");
+                return;
+            }else{
+                contenido_para_la_capa = contenido.value.trim();
+            }
+
+            //ACCEDEMOS A LA CAPA
+            div.innerHTML = contenido_para_la_capa;
+
+            //BORRAMOS EL CAMPO
+            contenido.value = "";
+        });
+    </script>
+</body>
+</html>

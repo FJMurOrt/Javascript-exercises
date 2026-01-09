@@ -1,4 +1,4 @@
-# Javascript-exercises
+# Exercises in Javascript
 This repository contains exercises and mini-projects completed as part of my Web Application Development course.
 
 ## Topics covered

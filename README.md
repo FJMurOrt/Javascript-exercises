@@ -11,12 +11,12 @@ This repository contains exercises and mini-projects completed as part of my Web
 - AJAX with JSON and DATABASES.
 - Classes in JavaScript
 - Cookies management
-- jQuery basics
-- Node.js basics
-- Angular basics (EXERCISES NOT INCLUDED YET)
+- jQuery fundamentals
+- Node.js fundamentals
+- Angular fundamentals (EXERCISES NOT INCLUDED YET)
 
 ## Learning outcomes
-- Hands-on experience with JavaScript fundamentals
+- Hands-on experience with JavaScript fundamentals and modern ES features
 - Frontend interactivity with DOM, jQuery, and Angular
 - Data handling using AJAX and JSON
 - Understanding of client-side storage, form validation, and backend basics with Node.js

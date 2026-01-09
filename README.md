@@ -2,18 +2,20 @@
 This repository contains exercises and mini-projects completed as part of my Web Application Development course.
 
 ## Topics covered
-- Control structures (if, switch, loops)
-- Arrays (normal and objects arrays)
+- Control structures (if, switch, loops, etc.)
+- Arrays (including objects arrays)
 - Objects (including built-in objects)
 - DOM manipulation and styling
 - Forms and input validation (including RegExp)
-- AJAX with JSON
+- AJAX with JSON and DATABASES.
 - Classes in JavaScript
 - Cookies management
 - jQuery basics
+- Node.js basics
+- Angular basics
 
 ## Learning outcomes
 - Hands-on experience with JavaScript fundamentals
-- Frontend interactivity with DOM and jQuery
+- Frontend interactivity with DOM, jQuery, and Angular
 - Data handling using AJAX and JSON
-- Understanding of client-side storage and form validation
+- Understanding of client-side storage, form validation, and backend basics with Node.js

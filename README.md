@@ -13,7 +13,7 @@ This repository contains exercises and mini-projects completed as part of my Web
 - Cookies management
 - jQuery basics
 - Node.js basics
-- Angular basics
+- Angular basics (EXERCISES NOT INCLUDED YET)
 
 ## Learning outcomes
 - Hands-on experience with JavaScript fundamentals

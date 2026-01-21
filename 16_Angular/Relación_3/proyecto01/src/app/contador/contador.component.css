@@ -1,0 +1,19 @@
+#contador{
+    color: white;
+    display: inline-block;
+    margin: 5px;
+    width: fit-content;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    border-radius: 3px;
+}
+
+.finalizado {
+  background-color: #007600;
+}
+
+.no_finalizado {
+  background-color: #4B86B5;
+}

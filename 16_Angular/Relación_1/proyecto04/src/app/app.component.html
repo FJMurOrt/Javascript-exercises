@@ -1,0 +1,11 @@
+<div class="ejercicio">
+<h1>{{titulo}}</h1>
+<app-evento-componente (tecla_pulsada)="obtener_letra($event)"></app-evento-componente>
+
+<p>La tecla pulsada es la: {{tecla}}</p>
+<app-evento-componente2 (hacer_foco)="obtener_mensaje_foco($event)"></app-evento-componente2>
+
+<p>{{mensaje_del_foco}}</p>
+<app-evento-componente3></app-evento-componente3>
+</div>
+<router-outlet />

@@ -1,0 +1,13 @@
+<h1>Bienvenido a {{nombre}}</h1>
+<p>Contador: {{contador}}</p>
+<input type="button" value="Incrementar" (click)="incrementarContador()">
+<hr>
+<h1>Lista de elementos</h1>
+<ul>
+    @for(elemento of items; track items){
+        <li>{{elemento}}</li>
+    }
+</ul>
+<input type="button" value="Agregar elemento" (click)="agregarItem()">
+<input type="button" value="Limpiar lista" (click)="limpiarLista()">
+<router-outlet />
